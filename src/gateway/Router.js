@@ -10,9 +10,9 @@ import AppraisalForm from "../components/Pms/Group/AppraisalForm";
 import PmsGroups from "../components/Pms/Group/PmsGroups";
 import EmployeeSearch from "../components/details/EmployeeDetails/EmployeeSearch";
 import NewsConfig from "../components/details/NewsConfig/NewsConfig";
-import Payroll from "../components/ems/Payroll/Payroll";
-import Leave from "../components/ems/leave/Leave";
-import TimeSheet from "../components/ems/timesheet/TimeSheet";
+import Payroll from "../components/nems/Payroll/Payroll";
+import Leave from "../components/nems/leave/Leave";
+import TimeSheet from "../components/nems/timesheet/TimeSheet";
 import EmployeeApprovalConfig from "../components/hrConfig/EmployeeApprovalConfig/EmployeeApprovalConfig";
 import EmployeeProject from "../components/hrConfig/EmployeeProjectConfig/EmployeeProject";
 import GroupsSubGroups from "../components/hrConfig/Groups_SubGroupsConfig/GroupsSubGroups";
@@ -21,19 +21,20 @@ import LeaveType from "../components/master_config/LeaveType/LeaveType";
 import ClientMaster from "../components/master_config/clientMaster/ClientMaster";
 import DepartmentMaster from "../components/master_config/departmentMaster/DepartmentMaster";
 import ProjectMaster from "../components/master_config/projectMaster/ProjectMaster";
-import Candidate from "../components/smartHire/candidate/Candidate";
-import CandidateList from "../components/smartHire/candidateList/CandidateList";
+
+import Candidate from "../components/NexusHire/candidate/Candidate";
+import CandidateList from "../components/NexusHire/candidateList/CandidateList";
 import ProtectedRoute from "./ProtectedRoute";
 import ExpenseRecords from "../components/Finance/Expense/ExpenseRecords/ExpenseRecords";
 import ExpenseSubmission from "../components/Finance/Expense/ExpenseSubmission/ExpenseSubmission";
-import ContractManagement from "../components/ems/ContractManagement/ContractManagement";
-import MyTaxDetails from "../components/ems/Tds/MyTaxDetails";
-import TdsConfiguration from "../components/ems/Tds/TdsConfiguration";
-import Reports from "../components/ems/reports/Reports";
+import ContractManagement from "../components/nems/ContractManagement/ContractManagement";
+import MyTaxDetails from "../components/nems/Tds/MyTaxDetails";
+import TdsConfiguration from "../components/nems/Tds/TdsConfiguration";
+import Reports from "../components/nems/reports/Reports";
 import FinancialYearSetup from "../components/master_config/TaxSetup/FinancialYearSetup";
-import ExpenseReport from "../components/ems/reports/ExpenseReport/ExpenseReport";
+import ExpenseReport from "../components/nems/reports/ExpenseReport/ExpenseReport";
 import Policies from "../components/Policies/Policies";
-import AttComReport from "../components/ems/reports/AttComReport/AttComReport";
+import AttComReport from "../components/nems/reports/AttComReport/AttComReport";
 import RemitanceInvoice from "../components/Others/Invoices/RemittanceInvoices/RemitanceInvoice";
 import VendorDetails from "../components/Finance/Vendor/VendorApproval/VendorDetails";
 import VersionCheck from "../components/VersionUpdateUpload/VersionCheck";
@@ -43,10 +44,10 @@ import VendorSeach from "../components/Finance/Vendor/VendorSearch/VendorSeach";
 import GoalConfig from "../components/goal/GoalConfig";
 import Holiday from "../components/Holidays/Holiday";
 import Task from "../components/master_config/Task/Task";
-import TimeSheetReportForManager from "../components/ems/timesheet/TimeSheetReportForManager";
+import TimeSheetReportForManager from "../components/nems/timesheet/TimeSheetReportForManager";
 import InitiateGoals from "../components/goal/InitiateGoals";
 import EmployeeGoals from "../components/goal/EmployeeGoals";
-import EmployeeTable from "../components/ems/Employees/EmployeeTable";
+import EmployeeTable from "../components/nems/Employees/EmployeeTable";
 import HrOrManagerApproval from "../components/goal/HrOrManagerApproval";
 import AttributeConfigForAppraisal from "../components/goal/AttributeConfigForAppraisal";
 function Router() {
@@ -171,12 +172,12 @@ function Router() {
               ),
             },
             {
-              path: "ems",
+              path: "nems",
               children: [
                 {
                   path: "leave",
                   element: (
-                    <ProtectedRoute roleName={["hr_tools_ems_leave"]}>
+                    <ProtectedRoute roleName={["hr_tools_nems_leave"]}>
                       <Leave />
                     </ProtectedRoute>
                   ),
@@ -184,7 +185,7 @@ function Router() {
                 {
                   path: "timeSheet",
                   element: (
-                    <ProtectedRoute roleName={["hr_tools_ems_timesheet"]}>
+                    <ProtectedRoute roleName={["hr_tools_nems_timesheet"]}>
                       <TimeSheet />
                     </ProtectedRoute>
                   ),
@@ -195,7 +196,7 @@ function Router() {
                 {
                   path: "payroll",
                   element: (
-                    <ProtectedRoute roleName={["hr_tools_ems_payroll"]}>
+                    <ProtectedRoute roleName={["hr_tools_nems_payroll"]}>
                       <Payroll />
                     </ProtectedRoute>
                   ),
@@ -203,7 +204,7 @@ function Router() {
                 {
                   path: "releaseNoteSearch",
                   element: (
-                    <ProtectedRoute roleName={["hr_tools_ems_payroll"]}>
+                    <ProtectedRoute roleName={["hr_tools_nems_payroll"]}>
                       <ReleaseNoteView />
                     </ProtectedRoute>
                   ),
@@ -211,7 +212,7 @@ function Router() {
                 {
                   path: "contractManagment",
                   element: (
-                    // <ProtectedRoute roleName={["gm_ems_cmm"]}>
+                    // <ProtectedRoute roleName={["gm_nems_cmm"]}>
                     <ContractManagement />
                   ),
                   // </ProtectedRoute>
@@ -322,13 +323,13 @@ function Router() {
               ],
             },
             {
-              path: "smartHire",
+              path: "NexusHire",
               children: [
                 {
                   path: "candidateList",
                   element: (
                     <ProtectedRoute
-                      roleName={["hr_tools_smartHire_candidateList"]}
+                      roleName={["hr_tools_NexusHire_candidateList"]}
                     >
                       <CandidateList />
                     </ProtectedRoute>
@@ -339,10 +340,10 @@ function Router() {
                   element: (
                     <ProtectedRoute
                       roleName={[
-                        "hr_tools_smartHire_candidateList_View",
-                        "hr_tools_smartHire_candidateList_Edit",
-                        "hr_tools_smartHire_candidate_approval_budgetApproval",
-                        "hr_tools_smartHire_candidate_approval_managementApproval",
+                        "hr_tools_NexusHire_candidateList_View",
+                        "hr_tools_NexusHire_candidateList_Edit",
+                        "hr_tools_NexusHire_candidate_approval_budgetApproval",
+                        "hr_tools_NexusHire_candidate_approval_managementApproval",
                       ]}
                     >
                       <Candidate />
@@ -352,7 +353,7 @@ function Router() {
                 {
                   path: "candidate",
                   element: (
-                    <ProtectedRoute roleName={["hr_tools_smartHire_candidate"]}>
+                    <ProtectedRoute roleName={["hr_tools_NexusHire_candidate"]}>
                       <Candidate />
                     </ProtectedRoute>
                   ), // Default path for creating a new candidate

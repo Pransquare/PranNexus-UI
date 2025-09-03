@@ -11,7 +11,7 @@ import {
   getSectionSubsectionConfig,
   deleteSubsection,
   deleteSectionSubsectionConfig,
-} from "../../../service/api/emsService/TdsService";
+} from "../../../service/api/nemsService/TdsService";
 
 function SecSubSecSetup() {
   const [sections, setSections] = useState([]);

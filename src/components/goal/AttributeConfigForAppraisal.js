@@ -8,7 +8,7 @@ import ConfigTable from "../../common/customComponents/ConfigTable";
 import {
   saveOrUpdateAttributes,
   searchAttributes,
-} from "../../service/api/emsService/GoalService";
+} from "../../service/api/nemsService/GoalService";
 import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDataProvider";
 
 const defaultFormData = {

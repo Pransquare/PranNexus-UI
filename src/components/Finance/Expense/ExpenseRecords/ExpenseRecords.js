@@ -6,7 +6,7 @@ import ConfigureForm from "../../../../common/customComponents/ConfigureForm";
 import { panelStyle } from "../../../../common/customStyles/CustomStyles";
 import { UserManagentCheck } from "../../../../common/UserManagement";
 import { EmployeeDataContext } from "../../../../customHooks/dataProviders/EmployeeDataProvider";
-import { GetEmployeesByName } from "../../../../service/api/emsService/EmployeeService";
+import { GetEmployeesByName } from "../../../../service/api/nemsService/EmployeeService";
 import { Search } from "../../../../service/api/ExpenseService";
 import { currencySymbols } from "../ExpenseSubmission/ExpenseSubmission";
 

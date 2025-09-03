@@ -20,7 +20,7 @@ import { Toaster } from "../../common/alertComponets/Toaster";
 import {
   CreateOrUpdateGoal,
   GetAllGoals,
-} from "../../service/api/emsService/GoalService";
+} from "../../service/api/nemsService/GoalService";
 import { panelStyle } from "../../common/customStyles/CustomStyles";
 import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDataProvider";
 

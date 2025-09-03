@@ -8,13 +8,13 @@ import ConfigTable from "../../../common/customComponents/ConfigTable";
 import ConfigureForm from "../../../common/customComponents/ConfigureForm";
 import { panelStyle } from "../../../common/customStyles/CustomStyles";
 import { EmployeeDataContext } from "../../../customHooks/dataProviders/EmployeeDataProvider";
-import { GetEmployeesByName } from "../../../service/api/emsService/EmployeeService";
+import { GetEmployeesByName } from "../../../service/api/nemsService/EmployeeService";
 import {
   GetEmployeeProjects,
   SaveOrUpdateEmployeeProjectsConfig,
 } from "../../../service/api/hrConfig/hrConfig";
 import { GetAllProjects } from "../../../service/api/ProjectService";
-import { GetAllTasks } from "../../../service/api/emsService/TaskService";
+import { GetAllTasks } from "../../../service/api/nemsService/TaskService";
 
 const defaultForm = {
   employee: "",

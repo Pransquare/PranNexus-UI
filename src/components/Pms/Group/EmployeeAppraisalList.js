@@ -4,7 +4,7 @@ import ConfigureForm from "../../../common/customComponents/ConfigureForm";
 import {
   GetEmployeeByEmployeeCode,
   GetEmployeesByName,
-} from "../../../service/api/emsService/EmployeeService";
+} from "../../../service/api/nemsService/EmployeeService";
 import { SearchPerformanceReviews } from "../../../service/api/pmsService/GetParameter";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -137,7 +137,7 @@ function EmployeeAppraisalList({ tabValue }) {
   }, []);
 
   const actionClick = (type, data, index) => {
-    navigate("/home/ems/appraisal/employeeAppraisal", {
+    navigate("/home/nems/appraisal/employeeAppraisal", {
       state: { data },
     });
   };

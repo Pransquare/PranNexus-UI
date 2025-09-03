@@ -25,7 +25,7 @@ import { Toaster } from "../../../../common/alertComponets/Toaster";
 import {
   SearchVendor,
   ApproveOrRejectVendor,
-} from "../../../../service/api/emsService/VendorService";
+} from "../../../../service/api/nemsService/VendorService";
 
 const ManagerApproval = () => {
   const [approvals, setApprovals] = useState([]);

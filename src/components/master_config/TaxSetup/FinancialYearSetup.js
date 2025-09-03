@@ -18,7 +18,7 @@ import {
   getFinancialYear,
   saveFinancialYear,
   updateFinancialYear,
-} from "../../../service/api/emsService/TdsService";
+} from "../../../service/api/nemsService/TdsService";
 import ConfigureForm from "../../../common/customComponents/ConfigureForm";
 import ConfigTable from "../../../common/customComponents/ConfigTable";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
@@ -28,7 +28,7 @@ import RegimeSetup from "./RegimeSetup";
 import SectionSetup from "./SectionsSetup";
 import SubSectionsSetup from "./SubSectionssSetup";
 import SecSubSecSetup from "./SecSubSectionSetup";
-import TdsConfiguration from "../../ems/Tds/TdsConfiguration";
+import TdsConfiguration from "../../nems/Tds/TdsConfiguration";
 
 function FinancialYearSetup() {
   const [tabsValue, setTabsValue] = useState(0);

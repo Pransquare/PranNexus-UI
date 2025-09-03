@@ -27,7 +27,7 @@ import { Toaster } from "../../../common/alertComponets/Toaster";
 import ConfigureForm from "../../../common/customComponents/ConfigureForm";
 import { EmployeeDataContext } from "../../../customHooks/dataProviders/EmployeeDataProvider";
 import { GetAllDesignations } from "../../../service/api/DesinationService";
-import { updateRoleTypes } from "../../../service/api/emsService/Payroll";
+import { updateRoleTypes } from "../../../service/api/nemsService/Payroll";
 import { GetAllRoleType } from "../../../service/api/itService/ItService";
 import { GetAllRoleName } from "../../../service/api/login/loginService";
 import {
@@ -36,7 +36,7 @@ import {
   updateAttributeDetails,
   UploadAppraisalLetter,
 } from "../../../service/api/pmsService/GetParameter";
-import { GetEmployeeCtcDetails } from "../../../service/api/emsService/EmployeeService";
+import { GetEmployeeCtcDetails } from "../../../service/api/nemsService/EmployeeService";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import DeleteIcon from "@mui/icons-material/Delete"; // Import Delete Icon
 
@@ -290,7 +290,7 @@ function AppraisalForm() {
               .then((roleRes) => {
                 if (roleRes) {
                   navigate(
-                    !data ? "/home" : "/home/ems/appraisal/initiateAppraisal"
+                    !data ? "/home" : "/home/nems/appraisal/initiateAppraisal"
                   );
                 }
               })
@@ -299,7 +299,7 @@ function AppraisalForm() {
                 Toaster("error", roleErr?.response?.data?.message);
               });
           } else {
-            navigate(!data ? "/home" : "/home/ems/appraisal/initiateAppraisal");
+            navigate(!data ? "/home" : "/home/nems/appraisal/initiateAppraisal");
           }
         }
       })

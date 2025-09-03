@@ -20,7 +20,7 @@ import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDat
 import { panelStyle } from "../../common/customStyles/CustomStyles";
 import { UserManagentCheck } from "../../common/UserManagement";
 import { GetEmployeesNew } from "../../service/api/pmsService/GetEmployees";
-import { initiateGoalSetup } from "../../service/api/emsService/GoalService";
+import { initiateGoalSetup } from "../../service/api/nemsService/GoalService";
 import { Toaster } from "../../common/alertComponets/Toaster";
 
 function InitiateGoals() {

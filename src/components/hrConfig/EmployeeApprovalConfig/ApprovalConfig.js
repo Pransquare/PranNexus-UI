@@ -22,7 +22,7 @@ import {
   GetEmployeeByEmployeeCode,
   GetEmployeesByName,
   SaveApproverConfig,
-} from "../../../service/api/emsService/EmployeeService";
+} from "../../../service/api/nemsService/EmployeeService";
 import { Toaster } from "../../../common/alertComponets/Toaster";
 import { EmployeeDataContext } from "../../../customHooks/dataProviders/EmployeeDataProvider";
 import ConfigureForm from "../../../common/customComponents/ConfigureForm";

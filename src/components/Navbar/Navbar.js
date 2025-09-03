@@ -15,7 +15,7 @@ import { Box } from "@mui/system";
 import { MenuSharp } from "@mui/icons-material";
 import NotificationCount from "./NotificationCount";
 import NotificationList from "./NotificationList";
-import { GetEmployeeByEmployeeCode } from "../../service/api/emsService/EmployeeService";
+import { GetEmployeeByEmployeeCode } from "../../service/api/nemsService/EmployeeService";
 import { GetAllWorkLocation } from "../../service/api/hrConfig/hrConfig";
 import { UserManagentContext } from "../../customHooks/dataProviders/UserManagementProvider"; // Import UserManagement Context
 

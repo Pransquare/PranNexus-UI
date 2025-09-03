@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDataProvider";
 import { UserManagentContext } from "../../customHooks/dataProviders/UserManagementProvider";
 import GlobalLoader from "../../customHooks/loading/GlobalLoader";
-import { GetEmployeeByEmployeeCode } from "../../service/api/emsService/EmployeeService";
+import { GetEmployeeByEmployeeCode } from "../../service/api/nemsService/EmployeeService";
 import { GetRoleNamesByUsername } from "../../service/api/login/loginService";
 import Chatbot from "../Chatbot/Chatbot";
 import Navbar from "../Navbar/Navbar"; // Import Navbar component

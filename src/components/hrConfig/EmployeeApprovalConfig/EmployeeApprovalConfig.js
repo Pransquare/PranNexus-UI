@@ -7,7 +7,7 @@ import { panelStyle } from "../../../common/customStyles/CustomStyles";
 import {
   GetEmployeesByName,
   GetEmployeesByStatus,
-} from "../../../service/api/emsService/EmployeeService";
+} from "../../../service/api/nemsService/EmployeeService";
 import ApprovalConfig from "./ApprovalConfig";
 import { GetAllDesignations } from "../../../service/api/DesinationService";
 

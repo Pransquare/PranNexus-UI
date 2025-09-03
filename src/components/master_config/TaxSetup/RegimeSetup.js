@@ -3,7 +3,7 @@ import { Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTit
 import { Toaster } from "../../../common/alertComponets/Toaster";
 import ConfigureForm from "../../../common/customComponents/ConfigureForm";
 import ConfigTable from "../../../common/customComponents/ConfigTable";
-import { deleteRegime, getRegimes, saveRegimes, updateRegime } from "../../../service/api/emsService/TdsService";
+import { deleteRegime, getRegimes, saveRegimes, updateRegime } from "../../../service/api/nemsService/TdsService";
 
 function RegimeSetup() {
   const [formData, setFormData] = useState({

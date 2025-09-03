@@ -22,13 +22,13 @@ import {
   CreateOrUpdateEmployee,
   DownloadPayslip,
   OffboardMember,
-} from "../../../service/api/emsService/EmployeeService";
+} from "../../../service/api/nemsService/EmployeeService";
 import {
   DownloadResponseFile,
   GetEmployeePayslipDetailsById,
   SaveorUpdatePayslipDetails,
   updateRoleTypes,
-} from "../../../service/api/emsService/Payroll";
+} from "../../../service/api/nemsService/Payroll";
 import { GetAllRoleType } from "../../../service/api/itService/ItService";
 import { GetAllRoleName } from "../../../service/api/login/loginService";
 import {

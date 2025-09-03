@@ -42,8 +42,8 @@ import {
   UpdateExpenseStatus,
   UploadExpense,
 } from "../../../../service/api/ExpenseService";
-import { DownloadFile } from "../../../../service/api/emsService/Payroll";
-import { GetManagerName } from "../../../../service/api/emsService/EmployeeLeaveService";
+import { DownloadFile } from "../../../../service/api/nemsService/Payroll";
+import { GetManagerName } from "../../../../service/api/nemsService/EmployeeLeaveService";
 import { UserManagentCheck } from "../../../../common/UserManagement";
 import ContentDialog from "../../../../common/customComponents/Dailogs/ContentDailog";
 const defaultFormData = {

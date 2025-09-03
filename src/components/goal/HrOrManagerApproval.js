@@ -14,7 +14,7 @@ import {
   Chip,
 } from "@mui/material";
 import { Toaster } from "../../common/alertComponets/Toaster";
-import { searchGoals } from "../../service/api/emsService/GoalService";
+import { searchGoals } from "../../service/api/nemsService/GoalService";
 import { useNavigate } from "react-router-dom";
 import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDataProvider";
 
@@ -44,7 +44,7 @@ const HrOrManagerApproval = () => {
   };
 
   const handleViewClick = (empBasicDetailId) => {
-    navigate(`/home/ems/goals/employeeGoals/${empBasicDetailId}`);
+    navigate(`/home/nems/goals/employeeGoals/${empBasicDetailId}`);
   };
 
   const getStatusLabel = (status) => {

@@ -12,7 +12,7 @@ import ConfigTable from "../../../../common/customComponents/ConfigTable";
 import {
   DownloadVendorReport,
   SearchVendor,
-} from "../../../../service/api/emsService/VendorService";
+} from "../../../../service/api/nemsService/VendorService";
 import { Toaster } from "../../../../common/alertComponets/Toaster";
 
 const VendorSearch = () => {

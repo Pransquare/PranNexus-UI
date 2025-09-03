@@ -25,11 +25,11 @@ import { useNavigate } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import botIcon from "../../assets/Images/chat bot icon.png";
 import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDataProvider";
-import { GetEmployeeLeaveConfigDetails } from "../../service/api/emsService/EmployeeLeaveService";
+import { GetEmployeeLeaveConfigDetails } from "../../service/api/nemsService/EmployeeLeaveService";
 import {
   DownloadOrViewPayslip,
   GetPayrollDetailsByEmployeeID,
-} from "../../service/api/emsService/Payroll";
+} from "../../service/api/nemsService/Payroll";
 import { GetAllHolidays } from "../../service/api/HolidayService";
 import { Remove } from "@mui/icons-material";
 

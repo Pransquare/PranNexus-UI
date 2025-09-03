@@ -29,11 +29,11 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DeleteIcon from "@mui/icons-material/Delete";
 import dayjs from "dayjs";
 import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDataProvider";
-import { GetManagerName } from "../../service/api/emsService/EmployeeLeaveService";
+import { GetManagerName } from "../../service/api/nemsService/EmployeeLeaveService";
 import {
   searchGoals,
   setUpGoals,
-} from "../../service/api/emsService/GoalService";
+} from "../../service/api/nemsService/GoalService";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 

@@ -10,14 +10,14 @@ import { GetAllDesignations } from "../../service/api/DesinationService";
 import {
   GetEmployeeLeaveByApproverId,
   GetEmployeeLeaveConfigDetails,
-} from "../../service/api/emsService/EmployeeLeaveService";
+} from "../../service/api/nemsService/EmployeeLeaveService";
 import {
   GetAllByEmpId,
   GetBirthdayList,
   GetEmployeeCounts,
-} from "../../service/api/emsService/EmployeeService";
-import { GetAllNews } from "../../service/api/emsService/NewsService";
-import { DownloadResponseFile } from "../../service/api/emsService/Payroll";
+} from "../../service/api/nemsService/EmployeeService";
+import { GetAllNews } from "../../service/api/nemsService/NewsService";
+import { DownloadResponseFile } from "../../service/api/nemsService/Payroll";
 import { RemoveBillUrl, UploadExpense } from "../../service/api/ExpenseService";
 import { GetAllHolidays } from "../../service/api/HolidayService";
 import { GetAllWorkLocation } from "../../service/api/hrConfig/hrConfig";

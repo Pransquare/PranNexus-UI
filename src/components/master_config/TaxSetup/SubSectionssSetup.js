@@ -3,7 +3,7 @@ import { Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTit
 import { Toaster } from "../../../common/alertComponets/Toaster";
 import ConfigureForm from "../../../common/customComponents/ConfigureForm";
 import ConfigTable from "../../../common/customComponents/ConfigTable";
-import { deleteSubSections, getSubSections, saveSubSections, updateSubsection } from "../../../service/api/emsService/TdsService";
+import { deleteSubSections, getSubSections, saveSubSections, updateSubsection } from "../../../service/api/nemsService/TdsService";
 
 function SubSectionsSetup() {
   const [formData, setFormData] = useState({

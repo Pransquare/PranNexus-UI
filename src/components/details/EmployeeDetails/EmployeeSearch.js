@@ -6,7 +6,7 @@ import EmployeeDetails from "./EmployeeDetails";
 import {
   GetEmployeeByEmployeeCode,
   GetEmployeesByName,
-} from "../../../service/api/emsService/EmployeeService";
+} from "../../../service/api/nemsService/EmployeeService";
 import { GetAllDesignations } from "../../../service/api/DesinationService";
 import { GetGroups } from "../../../service/api/pmsService/GetGroups";
 import Popper from "@mui/material/Popper"; // Ensure Popper is imported

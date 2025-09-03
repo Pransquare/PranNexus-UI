@@ -11,7 +11,7 @@ import ConfigureForm from "../../../../common/customComponents/ConfigureForm";
 import {
   SaveVendor,
   SearchVendor,
-} from "../../../../service/api/emsService/VendorService";
+} from "../../../../service/api/nemsService/VendorService";
 import { Toaster } from "../../../../common/alertComponets/Toaster";
 import { EmployeeDataContext } from "../../../../customHooks/dataProviders/EmployeeDataProvider";
 import ManagerApproval from "../VendorApproval/ManagerApproval";

@@ -13,7 +13,7 @@ import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDat
 import {
   FetchNotifications,
   MarkNotificationAsRead,
-} from "../../service/api/emsService/NotificationService";
+} from "../../service/api/nemsService/NotificationService";
 import "./Navbar.css"; // Import the CSS file for Navbar
 
 const NotificationList = ({ onClose }) => {
