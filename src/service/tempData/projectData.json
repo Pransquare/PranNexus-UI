@@ -1,0 +1,25 @@
+{
+	"content": [
+		{
+			"projectId": 1,
+			"projectCode": "P001",
+			"projectName": "Alexa",
+			"clientCode": "C001",
+			"location": "Bangalore"
+		},
+		{
+			"projectId": 2,
+			"projectCode": "P002",
+			"projectName": "Google Assistant",
+			"clientCode": "C002",
+			"location": "Chennai"
+		},
+		{
+			"projectId": 3,
+			"projectCode": "P003",
+			"projectName": "Facebook Messenger",
+			"clientCode": "C003",
+			"location": "Mumbai"
+		}
+	]
+}

@@ -1,0 +1,61 @@
+[
+	{
+		"title": "HR",
+		"icon": "FaUsers",
+		"items": [
+			{
+				"title": "Tools",
+				"icon": "FaTools",
+				"links": [
+					{ "name": "PMS", "path": "http://103.77.26.220:3001/" },
+					{ "name": "EMS", "path": "http://103.77.26.220:3002/" },
+					{ "name": "SmartHire", "path": "http://103.77.26.220:3000/" }
+				]
+			}
+		]
+	},
+	{
+		"title": "Finance",
+		"icon": "FaMoneyBillWave",
+		"items": [
+			{
+				"title": "Tools",
+				"icon": "FaTools",
+				"links": []
+			}
+		]
+	},
+	{
+		"title": "IT",
+		"icon": "FaLaptopCode",
+		"items": [
+			{
+				"title": "Tools",
+				"icon": "FaTools",
+				"links": []
+			}
+		]
+	},
+	{
+		"title": "Admin",
+		"icon": "FaUser",
+		"items": [
+			{
+				"title": "Configuration",
+				"icon": "FaBook",
+				"links": [
+					{
+						"name": "Leave type master",
+						"path": "config/leaveType",
+						"inside": true
+					},
+					{
+						"name": "Designation master",
+						"path": "config/designation",
+						"inside": true
+					}
+				]
+			}
+		]
+	}
+]

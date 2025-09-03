@@ -1,0 +1,37 @@
+{
+	"content": [
+		{
+			"clientId": 1,
+			"clientCode": "C001",
+			"clientName": "ABC Corp.",
+			"address1": "near la casa",
+			"address2": "kasavanalahhi",
+			"address3": "Ballandore",
+			"postalCode": "534324",
+			"country": "India",
+			"state": "Karnataka"
+		},
+		{
+			"clientId": 2,
+			"clientCode": "C002",
+			"clientName": "XYZ Ltd.",
+			"address1": "near ram nagar",
+			"address2": "solapur",
+			"address3": "Maharashtra",
+			"postalCode": "456789",
+			"country": "India",
+			"state": "Maharashtra"
+		},
+		{
+			"clientId": 3,
+			"clientCode": "C003",
+			"clientName": "PQR Pvt. Ltd.",
+			"address1": "near rajiv gandhi mosque",
+			"address2": "pune",
+			"address3": "Maharashtra",
+			"postalCode": "123456",
+			"country": "India",
+			"state": "Maharashtra"
+		}
+	]
+}

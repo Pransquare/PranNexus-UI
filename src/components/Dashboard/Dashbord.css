@@ -1,0 +1,256 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+    flex: 1;
+}
+
+.card-large,
+.card-medium,
+.card-small,
+.card-tall,
+.card-wide {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    /* Reduced margin for compactness */
+}
+
+.card-large {
+    background: linear-gradient(135deg, #d84759 0%, #5410bf 100%);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    /* Important for positioning children relative to this container */
+}
+
+.employee-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
+}
+
+
+.employee-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* Reduced gap between items */
+    font-size: 1rem;
+    /* Increased font size */
+    line-height: 1.2;
+    /* Decreased line height for compactness */
+    flex-grow: 1;
+    /* Allow the employee details to take up remaining space */
+}
+
+
+.quick-links-row {
+    display: flex;
+    justify-content: space-between;
+    /* Adjust spacing as needed */
+}
+
+.card-small {
+    flex: 1;
+    /* Allows both cards to take equal width */
+    margin-right: 8px;
+    
+    /* Add space between cards */
+}
+
+/* Remove the right margin for the last card */
+.card-small:last-child {
+    margin-right: 0;
+}
+
+
+/* Override the primary color for the large card */
+.card-large .primary {
+    color: white;
+    /* Change this to whatever color you want for the large card text */
+}
+
+.primary {
+    font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+    color: #5410bf;
+}
+
+.secondary {
+    font-size: clamp(1.25rem, 2vw + 0.5rem, 1.5rem);
+    color: #5410bf;
+}
+
+.tertiary {
+    font-size: clamp(1rem, 1.2vw + 0.3rem, 1.2rem);
+    /* Reduced the sizes */
+    color: #d84759;
+}
+
+
+.detail-item,
+.column-item {
+    margin-bottom: 8px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    /* Align label and value */
+}
+
+.number {
+    font-weight: bold;
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1.2rem);
+    color: #d84759
+}
+
+.button-container {
+    margin-top: 16px;
+}
+
+.quick-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s, transform 0.2s;
+    /* Smooth transitions */
+    cursor: pointer;
+}
+
+.quick-link:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
+}
+
+.quick-link-2{
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+
+.quick-link-2:hover{
+    background-color: #f0f0f0;
+    /* Change background on hover */
+    transform: scale(1.02);
+    /* Slightly scale up on hover */
+}
+
+.quick-link-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.quick-link-text {
+    flex: 1;
+    text-align: left;
+}
+
+.image-class {
+    max-width: 50px;
+    /* Maximum width of the image */
+    min-width: 30px;
+    /* Minimum width of the image */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin-left: 16px;
+    /* Space between text and image */
+}
+
+
+.news-list {
+    overflow: hidden;
+}
+
+.news-item {
+    margin: 4px 0;
+}
+
+.leave-details-container {
+    display: flex;
+    align-items: center;
+    /* Align items vertically centered */
+    justify-content: space-between;
+    /* Distribute space evenly */
+}
+
+.column-item {
+    flex: 1;
+    /* Allow items to grow equally */
+    text-align: center;
+    /* Center text within each item */
+}
+
+.vertical-divider {
+    width: 2px;
+    /* Width of the divider */
+    height: 15vh;
+    /* Adjust height as needed */
+    background-color: #ccc;
+    /* Color of the divider */
+}
+
+.news-section {
+    flex: 0 0 auto;
+    /* Prevent news section from growing */
+}
+
+.profile-avatar {
+    width: 100px;
+    /* Default size for larger screens */
+    height: 100px;
+    /* Default height to maintain a square shape */
+}
+
+/* Media query for devices with max-width of 768px (tablet and mobile) */
+@media (max-width: 768px) {
+    .profile-avatar {
+        width: 80px;
+        /* Adjust size for smaller screens */
+        height: 80px;
+        /* Maintain square aspect ratio */
+    }
+}
+
+/* Media query for devices with max-width of 480px (smaller mobile devices) */
+@media (max-width: 480px) {
+    .profile-avatar {
+        width: 60px;
+        /* Further adjust size for very small screens */
+        height: 60px;
+        /* Maintain square aspect ratio */
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        /* One card per row on small screens */
+    }
+
+    .employee-card{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .card-large,
+    .card-medium,
+    .card-small,
+    .card-tall,
+    .card-wide {
+        margin: 10px 0;
+        /* Adjust margin for vertical spacing */
+    }
+}

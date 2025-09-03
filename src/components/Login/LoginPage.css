@@ -1,0 +1,223 @@
+/* Prefixing classes with .loginPage to scope them */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+/* General styling for login page */
+.loginPage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #d84759 0%, #5410bf 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+/* Background spheres */
+.sphere {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+  z-index: 1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.sphere1 {
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  top: 20%;
+  left: 15%;
+}
+
+.sphere2 {
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.3);
+  bottom: 10%;
+  right: 20%;
+}
+
+.sphere3 {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  top: 50%;
+  right: 10%;
+}
+
+.sphere4 {
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.25);
+  bottom: 40%;
+  left: 25%;
+}
+
+.sphere5 {
+  width: 180px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.15);
+  top: 10%;
+  right: 30%;
+}
+
+.sphere6 {
+  width: 250px;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.2);
+  bottom: 20%;
+  right: 5%;
+}
+
+/* Floating animation for the spheres */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Content styling */
+.loginPage-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+}
+
+.loginPage-witeLogo {
+  width: 300px;
+  margin-bottom: 0px;
+}
+
+.loginPage-welcomeText {
+  margin-top: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+  font-family: "Roboto", sans-serif;
+  transition: color 0.3s ease;
+}
+
+.loginPage-usernamePassword {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Button specific styling */
+.loginPage-loginButton {
+  width: 25ch;
+  background-color: blue; /* Blue button */
+  color: white;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 15px 25px;
+  border: none;
+}
+
+.loginPage-loginButton:hover {
+  background-color: darkblue; /* Darker blue on hover */
+}
+
+/* Autofill styling specific to this component */
+.loginPage-container input:-webkit-autofill,
+.loginPage-container input:-webkit-autofill:hover,
+.loginPage-container input:-webkit-autofill:focus,
+.loginPage-container textarea:-webkit-autofill,
+.loginPage-container textarea:-webkit-autofill:hover,
+.loginPage-container textarea:-webkit-autofill:focus,
+.loginPage-container select:-webkit-autofill,
+.loginPage-container select:-webkit-autofill:hover,
+.loginPage-container select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.1) inset !important;
+  box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.1) inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Autofill label styling */
+.loginPage-container input:-webkit-autofill::first-line {
+  font-size: 16px;
+  color: white;
+}
+
+.loginPage-container input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0.2) inset !important;
+  box-shadow: 0 0 0 30px rgba(0, 0, 0, 0.2) inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .loginPage-content {
+    padding: 30px 20px;
+    max-width: 90%;
+  }
+
+  .loginPage-welcomeText {
+    font-size: 22px;
+  }
+
+  .loginPage-loginButton {
+    font-size: 14px;
+  }
+}
+
+/* Button specific styling */
+.loginPage-loginButton {
+  width: 25ch;
+  background-color: rgb(9, 9, 113);
+  color: white;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 15px 25px;
+  border: none;
+}
+
+.loginPage-loginButton:hover {
+  background-color: rgb(6, 6, 109); /* Darker blue on hover */
+}
+.microsoft-logo {
+  width: 20px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 10px; /* Space between logo and text */
+}
+.separator {
+  text-align: center;
+  margin: 20px 0; /* Adjust margin as needed */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.line {
+  display: inline-block;
+  height: 1px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: #ccc; /* Adjust color as needed */
+  width: 90px; /* Adjust width as needed */
+}

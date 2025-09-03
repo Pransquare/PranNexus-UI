@@ -1,0 +1,29 @@
+{
+	"content": [
+		{
+			"designationId": 1,
+			"designationCode": "D001",
+			"designation": "Manager"
+		},
+		{
+			"designationId": 2,
+			"designationCode": "D002",
+			"designation": "Developer"
+		},
+		{
+			"designationId": 3,
+			"designationCode": "D003",
+			"designation": "Tester"
+		},
+		{
+			"designationId": 4,
+			"designationCode": "D004",
+			"designation": "Project Manager"
+		},
+		{
+			"designationId": 5,
+			"designationCode": "D005",
+			"designation": "Designer"
+		}
+	]
+}

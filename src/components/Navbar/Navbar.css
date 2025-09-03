@@ -1,0 +1,115 @@
+/* src/components/Navbar.css */
+
+:root {
+  --primary-color: #5410bf; /* Define your primary color */
+  --secondary-color: #f36548; /* Define your secondary color */
+  --text-color: #ffffff; /* Define text color */
+  --background-color: #ffffff; /* Define background color */
+}
+
+.navbar {
+  width: 100%;
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.logo-container :hover {
+  cursor: pointer;
+}
+
+.username-display {
+  font-weight: bold;
+  color: rgb(105, 101, 101);
+  font-size: 20px;
+  margin-right: 16px;
+}
+.welcome-text {
+  color: rgb(105, 101, 101);
+  font-size: 18px;
+  margin-right: 10px;
+}
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-message {
+  margin-right: 20px;
+  color: var(--secondary-color); /* Use text color variable */
+}
+
+.avatar {
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.icon {
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  cursor: pointer;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-color); /* Use background color variable */
+  border: 1px solid var(--secondary-color); /* Use secondary color variable */
+  border-radius: 20px;
+  padding: 5px 10px; /* Add internal padding */
+  margin-right: 20px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  background-color: var(--background-color); /* Use background color variable */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  flex: 1; /* Allow input to grow and fill remaining space */
+}
+
+.notification {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  background-color: var(--background-color); /* Use background color variable */
+  padding: 10px;
+  border: 1px solid var(--secondary-color); /* Use secondary color variable */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  max-height: 400px; /* Limit height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  width: 300px; /* Adjust width as needed */
+}
+
+.notification-detail {
+  padding: 0px;
+}
+
+.notification .MuiListItem-button {
+  padding: 0px;
+}
+
+.notification .MuiButton-outlined {
+  width: 100%;
+}

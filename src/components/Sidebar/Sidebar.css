@@ -1,0 +1,62 @@
+.sidebar {
+  min-width: 200px;
+  width: max-content;
+  color: #fff;
+  height: max-content;
+}
+
+.sidebar h3 {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #fff; /* Ensure the section title is white */
+}
+
+.sidebar-icon {
+  margin-right: 10px;
+}
+
+.sidebar-text {
+  color: #fff; /* Ensure the text color is white */
+}
+
+.sidebar-section {
+  margin-bottom: 10px;
+}
+
+.sidebar-subicon {
+  margin-right: 8px;
+}
+
+.dropdown-title {
+  cursor: pointer;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  padding-left: 5px; /* Indent tools title */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul ul {
+  margin-top: 5px;
+  padding-left: 5px; /* Indent nested items */
+  line-height: 2 rem;
+}
+
+.app-name {
+  color: #fff; /* Make link text white */
+  text-decoration: none;
+  text-wrap: nowrap;
+  padding-left: 10px; /* Further indent nested links */
+}
+
+.app-name:hover {
+  color: #ffa500; /* Change to orange on hover */
+  text-decoration: none;
+}

@@ -1,0 +1,24 @@
+{
+	"content": [
+		{
+			"leaveTypeId": 1,
+			"leaveCode": "L001",
+			"leaveDescription": "Sick Leave"
+		},
+		{
+			"leaveTypeId": 2,
+			"leaveCode": "L002",
+			"leaveDescription": "Emergency Leave"
+		},
+		{
+			"leaveTypeId": 3,
+			"leaveCode": "L003",
+			"leaveDescription": "Vacation Leave"
+		},
+		{
+			"leaveTypeId": 4,
+			"leaveCode": "L004",
+			"leaveDescription": "Maternity Leave"
+		}
+	]
+}
