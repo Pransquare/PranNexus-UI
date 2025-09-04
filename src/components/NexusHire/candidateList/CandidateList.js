@@ -6,7 +6,7 @@ import {
   getAllCandidates,
   getAllStatusMaster,
   getAllWorkflowStatusMaster,
-} from "../../../service/api/NexushireService/smartHire";
+} from "../../../service/api/NexushireService/nexusHire";
 import { useNavigate } from "react-router-dom";
 import { UserManagentCheck } from "../../../common/UserManagement";
 
@@ -18,14 +18,14 @@ function CandidateList() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const canEdit = UserManagentCheck("hr_tools_smartHire_candidateList_Edit");
-  const canView = UserManagentCheck("hr_tools_smartHire_candidateList_View");
+  const canEdit = UserManagentCheck("hr_tools_nexusHire_candidateList_Edit");
+  const canView = UserManagentCheck("hr_tools_nexusHire_candidateList_View");
   const admin = UserManagentCheck("admin");
   const budget = UserManagentCheck(
-    "hr_tools_smartHire_candidate_approval_budgetApproval"
+    "hr_tools_nexusHire_candidate_approval_budgetApproval"
   );
   const management = UserManagentCheck(
-    "hr_tools_smartHire_candidate_approval_managementApproval"
+    "hr_tools_nexusHire_candidate_approval_managementApproval"
   );
 
   const createStatusMap = (statusList) => {
@@ -170,7 +170,7 @@ function CandidateList() {
 
   const viewData = useCallback(
     (candidate) => {
-      navigate(`/home/smartHire/candidate/${candidate.id}`, {
+      navigate(`/home/nexusHire/candidate/${candidate.id}`, {
         state: {
           status: getStatusDescription(candidate.status),
           workflowStatusDescription: getWorkflowStatusDescription(
@@ -184,7 +184,7 @@ function CandidateList() {
 
   const editData = useCallback(
     (candidate) => {
-      navigate(`/home/smartHire/candidate/${candidate.id}`, {
+      navigate(`/home/nexusHire/candidate/${candidate.id}`, {
         state: {
           status: getStatusDescription(candidate.status),
           workflowStatusDescription: getWorkflowStatusDescription(

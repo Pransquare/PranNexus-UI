@@ -3,7 +3,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 
 export const createCandidate = async (formData) => {
   try {
-    const response = await axios.post(`${Environment.smartHireUrl}`, formData);
+    const response = await axios.post(`${Environment.nexusHireUrl}`, formData);
     return response.data;
   } catch (error) {
     console.error("Error creating candidate:", error);
@@ -14,7 +14,7 @@ export const createCandidate = async (formData) => {
 export const createOrUpdateCandidate = async (formData, isSaved) => {
   try {
     const response = await axios.post(
-      `${Environment.smartHireUrl}/create?isSaved=${isSaved}`,
+      `${Environment.nexusHireUrl}/create?isSaved=${isSaved}`,
       formData
     );
     return response.data;
@@ -26,7 +26,7 @@ export const createOrUpdateCandidate = async (formData, isSaved) => {
 
 export const getAllCandidates = async () => {
   try {
-    const response = await axios.get(`${Environment.smartHireUrl}`);
+    const response = await axios.get(`${Environment.nexusHireUrl}/getAll`);
     return response.data;
   } catch (error) {
     console.error("Error fetching all candidates:", error);
@@ -37,7 +37,7 @@ export const getAllCandidates = async () => {
 export const getCandidateById = async (candidateId) => {
   try {
     const response = await axios.get(
-      `${Environment.smartHireUrl}/${candidateId}`
+      `${Environment.nexusHireUrl}/${candidateId}`
     );
     return response.data;
   } catch (error) {
@@ -49,7 +49,7 @@ export const getCandidateById = async (candidateId) => {
 export const updateCandidate = async (candidateId, formData) => {
   try {
     const response = await axios.put(
-      `${Environment.smartHireUrl}/${candidateId}`,
+      `${Environment.nexusHireUrl}/${candidateId}`,
       formData
     );
     return response.data;
@@ -62,7 +62,7 @@ export const updateCandidate = async (candidateId, formData) => {
 export const uploadOfferLetter = async (candidateId, offerLetter) => {
   try {
     const response = await axios.post(
-      `${Environment.smartHireUrl}/${candidateId}/upload`,
+      `${Environment.nexusHireUrl}/${candidateId}/upload`,
       offerLetter,
       {
         headers: {
@@ -83,7 +83,7 @@ export const uploadOfferLetter = async (candidateId, offerLetter) => {
 export const getAllStatusMaster = async () => {
   try {
     const response = await axios.get(
-      `${Environment.smartHireUrl}/statusMaster`
+      `${Environment.nexusHireUrl}/statusMaster`
     );
     return response.data;
   } catch (error) {
@@ -95,7 +95,7 @@ export const getAllStatusMaster = async () => {
 export const getAllWorkflowStatusMaster = async () => {
   try {
     const response = await axios.get(
-      `${Environment.smartHireUrl}/workflowStatusMaster`
+      `${Environment.nexusHireUrl}/workflowStatusMaster`
     );
     return response.data;
   } catch (error) {
@@ -108,7 +108,7 @@ export const DownloadFile = async (filePath) => {
   try {
     const encodedFilePath = encodeURIComponent(filePath);
     const response = await axios.get(
-      `${Environment.emsUrl}/Payroll/downloadpdf?filePathInput=${encodedFilePath}`,
+      `${Environment.nemsUrl}/Payroll/downloadpdf?filePathInput=${encodedFilePath}`,
       {
         headers: {
           "Content-Type": "application/pdf",
@@ -126,7 +126,7 @@ export const DownloadFile = async (filePath) => {
 export const SendOfferLetter = async (candidateId, filePath) => {
   try {
     const response = await axios.post(
-      `${Environment.smartHireUrl}/${candidateId}/send-email`,
+      `${Environment.nexusHireUrl}/${candidateId}/send-email`,
       null,
       {
         params: { filePath }, // Pass filePath as a query parameter
@@ -145,7 +145,7 @@ export const SendOfferLetter = async (candidateId, filePath) => {
 export const OnboardCandidate = async (candidateId, modifiedBy) => {
   try {
     const response = await axios.post(
-      `${Environment.smartHireUrl}/${candidateId}/onboard/${modifiedBy}`
+      `${Environment.nexusHireUrl}/${candidateId}/onboard/${modifiedBy}`
     );
     return response.data;
   } catch (error) {

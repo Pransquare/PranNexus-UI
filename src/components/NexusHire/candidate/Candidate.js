@@ -25,7 +25,7 @@ import {
   SendOfferLetter,
   OnboardCandidate,
   createOrUpdateCandidate,
-} from "../../../service/api/NexushireService/smartHire";
+} from "../../../service/api/NexushireService/nexusHire";
 import { useParams } from "react-router-dom";
 import { CreateOrUpdateEmployee } from "../../../service/api/nemsService/EmployeeService";
 import { UserManagentCheck } from "../../../common/UserManagement";
