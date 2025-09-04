@@ -25,15 +25,59 @@
     /* Reduced margin for compactness */
 }
 
+
+
 .card-large {
-    background: linear-gradient(135deg, #d84759 0%, #5410bf 100%);
+    background-color: rgb(77, 208, 225) !important;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 10px;
-    /* Important for positioning children relative to this container */
 }
+
+
+/* .card-large {
+    background: linear-gradient(
+        135deg,
+        lightskyblue 0%,
+        dodgerblue 30%,
+        skyblue 60%,
+        deepskyblue 100%
+    ) !important;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+} */
+
+
+
+
+/* .card-large {
+    background: linear-gradient(
+        225deg,
+        lightskyblue 25%,
+        dodgerblue 50%,
+        skyblue 75%,
+        deepskyblue 100%
+    ) !important;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-large:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(30, 144, 255, 0.6);
+} */
+
+
 
 .employee-card{
     display: flex;

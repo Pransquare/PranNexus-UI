@@ -407,13 +407,13 @@ function CandidateForm() {
   const [file, setFile] = useState();
 
   const hr = !UserManagentCheck(
-    "hr_tools_smartHire_candidate_approval_uploadOfferLetter"
+    "hr_tools_nexusHire_candidate_approval_uploadOfferLetter"
   );
   const budget = !UserManagentCheck(
-    "hr_tools_smartHire_candidate_approval_budgetApproval"
+    "hr_tools_nexusHire_candidate_approval_budgetApproval"
   );
   const management = !UserManagentCheck(
-    "hr_tools_smartHire_candidate_approval_managementApproval"
+    "hr_tools_nexusHire_candidate_approval_managementApproval"
   );
 
   const theme = useTheme();
@@ -3101,7 +3101,7 @@ function CandidateForm() {
         console.log("candidate id", response.id);
         const savedCandidateId = response.id;
         setCandidateId(savedCandidateId);
-        navigate(`/home/smartHire/candidate/${savedCandidateId}`);
+        navigate(`/home/nexusHire/candidate/${savedCandidateId}`);
         fetchCandidateData(isSaved);
         // Show success toast for creation
         Toaster("success", "Candidate saved successfully!");
@@ -3262,7 +3262,7 @@ function CandidateForm() {
       createCandidate(req)
         .then(() => {
           console.log("Candidate created successfully");
-          navigate("/home/smartHire/candidateList");
+          navigate("/home/nexusHire/candidateList");
           Toaster("success", "Candidate created successfully!");
         })
         .catch((error) => {
@@ -3309,7 +3309,7 @@ function CandidateForm() {
       .then(() => {
         console.log("Candidate updated successfully");
         Toaster("success", "Candidate updated successfully!");
-        navigate("/home/smartHire/candidateList");
+        navigate("/home/nexusHire/candidateList");
       })
       .catch((error) => {
         console.log("Error updating candidate:", error);
@@ -3447,7 +3447,7 @@ function CandidateForm() {
         // ✅ Continue with onboarding flow
         try {
           await OnboardCandidate(candidateId, response.employeeCode);
-          navigate("/home/smartHire/candidateList");
+          navigate("/home/nexusHire/candidateList");
           console.log("Email Sent successfully and navigation done.");
         } catch (err) {
           console.error("Error during candidate onboarding:", err);

@@ -34,6 +34,7 @@ const UserManagentCheck = (roleName, userManagementData) => {
   }
 };
 
+
 const Sidebar = ({ open = true, oncloseSideBar }) => {
   const [openSection, setOpenSection] = useState(null);
   const [openSubsection, setOpenSubsection] = useState(null);
@@ -95,8 +96,8 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_ems_appraisal_form",
         userManagementData
       ),
-      hr_tools_smartHire: UserManagentCheck(
-        "hr_tools_smartHire",
+      hr_tools_nexusHire: UserManagentCheck(
+        "hr_tools_nexusHire",
         userManagementData
       ),
       Hr_goal_initiate: UserManagentCheck(
@@ -128,12 +129,12 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         userManagementData
       ),
       finance: UserManagentCheck("finance", userManagementData),
-      hr_tools_smartHire_candidateList: UserManagentCheck(
-        "hr_tools_smartHire_candidateList",
+      hr_tools_nexusHire_candidateList: UserManagentCheck(
+        "hr_tools_nexusHire_candidateList",
         userManagementData
       ),
-      hr_tools_smartHire_candidate: UserManagentCheck(
-        "hr_tools_smartHire_candidate",
+      hr_tools_nexusHire_candidate: UserManagentCheck(
+        "hr_tools_nexusHire_candidate",
         userManagementData
       ),
       hr_tools_ems_timesheet_project_report: UserManagentCheck(
@@ -673,23 +674,23 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                           )}
                         </List>
                       </Collapse>
-                      {userManagentRes["hr_tools_smartHire"] && (
+                      {userManagentRes["hr_tools_nexusHire"] && (
                         <ListItemButton
                           dense
                           divider={true}
                           onClick={() =>
-                            setHoveredItem(hoveredItem ? null : "smartHire")
+                            setHoveredItem(hoveredItem ? null : "nexusHire")
                           }
-                          selected={hoveredItem === "smartHire"}
+                          selected={hoveredItem === "nexusHire"}
                         >
                           <FaIdBadge className="text-white" />
                           <ListItemText
                             sx={{
                               marginLeft: "0.5rem",
                             }}
-                            primary="Smart Hire"
+                            primary="Nexus Hire"
                           />
-                          {hoveredItem === "smartHire" ? (
+                          {hoveredItem === "nexusHire" ? (
                             <KeyboardArrowDownSharp />
                           ) : (
                             <KeyboardArrowRightSharp />
@@ -697,31 +698,31 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                         </ListItemButton>
                       )}
                       <Collapse
-                        in={hoveredItem === "smartHire"}
+                        in={hoveredItem === "nexusHire"}
                         timeout="auto"
                         unmountOnExit
                       >
                         <List component="div" disablePadding={true}>
-                          {userManagentRes["hr_tools_smartHire_candidate"] && (
+                          {userManagentRes["hr_tools_nexusHire_candidate"] && (
                             <ListItemButton
                               dense
                               divider={true}
                               component={Link}
                               onClick={oncloseSideBar}
-                              to="smartHire/candidate"
+                              to="nexusHire/candidate"
                             >
                               <ListItemText primary="Candidate" />
                             </ListItemButton>
                           )}
                           {userManagentRes[
-                            "hr_tools_smartHire_candidateList"
+                            "hr_tools_nexusHire_candidateList"
                           ] && (
                             <ListItemButton
                               dense
                               divider={true}
                               component={Link}
                               onClick={oncloseSideBar}
-                              to="smartHire/candidateList"
+                              to="nexusHire/candidateList"
                             >
                               <ListItemText primary="Candidate List" />
                             </ListItemButton>

@@ -303,7 +303,11 @@ function Dashboard() {
       <div className="grid-container grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Left Column */}
         <div>
-          <div className="card-large bg-gradient-to-r from-[#d84759] to-[#5410bf] text-white relative">
+          <div
+  className="card-large text-white relative"
+  style={{ backgroundColor: "rgb(77,208,225)" }}
+>
+
             <div className="employee-heading">
               <Typography variant="h4" className="primary">
                 {employeeData?.workType === "permanent"
