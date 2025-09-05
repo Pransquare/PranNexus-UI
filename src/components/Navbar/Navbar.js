@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
 import "./Navbar.css";
-import logo from "../../assets/Images/pransquare.png";
+import logo from "../../assets/Images/pransquare.jpg";
 import avatarSvg from "../../assets/Images/avatar.svg";
 import { Avatar, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";

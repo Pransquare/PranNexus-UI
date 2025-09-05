@@ -348,7 +348,7 @@ const LoginPage = () => {
       <Box
         sx={{
           width: "100%",
-          borderRight: "2px solid #ccc",
+          // borderRight: "2px solid #ccc",
           paddingRight: "1rem",
           "@media (max-width: 850px)": {
             borderRight: "none",
@@ -489,3 +489,20 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

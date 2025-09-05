@@ -5,7 +5,7 @@ import "./ApplicationCard.css"; // Import the CSS file for ApplicationCard
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import PMSImage from "../../assets/images/PMS.png"; // Import image for PMS app
 import EMSImage from "../../assets/images/EMS.png"; // Import image for EMS app
-import SHImage from "../../assets/images/SH.png"; // Import image for SmartHire app
+import SHImage from "../../assets/images/SH.png"; // Import image for NexusHire app
 
 const ApplicationCard = ({ app }) => {
 	// Map app names to their respective images and URLs
@@ -18,9 +18,9 @@ const ApplicationCard = ({ app }) => {
 			image: EMSImage,
 			url: "http://103.77.26.220:3002/", // Replace with actual URL for EMS
 		},
-		SmartHire: {
+		NexusHire: {
 			image: SHImage,
-			url: "http://103.77.26.220:3000/", // Replace with actual URL for SmartHire
+			url: "http://103.77.26.220:3000/", // Replace with actual URL for NexusHire
 		},
 	};
 
