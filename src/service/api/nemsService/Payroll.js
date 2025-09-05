@@ -5,7 +5,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 export const UploadPayrollFile = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Payroll/uploadPayrollFile`,
+      `${Environment.nemsUrl}/Payroll/uploadPayrollFile`,
       data,
       {
         headers: {
@@ -23,7 +23,7 @@ export const UploadPayrollFile = async (data) => {
 export const DownloadOrViewPayslip = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Payroll/viewOrDownloadPayslip`,
+      `${Environment.nemsUrl}/Payroll/viewOrDownloadPayslip`,
       data,
       {
         responseType: "blob",
@@ -53,7 +53,7 @@ export const DownloadOrViewPayslip = async (data) => {
 export const ValidatePayroll = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Payroll/validatePayroll`,
+      `${Environment.nemsUrl}/Payroll/validatePayroll`,
       data
     );
     return response.data;
@@ -66,7 +66,7 @@ export const ValidatePayroll = async (data) => {
 export const MigrateToPayrollMaster = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Payroll/migrateToPayrollMaster`,
+      `${Environment.nemsUrl}/Payroll/migrateToPayrollMaster`,
       data
     );
     return response.data;
@@ -79,7 +79,7 @@ export const MigrateToPayrollMaster = async (data) => {
 export const DownloadResponseFile = async (filePath) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Payroll/downloadResponseFile`,
+      `${Environment.nemsUrl}/Payroll/downloadResponseFile`,
       { filePath },
       {
         responseType: "blob",
@@ -112,7 +112,7 @@ export const DownloadResponseFile = async (filePath) => {
 export const DownloadFile = async (filePath) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Payroll/downloadResponseFile`,
+      `${Environment.nemsUrl}/Payroll/downloadResponseFile`,
       { filePath },
       {
         responseType: "blob",
@@ -128,7 +128,7 @@ export const DownloadFile = async (filePath) => {
 export const DownloadSampleTemplate = async () => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/Payroll/downloadSampleTemplate`,
+      `${Environment.nemsUrl}/Payroll/downloadSampleTemplate`,
       {
         responseType: "blob",
       }
@@ -156,7 +156,7 @@ export const updateRoleTypes = async (data) => {
 export const GetPayrollDetailsByEmployeeID = async (employeeID) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/Payroll/getEmpoyeePayrollDetails?employeeId=${employeeID}`
+      `${Environment.nemsUrl}/Payroll/getEmpoyeePayrollDetails?employeeId=${employeeID}`
     );
     return response.data;
   } catch (error) {
@@ -168,7 +168,7 @@ export const GetPayrollDetailsByEmployeeID = async (employeeID) => {
 export const GetEmployeePayslipDetailsById = async (employeeID) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee-payslip/by-employee/${employeeID}`
+      `${Environment.nemsUrl}/employee-payslip/by-employee/${employeeID}`
     );
     return response.data;
   } catch (error) {
@@ -180,7 +180,7 @@ export const GetEmployeePayslipDetailsById = async (employeeID) => {
 export const SaveorUpdatePayslipDetails = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee-payslip/create-update`,
+      `${Environment.nemsUrl}/employee-payslip/create-update`,
       data
     );
     return response.data;

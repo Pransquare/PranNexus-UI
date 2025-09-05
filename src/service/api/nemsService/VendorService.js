@@ -4,7 +4,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 export const SaveVendor = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/api/vendor/saveVendor`,
+      `${Environment.nemsUrl}/api/vendor/saveVendor`,
       data
     );
     return response.data;
@@ -17,7 +17,7 @@ export const SaveVendor = async (data) => {
 export const SearchVendor = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/api/vendor/search`,
+      `${Environment.nemsUrl}/api/vendor/search`,
       data
     );
     return response.data;
@@ -30,7 +30,7 @@ export const SearchVendor = async (data) => {
 export const ApproveOrRejectVendor = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/api/vendor/approveOrRejectVendor`,
+      `${Environment.nemsUrl}/api/vendor/approveOrRejectVendor`,
       data
     );
     return response.data;
@@ -52,7 +52,7 @@ export const DownloadVendorReport = async ({
 }) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/api/vendor/vendorReport`,
+      `${Environment.nemsUrl}/api/vendor/vendorReport`,
       {
         vendorName,
         client,

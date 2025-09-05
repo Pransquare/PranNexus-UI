@@ -4,7 +4,7 @@ import { Environment } from "../../../environments/Environment";
 export const FetchNotifications = async (employeeId) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/notification/getNotifications/${employeeId}`
+      `${Environment.nemsUrl}/notification/getNotifications/${employeeId}`
     );
     return response.data;
   } catch (error) {
@@ -20,7 +20,7 @@ export const MarkNotificationAsRead = async (notificationId, employeeId) => {
       : "";
     const employee = employeeId ? `employeeId=${employeeId}` : "";
     const response = await axios.put(
-      `${Environment.emsUrl}/notification/markAsRead?${notification}&${employee}`
+      `${Environment.nemsUrl}/notification/markAsRead?${notification}&${employee}`
     );
     return response.data;
   } catch (error) {

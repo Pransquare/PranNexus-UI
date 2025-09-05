@@ -3,7 +3,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 
 export const GetAllNews = async () => {
   try {
-    const response = await axios.get(`${Environment.emsUrl}/news`);
+    const response = await axios.get(`${Environment.nemsUrl}/news`);
     return response.data;
   } catch (error) {
     console.error("Error in GetAllNews:", error);

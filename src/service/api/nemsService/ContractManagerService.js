@@ -4,7 +4,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 
 export const SaveSowDetails = async (data) =>{
     try{
-        const response = await axios.post(`${Environment.emsUrl}/sow/saveSowDetails`, data);
+        const response = await axios.post(`${Environment.nemsUrl}/sow/saveSowDetails`, data);
         return response.data;
     } catch(error){
         console.error(error);
@@ -13,7 +13,7 @@ export const SaveSowDetails = async (data) =>{
 }
 export const getSowDetails = async (employeeId, page = 0, size = 10) => {
     try {
-        const response = await axios.get(`${Environment.emsUrl}/sow/getSowDetails/${employeeId}?page=${page}&size=${size}`);
+        const response = await axios.get(`${Environment.nemsUrl}/sow/getSowDetails/${employeeId}?page=${page}&size=${size}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching SOW details:", error);
@@ -22,7 +22,7 @@ export const getSowDetails = async (employeeId, page = 0, size = 10) => {
 };
 export const updateSowDetails = async (id, data) => {
     try {
-        const response = await axios.put(`${Environment.emsUrl}/sow/updateSowDetails/${id}`, data);
+        const response = await axios.put(`${Environment.nemsUrl}/sow/updateSowDetails/${id}`, data);
         return response.data;
     } catch (error) {
         console.error("Error updating SOW details:", error);
@@ -31,7 +31,7 @@ export const updateSowDetails = async (id, data) => {
 };
 export const deleteSowDetails = async (id) => {
     try {
-        const response = await axios.delete(`${Environment.emsUrl}/sow/${id}`);
+        const response = await axios.delete(`${Environment.nemsUrl}/sow/${id}`);
         return response.data;
     } catch (error) {
         console.error("Error deleting SOW details:", error);
@@ -88,7 +88,7 @@ export const generateSowReport = async (fromDate, toDate, status, deliveryManage
 };
 export const searchSowDetails = async (searchParams) => {
   try {
-    const response = await axios.post(`${Environment.emsUrl}/sow/search`, searchParams);
+    const response = await axios.post(`${Environment.nemsUrl}/sow/search`, searchParams);
     return response.data;
   } catch (error) {
     console.error("Error searching SOW details:", error);
@@ -97,7 +97,7 @@ export const searchSowDetails = async (searchParams) => {
 };
 export const getReportingIds = async (managerId) => {
   try {
-      const response = await axios.get(`${Environment.emsUrl}/employee/getReportingIds`, {
+      const response = await axios.get(`${Environment.nemsUrl}/employee/getReportingIds`, {
           params: { managerId },
       });
       return response.data; 

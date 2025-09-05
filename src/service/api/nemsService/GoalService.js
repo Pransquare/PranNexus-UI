@@ -17,7 +17,7 @@ export const CreateOrUpdateGoal = async (payload) => {
 export const DeleteGoal = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/getAllEmployeesByStatus`,
+      `${Environment.nemsUrl}/employee/getAllEmployeesByStatus`,
       data
     );
     return response.data;
@@ -42,7 +42,7 @@ export const GetAllGoals = async (payload) => {
 export const searchEmployeeForGoal = async (name) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/searchEmployeeForGoal?input=${name}`
+      `${Environment.nemsUrl}/employee/searchEmployeeForGoal?input=${name}`
     );
     return response.data;
   } catch (error) {
@@ -53,7 +53,7 @@ export const searchEmployeeForGoal = async (name) => {
 export const initiateGoalSetup = async (payload) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/goalsetup/initiateGoalSetup`,
+      `${Environment.nemsUrl}/goalsetup/initiateGoalSetup`,
       payload
     );
     return response.data;
@@ -65,7 +65,7 @@ export const initiateGoalSetup = async (payload) => {
 export const searchGoals = async (payload) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/goalsetup/searchGoals`,
+      `${Environment.nemsUrl}/goalsetup/searchGoals`,
       payload
     );
     return response.data;
@@ -77,7 +77,7 @@ export const searchGoals = async (payload) => {
 export const setUpGoals = async (payload) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/goalsetup/setUpGoals`,
+      `${Environment.nemsUrl}/goalsetup/setUpGoals`,
       payload
     );
     return response.data;

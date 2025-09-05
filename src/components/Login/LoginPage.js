@@ -58,6 +58,7 @@ const LoginPage = () => {
     if (!formdata.userName || !formdata.password) {
       setErrorMessage("Please fill all the fields");
       return;
+      
     }
 
     setIsLoading(true);
@@ -93,10 +94,13 @@ const LoginPage = () => {
         const user = { email: formdata.userName, roles: roles || [] };
         localStorage.setItem("userId", userId);
         localStorage.setItem("userMailId", formdata.userName);
+console.log("Login API Response:", data);
+console.log("Roles from backend:", data.roles);
 
         GetRoleNamesByUsername(formdata.userName)
           .then((roleNames) => {
             setuserManagementData({ roleTypes: roles, roleNames });
+            console.log("userManagementData 123455 set:", { roleTypes: roles, roleNames });
             localStorage.setItem("roleNames", JSON.stringify(roleNames));
             navigate("/home", { state: { user } });
           })

@@ -4,7 +4,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 export const GetTimesheetDetails = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Timesheet/getTimesheetDetails`,
+      `${Environment.nemsUrl}/Timesheet/getTimesheetDetails`,
       data
     );
     return response.data;
@@ -17,7 +17,7 @@ export const GetTimesheetDetails = async (data) => {
 export const CreateOrUpdateTimesheet = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Timesheet/saveOrUpdateAttendance`,
+      `${Environment.nemsUrl}/Timesheet/saveOrUpdateAttendance`,
       data
     );
     return response.data;
@@ -30,7 +30,7 @@ export const CreateOrUpdateTimesheet = async (data) => {
 export const DeleteTimesheet = async (timesheetId) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Timesheet/deleteTimesheet/${timesheetId}`
+      `${Environment.nemsUrl}/Timesheet/deleteTimesheet/${timesheetId}`
     );
     return response.data;
   } catch (error) {
@@ -42,7 +42,7 @@ export const DeleteTimesheet = async (timesheetId) => {
 export const GetAllTimesheets = async () => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/Timesheet/getAllTimesheets`
+      `${Environment.nemsUrl}/Timesheet/getAllTimesheets`
     );
     return response.data;
   } catch (error) {
@@ -54,7 +54,7 @@ export const GetAllTimesheets = async () => {
 export const SerchAttendanceDetails = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Timesheet/serchAttendanceDetails`,
+      `${Environment.nemsUrl}/Timesheet/serchAttendanceDetails`,
       data
     );
     return response.data;
@@ -67,7 +67,7 @@ export const SerchAttendanceDetails = async (data) => {
 export const SendForApprovalAndApprove = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Timesheet/sendForApprovalAndApprove`,
+      `${Environment.nemsUrl}/Timesheet/sendForApprovalAndApprove`,
       data
     );
     return response.data;
@@ -80,7 +80,7 @@ export const SendForApprovalAndApprove = async (data) => {
 export const GetEmployeesByApproverId = async (approverId, module) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/ApproverConfig/getEmployeesByApproverId/${approverId}/${module}`
+      `${Environment.nemsUrl}/ApproverConfig/getEmployeesByApproverId/${approverId}/${module}`
     );
     return response.data;
   } catch (error) {
@@ -91,7 +91,7 @@ export const GetEmployeesByApproverId = async (approverId, module) => {
 export const GetTimesheetReport = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Timesheet/timesheetReport`,
+      `${Environment.nemsUrl}/Timesheet/timesheetReport`,
       data,
       { responseType: "blob" }
     );
@@ -104,7 +104,7 @@ export const GetTimesheetReport = async (data) => {
 export const GenerateLeaveReport = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employeeLeave/generateLeaveReport`,
+      `${Environment.nemsUrl}/employeeLeave/generateLeaveReport`,
       data,
       {
         responseType: "blob",
@@ -120,7 +120,7 @@ export const GenerateLeaveReport = async (data) => {
 export const GenerateProjectReport = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/reports/projectReport`,
+      `${Environment.nemsUrl}/reports/projectReport`,
       data,
       {
         responseType: "blob",
@@ -148,7 +148,7 @@ export const GenerateAttComReport = async (data) => {
 
     const response = await axios.get(
       `${
-        Environment.emsUrl
+        Environment.nemsUrl
       }/reports/attendance-compliance-effort-reportNew?${params.toString()}`,
       {
         responseType: "blob",
@@ -180,7 +180,7 @@ export const GenerateTimeSheetReportForManager = async (data) => {
       : "";
 
     const response = await axios.get(
-      `${Environment.emsUrl}/reports/manager-timesheet-report?employeeId=${
+      `${Environment.nemsUrl}/reports/manager-timesheet-report?employeeId=${
         data.employeeId || 0
       }&fromDate=${data.fromDate}&toDate=${data.toDate}&type=${
         data.type
@@ -212,7 +212,7 @@ export const GenerateTimeSheetReportForManager = async (data) => {
 export const WeekendDateCheck = async (data) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/Timesheet/weekendValidation?employeeId=${data.empBasicDetailId}&taskDate=${data.taskDate}`
+      `${Environment.nemsUrl}/Timesheet/weekendValidation?employeeId=${data.empBasicDetailId}&taskDate=${data.taskDate}`
     );
     return response.data;
   } catch (error) {
@@ -224,7 +224,7 @@ export const WeekendDateCheck = async (data) => {
 export const GetWeekendApprovals = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Timesheet/getWeekendApprovals`,
+      `${Environment.nemsUrl}/Timesheet/getWeekendApprovals`,
       data
     );
     return response.data;
@@ -237,7 +237,7 @@ export const GetWeekendApprovals = async (data) => {
 export const SaveAndApproveWeekend = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Timesheet/saveAndApproveWeekend`,
+      `${Environment.nemsUrl}/Timesheet/saveAndApproveWeekend`,
       data
     );
     return response.data;
@@ -249,7 +249,7 @@ export const SaveAndApproveWeekend = async (data) => {
 export const findEmployeeLeaveDetailsForGrid = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employeeLeave/findEmployeeLeaveDetailsForGrid`,
+      `${Environment.nemsUrl}/employeeLeave/findEmployeeLeaveDetailsForGrid`,
       data
     );
     return response.data;
@@ -262,7 +262,7 @@ export const findEmployeeLeaveDetailsForGrid = async (data) => {
 export const searchAttendanceForGrid = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Timesheet/searchAttendanceForGrid`,
+      `${Environment.nemsUrl}/Timesheet/searchAttendanceForGrid`,
       data
     );
     return response.data;
@@ -275,7 +275,7 @@ export const searchAttendanceForGrid = async (data) => {
 export const GetManagerTimesheetGrid = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/reports/managerTimesheetGrid`,
+      `${Environment.nemsUrl}/reports/managerTimesheetGrid`,
       data
     );
     return response.data;

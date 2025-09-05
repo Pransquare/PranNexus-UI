@@ -250,7 +250,7 @@ export const getTdsDetailsByEmployeeCode = async (employeeCode) => {
 export const updateTdsDetails = async (payload) => {
   try {
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/updateTdsDetails`,
+      `${Environment.nemsUrl}/tdsdetails/updateTdsDetails`,
       payload
     );
     return { success: true, data: response.data };
@@ -263,7 +263,7 @@ export const updateTdsDetails = async (payload) => {
 };
 export const getEmployeeFinancialDetails = async (employeeCode, financialYearCode, page = 0, size = 20) => {
   try {
-    const response = await axios.get(`${Environment.emsUrl}/tdsdetails/search`, {
+    const response = await axios.get(`${Environment.nemsUrl}/tdsdetails/search`, {
       params: {
         employeeCode,
         financialYearCode,
@@ -358,7 +358,7 @@ export const enableProofDeclarationForEmployee = async (employeeCode) => {
   try {
     // Sending the employeeCode as a URL parameter
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/enableProofDeclarationForEmployee?employeeCode=${employeeCode}`
+      `${Environment.nemsUrl}/tdsdetails/enableProofDeclarationForEmployee?employeeCode=${employeeCode}`
     );
     return { success: true, data: response.data };
   } catch (error) {
@@ -386,7 +386,7 @@ export const enableTaxDeclarationForEmployee = async (employeeCode) => {
   try {
     // Sending the employeeCode as a URL parameter
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/enableTaxDeclarationForEmployee?employeeCode=${employeeCode}`
+      `${Environment.nemsUrl}/tdsdetails/enableTaxDeclarationForEmployee?employeeCode=${employeeCode}`
     );
     return { success: true, data: response.data };
   } catch (error) {
@@ -412,7 +412,7 @@ export const enableTaxDeclarationForAllActiveEmployees = async () => {
 export const saveProofDetails = async (payload) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/tdsProofDetails/saveProofDetails`,
+      `${Environment.nemsUrl}/tdsProofDetails/saveProofDetails`,
       payload,
       {
         headers: {
@@ -432,7 +432,7 @@ export const saveProofDetails = async (payload) => {
 export const downloadFile = async (payload) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Payroll/downloadResponseFile`,
+      `${Environment.nemsUrl}/Payroll/downloadResponseFile`,
       payload,
       {
         headers: {
@@ -460,7 +460,7 @@ export const downloadFile = async (payload) => {
 export const updateTdsStatus = async (employeeCode , status) => {
   try {
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/updateTdsStatus`,
+      `${Environment.nemsUrl}/tdsdetails/updateTdsStatus`,
       null, 
       {
         params: { employeeCode , status }, 
@@ -477,7 +477,7 @@ export const updateTdsStatus = async (employeeCode , status) => {
 export const deleteProofDetails = async (tdsProofId) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/tdsProofDetails/deleteProofDetails?tdsProofId=${tdsProofId}`
+      `${Environment.nemsUrl}/tdsProofDetails/deleteProofDetails?tdsProofId=${tdsProofId}`
     );
     return { success: true, data: response.data };
   } catch (error) {
