@@ -6,6 +6,7 @@ export const Environment = {
   local: false,
 
 
+
   apiUrl: "http://localhost:8081/Pransquare/MasterConfiguration",
   nemsUrl: "http://localhost:8080/pransquare/nems",
 
@@ -15,6 +16,7 @@ export const Environment = {
 
   // apiUrl: "http://localhost:8081/Pransquare/MasterConfiguration",
   // nemsUrl: "http://localhost:8080/Pransquare/nems",
+
 
   loginUrl: "http://localhost:8083",
   nexusHireUrl: "http://localhost:8082/api/candidate",  
