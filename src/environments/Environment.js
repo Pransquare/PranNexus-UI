@@ -4,8 +4,13 @@ export const Environment = {
   test: false,
   staging: false,
   local: false,
+
   apiUrl: "http://localhost:8081/SSIT/MasterConfiguration",
   nemsUrl: "http://localhost:8080/Pransquare/nems",
+
+  apiUrl: "http://localhost:8081/Pransquare/MasterConfiguration",
+  emsUrl: "http://localhost:8080/SSIT/ems",
+
   loginUrl: "http://localhost:8083",
   nexusHireUrl: "http://localhost:8082/api/candidate",
   microsoftLoginURL: "http://localhost:8089",
