@@ -4,7 +4,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 export const GetEmployeeByEmployeeCode = async (employeeCode) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/getEmployeeByEmployeeCode/${employeeCode}`
+      `${Environment.nemsUrl}/employee/getEmployeeByEmployeeCode/${employeeCode}`
     );
     return response.data;
   } catch (error) {
@@ -16,7 +16,7 @@ export const GetEmployeeByEmployeeCode = async (employeeCode) => {
 export const GetEmployeesByStatus = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/getAllEmployeesByStatus`,
+      `${Environment.nemsUrl}/employee/getAllEmployeesByStatus`,
       data
     );
     return response.data;
@@ -29,7 +29,7 @@ export const GetAllEmployeeByStatus = async (statusCode) => {
   try {
     // Construct the correct URL with query parameter status
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/employeesByStatus`,
+      `${Environment.nemsUrl}/employee/employeesByStatus`,
       {
         params: { status: statusCode }, // Correct format: status=108 or status=117
       }
@@ -47,7 +47,7 @@ export const GetAllEmployeeByStatus = async (statusCode) => {
 export const SaveApproverConfig = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/ApproverConfig/saveApproverConfig`,
+      `${Environment.nemsUrl}/ApproverConfig/saveApproverConfig`,
       data
     );
     return response.data;
@@ -60,7 +60,7 @@ export const SaveApproverConfig = async (data) => {
 export const GetAllByEmpId = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/ApproverConfig/getAllByEmpId`,
+      `${Environment.nemsUrl}/ApproverConfig/getAllByEmpId`,
       data
     );
     return response.data;
@@ -73,7 +73,7 @@ export const GetAllByEmpId = async (data) => {
 export const CreateOrUpdateEmployee = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/createOrUpdateEmployee`,
+      `${Environment.nemsUrl}/employee/createOrUpdateEmployee`,
       data
     );
     return response.data;
@@ -86,7 +86,7 @@ export const CreateOrUpdateEmployee = async (data) => {
 export const GetEmployeesByName = async (name) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/employees/search?input=${name}`
+      `${Environment.nemsUrl}/employee/employees/search?input=${name}`
     );
     return response.data;
   } catch (error) {
@@ -98,7 +98,7 @@ export const GetEmployeesByName = async (name) => {
 export const OffboardMember = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/offboard`,
+      `${Environment.nemsUrl}/employee/offboard`,
       data
     );
     return response.data;
@@ -111,7 +111,7 @@ export const OffboardMember = async (data) => {
 export const GetEmployeeCtcDetails = async (employeeId) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/getEmployeeCtc?employeeId=${employeeId}`
+      `${Environment.nemsUrl}/employee/getEmployeeCtc?employeeId=${employeeId}`
     );
     return response.data;
   } catch (error) {
@@ -123,7 +123,7 @@ export const GetEmployeeCtcDetails = async (employeeId) => {
 export const DownloadPayslip = async (empBasicDetailId, year, month) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Payroll/viewOrDownloadPayslip`,
+      `${Environment.nemsUrl}/Payroll/viewOrDownloadPayslip`,
       {
         empBasicDetailId,
         year,
@@ -141,7 +141,7 @@ export const DownloadPayslip = async (empBasicDetailId, year, month) => {
 export const GetBirthdayList = async () => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/getBirthdayList`
+      `${Environment.nemsUrl}/employee/getBirthdayList`
     );
     return response.data;
   } catch (error) {
@@ -153,7 +153,7 @@ export const GetBirthdayList = async () => {
 export const GetEmployeeCounts = async () => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/employee-counts`
+      `${Environment.nemsUrl}/employee/employee-counts`
     );
     return response.data;
   } catch (error) {
