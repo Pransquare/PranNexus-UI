@@ -49,19 +49,30 @@ function Dashboard() {
   const navigate = useNavigate();
 
   // Other variables and user permissions
-  const candidateList = UserManagentCheck("hr_tools_smartHire_candidateList");
+
+  // const candidateList = UserManagentCheck("hr_tools_smartHire_candidateList");
+  const candidateList = UserManagentCheck("hr_tools_NexusHire_candidateList");
+  // const hr = UserManagentCheck(
+  //   "hr_tools_smartHire_candidate_approval_uploadOfferLetter"
+  // );
   const hr = UserManagentCheck(
-    "hr_tools_smartHire_candidate_approval_uploadOfferLetter"
+    "hr_tools_NexusHire_candidate_approval_uploadOfferLetter"
   );
+  // const budget = UserManagentCheck(
+  //   "hr_tools_smartHire_candidate_approval_budgetApproval"
+  // );
   const budget = UserManagentCheck(
-    "hr_tools_smartHire_candidate_approval_budgetApproval"
+    "hr_tools_NexusHire_candidate_approval_budgetApproval"
   );
+  // const management = UserManagentCheck(
+  //   "hr_tools_smartHire_candidate_approval_managementApproval"
+  // );
   const management = UserManagentCheck(
-    "hr_tools_smartHire_candidate_approval_managementApproval"
+    "hr_tools_NexusHire_candidate_approval_managementApproval"
   );
 
+  // const leaveApprover = UserManagentCheck("hr_tools_ems_leave_leaveApproval");
   const leaveApprover = UserManagentCheck("hr_tools_nems_leave_leaveApproval");
-
   const genericUser = employeeData?.genericProfile;
 
   // Navigating to different pages
@@ -70,7 +81,7 @@ function Dashboard() {
   };
 
   const handleCandidateNavigate = () => {
-    navigate("/home/smartHire/candidateList");
+    navigate("/home/NexusHire/candidateList");
   };
 
   const handleLeaveApprovalsNavigate = () => {

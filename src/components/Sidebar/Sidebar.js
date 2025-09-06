@@ -48,6 +48,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "admin_configuration",
         userManagementData
       ),
+
       hr: UserManagentCheck("hr", userManagementData),
       hr_tools: UserManagentCheck("hr_tools", userManagementData),
       hr_tools_nems: UserManagentCheck("hr_tools_nems", userManagementData),
@@ -59,6 +60,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_tax_approved_Details",
         userManagementData
       ),
+
       hr_tools_nems_leave: UserManagentCheck(
         "hr_tools_nems_leave",
         userManagementData
@@ -75,6 +77,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_Contract_Management",
         userManagementData
       ),
+
       hr_tools_nems_payroll: UserManagentCheck(
         "hr_tools_nems_payroll",
         userManagementData
@@ -87,6 +90,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_nems_appraisal",
         userManagementData
       ),
+
       hr_tools_nems_appraisal_initiate: UserManagentCheck(
         "hr_tools_nems_appraisal_initiate",
         userManagementData
@@ -181,6 +185,9 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
     }),
     [userManagementData]
   );
+
+  console.log("userManagentRes:", userManagentRes);
+  console.log("userManagementData:", userManagementData);
 
   const toggleSection = (index) => {
     setOpenSection(openSection === index ? null : index);

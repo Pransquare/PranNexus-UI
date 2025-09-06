@@ -104,6 +104,7 @@ export const searchSowDetails = async (searchParams) => {
       `${Environment.nemsUrl}/sow/search`,
       searchParams
     );
+
     return response.data;
   } catch (error) {
     console.error("Error searching SOW details:", error);

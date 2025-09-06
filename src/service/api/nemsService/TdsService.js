@@ -292,6 +292,7 @@ export const getEmployeeFinancialDetails = async (
         },
       }
     );
+
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -494,7 +495,9 @@ export const updateTdsStatus = async (employeeCode, status) => {
   try {
     const response = await axios.put(
       `${Environment.nemsUrl}/tdsdetails/updateTdsStatus`,
+
       null,
+
       {
         params: { employeeCode, status },
       }
