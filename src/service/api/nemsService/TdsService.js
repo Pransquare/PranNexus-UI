@@ -1,5 +1,5 @@
 import { Environment } from "../../../environments/Environment";
-import { axiosInstance as axios} from "../../interceptor/useAxiosInterceptors";
+import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 
 export const getSections = async () => {
   const response = await axios.get(`${Environment.apiUrl}/sections`);
@@ -34,7 +34,9 @@ export const deleteSections = async (id) => {
 
 export const deleteSubsection = async (id) => {
   try {
-    const response = await axios.delete(`${Environment.apiUrl}/subsections/${id}`);
+    const response = await axios.delete(
+      `${Environment.apiUrl}/subsections/${id}`
+    );
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -49,13 +51,9 @@ export const getRegimes = async () => {
   return response.data;
 };
 
-
 export const saveRegimes = async (payload) => {
   try {
-    const response = await axios.post(
-      `${Environment.apiUrl}/Regimes`,
-      payload
-    );
+    const response = await axios.post(`${Environment.apiUrl}/Regimes`, payload);
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -86,10 +84,7 @@ export const saveFinancialyearRegimeSectionConfig = async (payload) => {
 };
 export const updateFinancialyearRegimeSectionConfig = async (payload) => {
   try {
-    const response = await axios.put(
-      `${Environment.apiUrl}/update`,
-      payload
-    );
+    const response = await axios.put(`${Environment.apiUrl}/update`, payload);
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -127,12 +122,15 @@ export const saveFinancialYear = async (payload) => {
 };
 export const deleteFinancialYear = async (id) => {
   try {
-    const response = await axios.delete(`${Environment.apiUrl}/deleteFinancialYear/${id}`);
+    const response = await axios.delete(
+      `${Environment.apiUrl}/deleteFinancialYear/${id}`
+    );
     return { success: true, data: response.data };
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to delete financial year",
+      message:
+        error.response?.data?.message || "Failed to delete financial year",
     };
   }
 };
@@ -168,7 +166,9 @@ export const saveSubSections = async (payload) => {
 };
 export const deleteSubSections = async (id) => {
   try {
-    const response = await axios.delete(`${Environment.apiUrl}/subsections/${id}`);
+    const response = await axios.delete(
+      `${Environment.apiUrl}/subsections/${id}`
+    );
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -179,7 +179,9 @@ export const deleteSubSections = async (id) => {
 };
 
 export const getSectionSubsectionConfig = async () => {
-  const response = await axios.get(`${Environment.apiUrl}/getSectionSubsectionConfig`);
+  const response = await axios.get(
+    `${Environment.apiUrl}/getSectionSubsectionConfig`
+  );
   return response.data;
 };
 
@@ -193,14 +195,18 @@ export const saveSectionSubsectionConfig = async (payload) => {
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to save Section Sub-section Config Details",
+      message:
+        error.response?.data?.message ||
+        "Failed to save Section Sub-section Config Details",
     };
   }
 };
 
 export const deleteSectionSubsectionConfig = async (id) => {
   try {
-    const response = await axios.delete(`${Environment.apiUrl}/deleteSectionSubsectionConfig/${id}`);
+    const response = await axios.delete(
+      `${Environment.apiUrl}/deleteSectionSubsectionConfig/${id}`
+    );
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -211,7 +217,9 @@ export const deleteSectionSubsectionConfig = async (id) => {
 };
 export const deleteFinancialyearRegimeSectionConfig = async (id) => {
   try {
-    const response = await axios.delete(`${Environment.apiUrl}/deleteFinancialyearRegimeSectionConfig/${id}`);
+    const response = await axios.delete(
+      `${Environment.apiUrl}/deleteFinancialyearRegimeSectionConfig/${id}`
+    );
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -223,23 +231,28 @@ export const deleteFinancialyearRegimeSectionConfig = async (id) => {
 export const SaveTdsDetails = async (payload) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/tdsdetails/saveTdsDetails`,
+      `${Environment.nemsUrl}/tdsdetails/saveTdsDetails`,
       payload
     );
     return { success: true, data: response.data };
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to save Section Sub-section Config Details",
+      message:
+        error.response?.data?.message ||
+        "Failed to save Section Sub-section Config Details",
     };
   }
 };
 export const getTdsDetailsByEmployeeCode = async (employeeCode) => {
   try {
-    const response = await axios.get(`${Environment.emsUrl}/tdsdetails/getTdsDetailsByEmployeeCode`, {
-      params: { employeeCode },
-    });
-    return { success: true, data: response.data }; 
+    const response = await axios.get(
+      `${Environment.nemsUrl}/tdsdetails/getTdsDetailsByEmployeeCode`,
+      {
+        params: { employeeCode },
+      }
+    );
+    return { success: true, data: response.data };
   } catch (error) {
     return {
       success: false,
@@ -250,7 +263,7 @@ export const getTdsDetailsByEmployeeCode = async (employeeCode) => {
 export const updateTdsDetails = async (payload) => {
   try {
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/updateTdsDetails`,
+      `${Environment.nemsUrl}/tdsdetails/updateTdsDetails`,
       payload
     );
     return { success: true, data: response.data };
@@ -261,21 +274,31 @@ export const updateTdsDetails = async (payload) => {
     };
   }
 };
-export const getEmployeeFinancialDetails = async (employeeCode, financialYearCode, page = 0, size = 20) => {
+export const getEmployeeFinancialDetails = async (
+  employeeCode,
+  financialYearCode,
+  page = 0,
+  size = 20
+) => {
   try {
-    const response = await axios.get(`${Environment.emsUrl}/tdsdetails/search`, {
-      params: {
-        employeeCode,
-        financialYearCode,
-        page,
-        size,
-      },
-    });
+    const response = await axios.get(
+      `${Environment.nemsUrl}/tdsdetails/search`,
+      {
+        params: {
+          employeeCode,
+          financialYearCode,
+          page,
+          size,
+        },
+      }
+    );
     return { success: true, data: response.data };
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to fetch employee financial details",
+      message:
+        error.response?.data?.message ||
+        "Failed to fetch employee financial details",
     };
   }
 };
@@ -290,7 +313,8 @@ export const updateFinancialYear = async (payload) => {
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to update financial year",
+      message:
+        error.response?.data?.message || "Failed to update financial year",
     };
   }
 };
@@ -350,7 +374,8 @@ export const updateSectionSubsectionConfig = async (payload) => {
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to update configuration",
+      message:
+        error.response?.data?.message || "Failed to update configuration",
     };
   }
 };
@@ -358,13 +383,15 @@ export const enableProofDeclarationForEmployee = async (employeeCode) => {
   try {
     // Sending the employeeCode as a URL parameter
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/enableProofDeclarationForEmployee?employeeCode=${employeeCode}`
+      `${Environment.nemsUrl}/tdsdetails/enableProofDeclarationForEmployee?employeeCode=${employeeCode}`
     );
     return { success: true, data: response.data };
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to enable proof declaration for employee",
+      message:
+        error.response?.data?.message ||
+        "Failed to enable proof declaration for employee",
     };
   }
 };
@@ -372,13 +399,15 @@ export const enableProofDeclarationForEmployee = async (employeeCode) => {
 export const enableProofDeclarationForAllActiveEmployees = async () => {
   try {
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/enableProofDeclarationForAllActiveEmployees`
+      `${Environment.nemsUrl}/tdsdetails/enableProofDeclarationForAllActiveEmployees`
     );
     return { success: true, data: response.data };
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to enable proof declaration for all active employees",
+      message:
+        error.response?.data?.message ||
+        "Failed to enable proof declaration for all active employees",
     };
   }
 };
@@ -386,37 +415,41 @@ export const enableTaxDeclarationForEmployee = async (employeeCode) => {
   try {
     // Sending the employeeCode as a URL parameter
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/enableTaxDeclarationForEmployee?employeeCode=${employeeCode}`
+      `${Environment.nemsUrl}/tdsdetails/enableTaxDeclarationForEmployee?employeeCode=${employeeCode}`
     );
     return { success: true, data: response.data };
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to enable proof declaration for employee",
+      message:
+        error.response?.data?.message ||
+        "Failed to enable proof declaration for employee",
     };
   }
 };
 export const enableTaxDeclarationForAllActiveEmployees = async () => {
   try {
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/enableTaxDeclarationForAllActiveEmployees`
+      `${Environment.nemsUrl}/tdsdetails/enableTaxDeclarationForAllActiveEmployees`
     );
     return { success: true, data: response.data };
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to enable proof declaration for all active employees",
+      message:
+        error.response?.data?.message ||
+        "Failed to enable proof declaration for all active employees",
     };
   }
 };
 export const saveProofDetails = async (payload) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/tdsProofDetails/saveProofDetails`,
+      `${Environment.nemsUrl}/tdsProofDetails/saveProofDetails`,
       payload,
       {
         headers: {
-          "Content-Type": "application/json", 
+          "Content-Type": "application/json",
         },
       }
     );
@@ -432,7 +465,7 @@ export const saveProofDetails = async (payload) => {
 export const downloadFile = async (payload) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Payroll/downloadResponseFile`,
+      `${Environment.nemsUrl}/Payroll/downloadResponseFile`,
       payload,
       {
         headers: {
@@ -457,13 +490,13 @@ export const downloadFile = async (payload) => {
     };
   }
 };
-export const updateTdsStatus = async (employeeCode , status) => {
+export const updateTdsStatus = async (employeeCode, status) => {
   try {
     const response = await axios.put(
-      `${Environment.emsUrl}/tdsdetails/updateTdsStatus`,
-      null, 
+      `${Environment.nemsUrl}/tdsdetails/updateTdsStatus`,
+      null,
       {
-        params: { employeeCode , status }, 
+        params: { employeeCode, status },
       }
     );
     return { success: true, data: response.data };
@@ -477,18 +510,22 @@ export const updateTdsStatus = async (employeeCode , status) => {
 export const deleteProofDetails = async (tdsProofId) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/tdsProofDetails/deleteProofDetails?tdsProofId=${tdsProofId}`
+      `${Environment.nemsUrl}/tdsProofDetails/deleteProofDetails?tdsProofId=${tdsProofId}`
     );
     return { success: true, data: response.data };
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to delete proof details",
+      message:
+        error.response?.data?.message || "Failed to delete proof details",
     };
   }
 };
 
-export const deleteByFinancialYearCodeAndRegimeCode = async (financialYearCode, regimeCode) => {
+export const deleteByFinancialYearCodeAndRegimeCode = async (
+  financialYearCode,
+  regimeCode
+) => {
   try {
     const response = await axios.delete(
       `${Environment.apiUrl}/deleteByFinancialYearCodeAndRegimeCode`,
@@ -500,7 +537,9 @@ export const deleteByFinancialYearCodeAndRegimeCode = async (financialYearCode, 
   } catch (error) {
     return {
       success: false,
-      message: error.response?.data?.message || "Failed to delete by Financial Year Code and Regime Code",
+      message:
+        error.response?.data?.message ||
+        "Failed to delete by Financial Year Code and Regime Code",
     };
   }
 };

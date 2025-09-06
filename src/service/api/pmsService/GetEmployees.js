@@ -4,7 +4,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 export const GetEmployees = async (performanceGroup, performanceSubGroup) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/employeeGroup`,
+      `${Environment.nemsUrl}/employee/employeeGroup`,
       {
         params: {
           performanceGroup,
@@ -12,7 +12,7 @@ export const GetEmployees = async (performanceGroup, performanceSubGroup) => {
         },
       }
     );
-    console.log(Environment.emsUrl);
+    console.log(Environment.nemsUrl);
     return response.data;
   } catch (error) {
     console.error("Error fetching employees:", error);
@@ -26,7 +26,7 @@ export const GetEmployeesNew = async (
 ) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/employeeGroupNew`,
+      `${Environment.nemsUrl}/employee/employeeGroupNew`,
       {
         params: {
           performanceGroup,
@@ -34,7 +34,7 @@ export const GetEmployeesNew = async (
         },
       }
     );
-    console.log(Environment.emsUrl);
+    console.log(Environment.nemsUrl);
     return response.data;
   } catch (error) {
     console.error("Error fetching employees:", error);

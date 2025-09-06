@@ -6,11 +6,11 @@ import { Toaster } from "../../../common/alertComponets/Toaster";
 import ConfigureForm from "../../../common/customComponents/ConfigureForm";
 import { UserManagentCheck } from "../../../common/UserManagement";
 import { EmployeeDataContext } from "../../../customHooks/dataProviders/EmployeeDataProvider";
-import { GetEmployeesByName } from "../../../service/api/emsService/EmployeeService";
+import { GetEmployeesByName } from "../../../service/api/nemsService/EmployeeService";
 import {
   GetEmployeesByApproverId,
   GetTimesheetReport,
-} from "../../../service/api/emsService/TimeSheetService";
+} from "../../../service/api/nemsService/TimeSheetService";
 import { GetEmployeeProjects } from "../../../service/api/hrConfig/hrConfig";
 import { GetAllProjects } from "../../../service/api/ProjectService";
 
@@ -20,11 +20,11 @@ function AttendanceReport() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchedEmployee, setSearchedEmployee] = useState();
   const [projects, setProjects] = useState();
-  const hr_tools_ems_management_attendance_report = UserManagentCheck(
-    "hr_tools_ems_management_attendance_report"
+  const hr_tools_nems_management_attendance_report = UserManagentCheck(
+    "hr_tools_nems_management_attendance_report"
   );
-  const hr_tools_ems_manager_attendance_report = UserManagentCheck(
-    "hr_tools_ems_manager_attendance_report"
+  const hr_tools_nems_manager_attendance_report = UserManagentCheck(
+    "hr_tools_nems_manager_attendance_report"
   );
 
   const configureFormData = useCallback(
@@ -96,10 +96,10 @@ function AttendanceReport() {
       GetEmployeesByName(value)
         .then(async (data) => {
           switch (true) {
-            case hr_tools_ems_management_attendance_report:
+            case hr_tools_nems_management_attendance_report:
               setSearchResults(data);
               break;
-            case hr_tools_ems_manager_attendance_report:
+            case hr_tools_nems_manager_attendance_report:
               setSearchResults(filterEmployeeNamesForManager(data));
               break;
             default:
@@ -185,7 +185,7 @@ function AttendanceReport() {
           axios.spread((getallProjects, getEmployeeProjects) => {
             if (getallProjects && getEmployeeProjects) {
               if (
-                hr_tools_ems_management_attendance_report &&
+                hr_tools_nems_management_attendance_report &&
                 searchedEmployee?.employeeBasicDetailId ===
                   employeeData?.employeeBasicDetailId
               ) {

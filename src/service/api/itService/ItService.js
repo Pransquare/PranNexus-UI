@@ -4,7 +4,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 export const GetEmployee = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/getAllEmployeesForMailCreation`,
+      `${Environment.nemsUrl}/employee/getAllEmployeesForMailCreation`,
       data
     );
     return response.data;
@@ -17,7 +17,7 @@ export const GetEmployee = async (data) => {
 export const CreateEmailAndRolesForUser = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/updateEmployeeRolesAndEmail`,
+      `${Environment.nemsUrl}/employee/updateEmployeeRolesAndEmail`,
       data
     );
     return response.data;

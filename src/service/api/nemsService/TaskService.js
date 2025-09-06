@@ -4,7 +4,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 export const GetAllTasks = async () => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/taskMaster/getAllTasks`
+      `${Environment.nemsUrl}/taskMaster/getAllTasks`
     );
     return response.data;
   } catch (error) {

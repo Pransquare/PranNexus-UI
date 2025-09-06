@@ -34,7 +34,6 @@ const UserManagentCheck = (roleName, userManagementData) => {
   }
 };
 
-
 const Sidebar = ({ open = true, oncloseSideBar }) => {
   const [openSection, setOpenSection] = useState(null);
   const [openSubsection, setOpenSubsection] = useState(null);
@@ -51,7 +50,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
       ),
       hr: UserManagentCheck("hr", userManagementData),
       hr_tools: UserManagentCheck("hr_tools", userManagementData),
-      hr_tools_ems: UserManagentCheck("hr_tools_ems", userManagementData),
+      hr_tools_nems: UserManagentCheck("hr_tools_nems", userManagementData),
       hr_config_employee_groups_subgroups: UserManagentCheck(
         "hr_config_employee_groups&subgroups",
         userManagementData
@@ -60,12 +59,12 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_tax_approved_Details",
         userManagementData
       ),
-      hr_tools_ems_leave: UserManagentCheck(
-        "hr_tools_ems_leave",
+      hr_tools_nems_leave: UserManagentCheck(
+        "hr_tools_nems_leave",
         userManagementData
       ),
-      hr_tools_ems_timesheet: UserManagentCheck(
-        "hr_tools_ems_timesheet",
+      hr_tools_nems_timesheet: UserManagentCheck(
+        "hr_tools_nems_timesheet",
         userManagementData
       ),
       hr_tools_Tax_Deatails: UserManagentCheck(
@@ -76,24 +75,24 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_Contract_Management",
         userManagementData
       ),
-      hr_tools_ems_payroll: UserManagentCheck(
-        "hr_tools_ems_payroll",
+      hr_tools_nems_payroll: UserManagentCheck(
+        "hr_tools_nems_payroll",
         userManagementData
       ),
       admin_Tax_configuration: UserManagentCheck(
         "admin_Tax_configuration",
         userManagementData
       ),
-      hr_tools_ems_appraisal: UserManagentCheck(
-        "hr_tools_ems_appraisal",
+      hr_tools_nems_appraisal: UserManagentCheck(
+        "hr_tools_nems_appraisal",
         userManagementData
       ),
-      hr_tools_ems_appraisal_initiate: UserManagentCheck(
-        "hr_tools_ems_appraisal_initiate",
+      hr_tools_nems_appraisal_initiate: UserManagentCheck(
+        "hr_tools_nems_appraisal_initiate",
         userManagementData
       ),
-      hr_tools_ems_appraisal_form: UserManagentCheck(
-        "hr_tools_ems_appraisal_form",
+      hr_tools_nems_appraisal_form: UserManagentCheck(
+        "hr_tools_nems_appraisal_form",
         userManagementData
       ),
       hr_tools_nexusHire: UserManagentCheck(
@@ -137,12 +136,12 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_nexusHire_candidate",
         userManagementData
       ),
-      hr_tools_ems_timesheet_project_report: UserManagentCheck(
-        "hr_tools_ems_timesheet_project_report",
+      hr_tools_nems_timesheet_project_report: UserManagentCheck(
+        "hr_tools_nems_timesheet_project_report",
         userManagementData
       ),
-      gm_ems_cmm: UserManagentCheck("gm_ems_cmm", userManagementData),
-      sgm_ems_cmm: UserManagentCheck("sgm_ems_cmm", userManagementData),
+      gm_nems_cmm: UserManagentCheck("gm_nems_cmm", userManagementData),
+      sgm_nems_cmm: UserManagentCheck("sgm_nems_cmm", userManagementData),
       reports: UserManagentCheck("reports", userManagementData),
       project_report: UserManagentCheck("project_report", userManagementData),
       finance_expense: UserManagentCheck("finance_expense", userManagementData),
@@ -151,7 +150,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         userManagementData
       ),
       sow_finance_cmm: UserManagentCheck("sow_finance_cmm", userManagementData),
-      mgt_ems_cmm: UserManagentCheck("mgt_ems_cmm", userManagementData),
+      mgt_nems_cmm: UserManagentCheck("mgt_nems_cmm", userManagementData),
       finance_expense_list: UserManagentCheck(
         "finance_expense_list",
         userManagementData
@@ -478,23 +477,23 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                     unmountOnExit
                   >
                     <List component="div" disablePadding={true}>
-                      {userManagentRes["hr_tools_ems"] && (
+                      {userManagentRes["hr_tools_nems"] && (
                         <ListItemButton
                           dense
                           divider={true}
                           onClick={() =>
-                            setHoveredItem(hoveredItem ? null : "ems")
+                            setHoveredItem(hoveredItem ? null : "nems")
                           }
-                          selected={hoveredItem === "ems"}
+                          selected={hoveredItem === "nems"}
                         >
                           <FaIdBadge className="text-white" />
                           <ListItemText
                             sx={{
                               marginLeft: "0.5rem",
                             }}
-                            primary="EMS"
+                            primary="nems"
                           />
-                          {hoveredItem === "ems" ? (
+                          {hoveredItem === "nems" ? (
                             <KeyboardArrowDownSharp />
                           ) : (
                             <KeyboardArrowRightSharp />
@@ -502,58 +501,58 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                         </ListItemButton>
                       )}
                       <Collapse
-                        in={hoveredItem === "ems"}
+                        in={hoveredItem === "nems"}
                         timeout="auto"
                         unmountOnExit
                       >
                         <List component="div" disablePadding={true}>
-                          {userManagentRes["hr_tools_ems_leave"] && (
+                          {userManagentRes["hr_tools_nems_leave"] && (
                             <ListItemButton
                               dense
                               divider={true}
                               component={Link}
                               onClick={oncloseSideBar}
-                              to="ems/leave"
+                              to="nems/leave"
                             >
                               <ListItemText primary="Leave" />
                             </ListItemButton>
                           )}
-                          {userManagentRes["hr_tools_ems_timesheet"] && (
+                          {userManagentRes["hr_tools_nems_timesheet"] && (
                             <ListItemButton
                               dense
                               divider={true}
                               component={Link}
                               onClick={oncloseSideBar}
-                              to="ems/timesheet"
+                              to="nems/timesheet"
                             >
                               <ListItemText primary="Timesheet" />
                             </ListItemButton>
                           )}
-                          {userManagentRes["hr_tools_ems_payroll"] && (
+                          {userManagentRes["hr_tools_nems_payroll"] && (
                             <ListItemButton
                               dense
                               divider={true}
                               component={Link}
                               onClick={oncloseSideBar}
-                              to="ems/payroll"
+                              to="nems/payroll"
                             >
                               <ListItemText primary="Payroll" />
                             </ListItemButton>
                           )}
 
-                          {userManagentRes["hr_tools_ems_payroll"] && (
+                          {userManagentRes["hr_tools_nems_payroll"] && (
                             <ListItemButton
                               dense
                               divider={true}
                               component={Link}
                               onClick={oncloseSideBar}
-                              to="ems/tds/tds_taxDetails"
+                              to="nems/tds/tds_taxDetails"
                             >
                               <ListItemText primary="Tax Details Management" />
                             </ListItemButton>
                           )}
 
-                          {userManagentRes["hr_tools_ems_appraisal"] && (
+                          {userManagentRes["hr_tools_nems_appraisal"] && (
                             <>
                               <ListItemButton
                                 dense
@@ -584,7 +583,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                                       divider={true}
                                       component={Link}
                                       onClick={oncloseSideBar}
-                                      to="ems/goals/initiateGoals"
+                                      to="nems/goals/initiateGoals"
                                     >
                                       <ListItemText primary="Initiate Goals" />
                                     </ListItemButton>
@@ -595,7 +594,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                                       divider={true}
                                       component={Link}
                                       onClick={oncloseSideBar}
-                                      to="ems/goals/employeeGoals"
+                                      to="nems/goals/employeeGoals"
                                     >
                                       <ListItemText primary="Goals Settings" />
                                     </ListItemButton>
@@ -606,7 +605,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                                       divider={true}
                                       component={Link}
                                       onClick={oncloseSideBar}
-                                      to="ems/goals/goalsApprove"
+                                      to="nems/goals/goalsApprove"
                                     >
                                       <ListItemText primary="Goals Approvals" />
                                     </ListItemButton>
@@ -616,7 +615,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                             </>
                           )}
 
-                          {userManagentRes["hr_tools_ems_appraisal"] && (
+                          {userManagentRes["hr_tools_nems_appraisal"] && (
                             <>
                               <ListItemButton
                                 dense
@@ -641,21 +640,21 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                               >
                                 <List component="div" disablePadding={true}>
                                   {userManagentRes[
-                                    "hr_tools_ems_appraisal_initiate"
+                                    "hr_tools_nems_appraisal_initiate"
                                   ] && (
                                     <ListItemButton
                                       dense
                                       divider={true}
                                       component={Link}
                                       onClick={oncloseSideBar}
-                                      to="ems/appraisal/initiateAppraisal"
+                                      to="nems/appraisal/initiateAppraisal"
                                     >
                                       <ListItemText primary="Initiate Appraisal" />
                                     </ListItemButton>
                                   )}
 
                                   {userManagentRes[
-                                    "hr_tools_ems_appraisal_form"
+                                    "hr_tools_nems_appraisal_form"
                                   ] &&
                                     !employeeData?.genericProfile && (
                                       <ListItemButton
@@ -663,7 +662,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                                         divider={true}
                                         component={Link}
                                         onClick={oncloseSideBar}
-                                        to="ems/appraisal/employeeAppraisal"
+                                        to="nems/appraisal/employeeAppraisal"
                                       >
                                         <ListItemText primary="Employee Appraisal" />
                                       </ListItemButton>
@@ -820,7 +819,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                           divider={true}
                           component={Link}
                           onClick={oncloseSideBar}
-                          to="ems/tds/tds_configuration"
+                          to="nems/tds/tds_configuration"
                         >
                           <ListItemText primary="TDS" />
                         </ListItemButton>
@@ -1116,11 +1115,11 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
               </Collapse>
             </>
           )}
-          {/* {(userManagentRes["gm_ems_cmm"] ||
-            userManagentRes["sgm_ems_cmm"] ||
+          {/* {(userManagentRes["gm_nems_cmm"] ||
+            userManagentRes["sgm_nems_cmm"] ||
             userManagentRes["sow_finance_cmm"] ||
             userManagentRes["sow_leaderShip_cmm"] ||
-            userManagentRes["mgt_ems_cmm"]) && (
+            userManagentRes["mgt_nems_cmm"]) && (
             <>
               <ListItemButton
                 divider={true}
@@ -1147,7 +1146,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                     divider={true}
                     component={Link}
                     onClick={oncloseSideBar}
-                    to="ems/contractManagment"
+                    to="nems/contractManagment"
                   >
                     <ListItemText primary="SOW" />
                   </ListItemButton>
@@ -1236,13 +1235,13 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
             </>
           )}
           <>
-            {userManagentRes["hr_tools_ems_payroll"] && (
+            {userManagentRes["hr_tools_nems_payroll"] && (
               <ListItemButton
                 dense
                 divider={true}
                 component={Link}
                 onClick={oncloseSideBar}
-                to="ems/releaseNoteSearch"
+                to="nems/releaseNoteSearch"
               >
                 <ListItemText primary="Release Note" />
               </ListItemButton>

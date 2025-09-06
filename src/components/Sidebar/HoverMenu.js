@@ -15,7 +15,7 @@ export default function HoverMenu({ type }) {
 
   const menuItems = () => {
     switch (type) {
-      case "ems":
+      case "nems":
         return [
           <MenuItem key="1" onClick={handleClose}>
             Leave

@@ -3,7 +3,10 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 
 export const createNews = async (newsEntity) => {
   try {
-    const response = await axios.post(`${Environment.emsUrl}/news`, newsEntity);
+    const response = await axios.post(
+      `${Environment.nemsUrl}/news`,
+      newsEntity
+    );
     return response.data;
   } catch (error) {
     console.error("Error creating news:", error);
@@ -14,7 +17,7 @@ export const createNews = async (newsEntity) => {
 export const updateNews = async (newsId, updatedNewsEntity) => {
   try {
     const response = await axios.put(
-      `${Environment.emsUrl}/news/${newsId}`,
+      `${Environment.nemsUrl}/news/${newsId}`,
       updatedNewsEntity
     );
     return response.data;
@@ -26,7 +29,9 @@ export const updateNews = async (newsId, updatedNewsEntity) => {
 
 export const deleteNews = async (newsId) => {
   try {
-    const response = await axios.delete(`${Environment.emsUrl}/news/${newsId}`);
+    const response = await axios.delete(
+      `${Environment.nemsUrl}/news/${newsId}`
+    );
     return response.status === 204;
   } catch (error) {
     console.error("Error deleting news:", error);
@@ -36,7 +41,7 @@ export const deleteNews = async (newsId) => {
 
 export const getAllNews = async () => {
   try {
-    const response = await axios.get(`${Environment.emsUrl}/news`);
+    const response = await axios.get(`${Environment.nemsUrl}/news`);
     return response.data;
   } catch (error) {
     console.error("Error fetching all news:", error);
@@ -46,7 +51,7 @@ export const getAllNews = async () => {
 
 export const getNewsById = async (newsId) => {
   try {
-    const response = await axios.get(`${Environment.emsUrl}/news/${newsId}`);
+    const response = await axios.get(`${Environment.nemsUrl}/news/${newsId}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching news by ID:", error);

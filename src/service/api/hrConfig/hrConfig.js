@@ -14,7 +14,7 @@ export const GetGroupAndSubgroups = async () => {
 export const SearchGoalsByGroupAndSubgroup = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Goals/searchGoalsByGroupAndSubgroup`,
+      `${Environment.nemsUrl}/Goals/searchGoalsByGroupAndSubgroup`,
       data
     );
     return response.data;
@@ -27,7 +27,7 @@ export const SearchGoalsByGroupAndSubgroup = async (data) => {
 export const SaveGoalsforGroup = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/Goals/saveGoalsforGroup`,
+      `${Environment.nemsUrl}/Goals/saveGoalsforGroup`,
       data
     );
     return response.data;
@@ -40,7 +40,7 @@ export const SaveGoalsforGroup = async (data) => {
 export const GetEmployeeProjects = async (data) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employeeProjectContoller/employeeProjects/${data}`
+      `${Environment.nemsUrl}/employeeProjectContoller/employeeProjects/${data}`
     );
     return response.data;
   } catch (error) {
@@ -52,7 +52,7 @@ export const GetEmployeeProjects = async (data) => {
 export const SaveOrUpdateEmployeeProjects = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employeeProjectContoller/saveOrUpdateEmployeeProjectConfig`,
+      `${Environment.nemsUrl}/employeeProjectContoller/saveOrUpdateEmployeeProjectConfig`,
       data
     );
     return response.data;
@@ -65,7 +65,7 @@ export const SaveOrUpdateEmployeeProjects = async (data) => {
 export const SaveOrUpdateEmployeeProjectsConfig = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employeeProjectContoller/saveOrUpdate`,
+      `${Environment.nemsUrl}/employeeProjectContoller/saveOrUpdate`,
       data
     );
     return response.data;

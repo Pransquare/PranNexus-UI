@@ -178,7 +178,7 @@ function Chatbot({ minimizeClick }) {
           },
         ]);
         setTimeout(() => {
-          navigate("/home/ems/leave");
+          navigate("/home/nems/leave");
         }, 1000);
         break;
       case "View holiday calendar":
@@ -210,7 +210,7 @@ function Chatbot({ minimizeClick }) {
           },
         ]);
         setTimeout(() => {
-          navigate("/home/ems/timesheet");
+          navigate("/home/nems/timesheet");
         }, 1000);
         break;
       default:
@@ -282,7 +282,7 @@ function Chatbot({ minimizeClick }) {
         },
       ]);
       setTimeout(() => {
-        navigate("/home/ems/payroll");
+        navigate("/home/nems/payroll");
       }, 1000);
     }
   };
@@ -475,7 +475,7 @@ function Chatbot({ minimizeClick }) {
                           text: "Download more",
                           action: {
                             type: "redirect",
-                            data: "/home/ems/payroll",
+                            data: "/home/nems/payroll",
                           },
                         })
                       }

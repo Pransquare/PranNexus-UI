@@ -153,7 +153,7 @@ const Navbar = ({ user, toggleSidebar }) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            {hasRole("hr_tools_ems_profile") &&
+            {hasRole("hr_tools_nems_profile") &&
               !employeeData?.genericProfile && (
                 <MenuItem
                   onClick={() => handleMenuItemClick("Profile Content")}

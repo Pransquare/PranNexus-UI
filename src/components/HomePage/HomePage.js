@@ -32,8 +32,16 @@ const HomePage = () => {
     try {
       setTimeout(() => {
         const fetchedApplications = [
-          { name: "PMS", description: "Performance Management System", image: "PMS.png" },
-          { name: "EMS", description: "Employee Management System", image: "EMS.png" },
+          {
+            name: "PMS",
+            description: "Performance Management System",
+            image: "PMS.png",
+          },
+          {
+            name: "NEMS",
+            description: "Employee Management System",
+            image: "NEMS.png",
+          },
           { name: "SmartHire", description: "Hiring Tool", image: "SH.png" },
         ];
         setApplications(fetchedApplications);
@@ -43,7 +51,6 @@ const HomePage = () => {
       if (!userManagementData) {
         GetRoleNamesByUsername(localStorage.getItem("userMailId"))
           .then((data) => {
-            
             setuserManagementData((pre) => ({ ...pre, roleNames: data }));
           })
           .catch();

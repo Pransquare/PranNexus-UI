@@ -48,10 +48,10 @@ function Payroll() {
         onChange={tabsChange}
         variant="scrollable"
       >
-        {UserManagentCheck("hr_tools_ems_payroll_details") &&
-          !employeeData?.genericProfile && <Tab label="Payslip" value={0}/>}
-        {UserManagentCheck("hr_tools_ems_payroll_upload") && (
-          <Tab label="Payroll Upload" value={1}/>
+        {UserManagentCheck("hr_tools_nems_payroll_details") &&
+          !employeeData?.genericProfile && <Tab label="Payslip" value={0} />}
+        {UserManagentCheck("hr_tools_nems_payroll_upload") && (
+          <Tab label="Payroll Upload" value={1} />
         )}
         {false && <Tab label="Leave Report" />}
       </Tabs>

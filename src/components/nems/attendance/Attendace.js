@@ -30,7 +30,7 @@ function Attendace() {
         onChange={tabsChange}
         variant="scrollable"
       >
-        {UserManagentCheck("hr_tools_ems_employee_attendance_report") && (
+        {UserManagentCheck("hr_tools_nems_employee_attendance_report") && (
           <Tab label="Attendance Report" value={0} />
         )}
       </Tabs>

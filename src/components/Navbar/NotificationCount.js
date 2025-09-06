@@ -12,7 +12,7 @@ const NotificationCount = ({ openNotification }) => {
   useEffect(() => {
     if (employeeData) {
       const eventSource = new EventSource(
-        `${Environment.emsUrl}/notification/count/${employeeData?.employeeBasicDetailId}`
+        `${Environment.nemsUrl}/notification/count/${employeeData?.employeeBasicDetailId}`
       );
 
       eventSource.onmessage = (event) => {

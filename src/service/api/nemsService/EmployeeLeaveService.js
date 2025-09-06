@@ -4,7 +4,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 export const GetEmployeeLeaveDetails = async (employeeId) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employeeLeave/getEmployeeLeaveDetails/${employeeId}`
+      `${Environment.nemsUrl}/employeeLeave/getEmployeeLeaveDetails/${employeeId}`
     );
     return response.data;
   } catch (error) {
@@ -16,7 +16,7 @@ export const GetEmployeeLeaveDetails = async (employeeId) => {
 export const createOrUpdateEmployeeLeave = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employeeLeave/createOrUpdateEmployeeLeave`,
+      `${Environment.nemsUrl}/employeeLeave/createOrUpdateEmployeeLeave`,
       data
     );
     return response.data;
@@ -29,7 +29,7 @@ export const createOrUpdateEmployeeLeave = async (data) => {
 export const DeleteEmployeeLeave = async (leaveId) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employeeLeave/deleteEmployeeLeave/${leaveId}`
+      `${Environment.nemsUrl}/employeeLeave/deleteEmployeeLeave/${leaveId}`
     );
     return response.data;
   } catch (error) {
@@ -38,11 +38,15 @@ export const DeleteEmployeeLeave = async (leaveId) => {
   }
 };
 
-export const GetManagerName = async (employeeBasicDetailId, moduleName, data) => {
+export const GetManagerName = async (
+  employeeBasicDetailId,
+  moduleName,
+  data
+) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/ApproverConfig/getApproverByEmpIdAndModule?employeeBasicDetailId=${employeeBasicDetailId}&moduleName=${moduleName}`,
-      data 
+      `${Environment.nemsUrl}/ApproverConfig/getApproverByEmpIdAndModule?employeeBasicDetailId=${employeeBasicDetailId}&moduleName=${moduleName}`,
+      data
     );
     return response.data;
   } catch (error) {
@@ -53,7 +57,7 @@ export const GetManagerName = async (employeeBasicDetailId, moduleName, data) =>
 export const FindEmployeeLeaves = async (payload) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employeeLeave/findEmployeeLeaveDetails`,
+      `${Environment.nemsUrl}/employeeLeave/findEmployeeLeaveDetails`,
       payload
     );
     return response.data;
@@ -66,7 +70,7 @@ export const FindEmployeeLeaves = async (payload) => {
 export const GetEmployeeLeaveByApproverId = async (employeeId) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employeeLeave/getEmployeeLeavesByApproverId/${employeeId}`
+      `${Environment.nemsUrl}/employeeLeave/getEmployeeLeavesByApproverId/${employeeId}`
     );
     return response.data;
   } catch (error) {
@@ -78,7 +82,7 @@ export const GetEmployeeLeaveByApproverId = async (employeeId) => {
 export const ChangeEmployeeLeaveStatus = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employeeLeave/changeEmployeeLeaveStatus/${data.employeeLeaveId}/status/${data.status}`,
+      `${Environment.nemsUrl}/employeeLeave/changeEmployeeLeaveStatus/${data.employeeLeaveId}/status/${data.status}`,
       data
     );
     return response.data;
@@ -91,7 +95,7 @@ export const ChangeEmployeeLeaveStatus = async (data) => {
 export const GetEmployeeLeaveConfigDetails = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employeeLeave/employeeLeaveConfig`,
+      `${Environment.nemsUrl}/employeeLeave/employeeLeaveConfig`,
       data
     );
     return response.data;

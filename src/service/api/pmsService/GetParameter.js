@@ -4,7 +4,7 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 export const GetParams = async (empId, employeeType) => {
   try {
     const response = await axios.get(
-      `${Environment.emsUrl}/employee/getParamsByEmployeeId`,
+      `${Environment.nemsUrl}/employee/getParamsByEmployeeId`,
       { params: { empId, employeeType } }
     );
     return response.data;
@@ -17,7 +17,7 @@ export const GetParams = async (empId, employeeType) => {
 export const UpdateApprisalDetails = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/updateApprisalDetails`,
+      `${Environment.nemsUrl}/employee/updateApprisalDetails`,
       data
     );
     return response.data;
@@ -29,7 +29,7 @@ export const UpdateApprisalDetails = async (data) => {
 export const updateAttributeDetails = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/updateAttributeDetails`,
+      `${Environment.nemsUrl}/employee/updateAttributeDetails`,
       data
     );
     return response.data;
@@ -42,7 +42,7 @@ export const updateAttributeDetails = async (data) => {
 export const SearchPerformanceReviews = async (data) => {
   try {
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/searchPerformanceReviews`,
+      `${Environment.nemsUrl}/employee/searchPerformanceReviews`,
       data
     );
     return response.data;
@@ -65,7 +65,7 @@ export const UploadAppraisalLetter = async (
     formData.append("status", status);
 
     const response = await axios.post(
-      `${Environment.emsUrl}/employee/uploadAppraisalLetter`,
+      `${Environment.nemsUrl}/employee/uploadAppraisalLetter`,
       formData,
       {
         headers: {

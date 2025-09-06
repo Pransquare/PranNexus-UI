@@ -60,13 +60,13 @@ function Dashboard() {
     "hr_tools_smartHire_candidate_approval_managementApproval"
   );
 
-  const leaveApprover = UserManagentCheck("hr_tools_ems_leave_leaveApproval");
+  const leaveApprover = UserManagentCheck("hr_tools_nems_leave_leaveApproval");
 
   const genericUser = employeeData?.genericProfile;
 
   // Navigating to different pages
   const handleTimesheetNavigate = () => {
-    navigate("/home/ems/timesheet");
+    navigate("/home/nems/timesheet");
   };
 
   const handleCandidateNavigate = () => {
@@ -74,7 +74,7 @@ function Dashboard() {
   };
 
   const handleLeaveApprovalsNavigate = () => {
-    navigate("/home/ems/leave");
+    navigate("/home/nems/leave");
   };
 
   const handleHolidayNavigate = () => {
@@ -82,11 +82,11 @@ function Dashboard() {
   };
 
   const handleActiveEmployeesNavigate = () => {
-    navigate('/home/details/employee_status/active');
+    navigate("/home/details/employee_status/active");
   };
 
   const handleInactiveEmployeesNavigate = () => {
-    navigate('/home/details/employee_status/inactive');
+    navigate("/home/details/employee_status/inactive");
   };
 
   const getNextHoliday = (holidays) => {
@@ -304,10 +304,9 @@ function Dashboard() {
         {/* Left Column */}
         <div>
           <div
-  className="card-large text-white relative"
-  style={{ backgroundColor: "rgb(77,208,225)" }}
->
-
+            className="card-large text-white relative"
+            style={{ backgroundColor: "rgb(77,208,225)" }}
+          >
             <div className="employee-heading">
               <Typography variant="h4" className="primary">
                 {employeeData?.workType === "permanent"
@@ -389,8 +388,10 @@ function Dashboard() {
           {hr && (
             <div className="employee-count grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Active Employees Card */}
-              <div className="card-tall bg-white p-4 rounded-lg shadow-md  quick-link-2"
-              onClick={handleActiveEmployeesNavigate}>
+              <div
+                className="card-tall bg-white p-4 rounded-lg shadow-md  quick-link-2"
+                onClick={handleActiveEmployeesNavigate}
+              >
                 <div className="quick-link-content flex flex-col items-center text-center">
                   <Typography variant="h4" className="secondary">
                     Active Employees
@@ -403,8 +404,10 @@ function Dashboard() {
               </div>
 
               {/* Inactive Employees Card */}
-              <div className="card-tall bg-white p-4 rounded-lg shadow-md quick-link-2"
-              onClick={handleInactiveEmployeesNavigate}>
+              <div
+                className="card-tall bg-white p-4 rounded-lg shadow-md quick-link-2"
+                onClick={handleInactiveEmployeesNavigate}
+              >
                 <div className="quick-link-content flex flex-col items-center text-center">
                   <Typography variant="h4" className="secondary">
                     Inactive Employees

@@ -14,7 +14,7 @@ export const GetAllExpenseListFromMaster = async () => {
 export const SaveExpense = async (data) => {
   try {
     const response = await axiosInstance.post(
-      `${Environment.emsUrl}/expense/save`,
+      `${Environment.nemsUrl}/expense/save`,
       data
     );
     return response.data;
@@ -27,7 +27,7 @@ export const SaveExpense = async (data) => {
 export const UploadExpense = async (data, employeeCode, type = null) => {
   try {
     const url = `${
-      Environment.emsUrl
+      Environment.nemsUrl
     }/expense/billUpload?employeeCode=${employeeCode}${
       type ? `&type=${type}` : ""
     }`;
@@ -42,7 +42,7 @@ export const UploadExpense = async (data, employeeCode, type = null) => {
 export const RemoveBillUrl = async (employeeCode) => {
   try {
     const response = await axiosInstance.put(
-      `${Environment.emsUrl}/expense/removeBillUrl?employeeCode=${employeeCode}`
+      `${Environment.nemsUrl}/expense/removeBillUrl?employeeCode=${employeeCode}`
     );
     return response.data;
   } catch (error) {
@@ -54,7 +54,7 @@ export const RemoveBillUrl = async (employeeCode) => {
 export const Search = async (data) => {
   try {
     const response = await axiosInstance.post(
-      `${Environment.emsUrl}/expense/search`,
+      `${Environment.nemsUrl}/expense/search`,
       data
     );
     return response.data;
@@ -67,7 +67,7 @@ export const Search = async (data) => {
 export const GetExpenseById = async (id) => {
   try {
     const response = await axiosInstance.get(
-      `${Environment.emsUrl}/expense/${id}`
+      `${Environment.nemsUrl}/expense/${id}`
     );
     return response.data;
   } catch (error) {
@@ -79,7 +79,7 @@ export const GetExpenseById = async (id) => {
 export const UpdateBillStatus = async (data) => {
   try {
     const response = await axiosInstance.put(
-      `${Environment.emsUrl}/expense/updateExpenseBill`,
+      `${Environment.nemsUrl}/expense/updateExpenseBill`,
       data
     );
     return response.data;
@@ -92,7 +92,7 @@ export const UpdateBillStatus = async (data) => {
 export const UpdateExpenseStatus = async (data) => {
   try {
     const response = await axiosInstance.put(
-      `${Environment.emsUrl}/expense/updateExpense`,
+      `${Environment.nemsUrl}/expense/updateExpense`,
       data
     );
     return response.data;
@@ -105,7 +105,7 @@ export const UpdateExpenseStatus = async (data) => {
 export const DownloadExpenseReport = async (employeeId, date) => {
   try {
     const response = await axiosInstance.get(
-      `${Environment.emsUrl}/reports/expense-report`,
+      `${Environment.nemsUrl}/reports/expense-report`,
       {
         params: { employeeId, date },
         responseType: "blob", // Important to handle binary data
