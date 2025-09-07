@@ -32,6 +32,7 @@ const HomePage = () => {
     try {
       setTimeout(() => {
         const fetchedApplications = [
+
           {
             name: "PMS",
             description: "Performance Management System",
@@ -43,6 +44,11 @@ const HomePage = () => {
             image: "NEMS.png",
           },
           { name: "SmartHire", description: "Hiring Tool", image: "SH.png" },
+
+          { name: "PMS", description: "Performance Management System", image: "PMS.png" },
+          { name: "EMS", description: "Employee Management System", image: "EMS.png" },
+          { name: "NexusHire", description: "Hiring Tool", image: "SH.png" },
+
         ];
         setApplications(fetchedApplications);
         setLoading(false);

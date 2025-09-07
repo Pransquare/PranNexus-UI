@@ -849,12 +849,12 @@ function Router() {
           ],
         },
         {
-          path: "NexusHire",
+          path: "nexusHire",
           children: [
             {
               path: "candidateList",
               element: (
-                <ProtectedRoute roleName={["hr_tools_NexusHire_candidateList"]}>
+                <ProtectedRoute roleName={["hr_tools_nexusHire_candidateList"]}>
                   <CandidateList />
                 </ProtectedRoute>
               ),
@@ -864,10 +864,10 @@ function Router() {
               element: (
                 <ProtectedRoute
                   roleName={[
-                    "hr_tools_NexusHire_candidateList_View",
-                    "hr_tools_NexusHire_candidateList_Edit",
-                    "hr_tools_NexusHire_candidate_approval_budgetApproval",
-                    "hr_tools_NexusHire_candidate_approval_managementApproval",
+                    "hr_tools_nexusHire_candidateList_View",
+                    "hr_tools_nexusHire_candidateList_Edit",
+                    "hr_tools_nexusHire_candidate_approval_budgetApproval",
+                    "hr_tools_nexusHire_candidate_approval_managementApproval",
                   ]}
                 >
                   <Candidate />
@@ -877,7 +877,7 @@ function Router() {
             {
               path: "candidate",
               element: (
-                <ProtectedRoute roleName={["hr_tools_NexusHire_candidate"]}>
+                <ProtectedRoute roleName={["hr_tools_nexusHire_candidate"]}>
                   <Candidate />
                 </ProtectedRoute>
               ),
