@@ -35,7 +35,7 @@ const RemitanceInvoice = () => {
             "Remittance records will be extracted and available for download under reports, please check after an hour."
           );
           axios
-            .get(Environment.emsUrl + "/Emailextraction/callAsyncInvoice")
+            .get(Environment.nemsUrl + "/Emailextraction/callAsyncInvoice")
             .catch((error) => {
               console.error("Error during Project Scope Extraction:", error);
             });
@@ -66,7 +66,7 @@ const RemitanceInvoice = () => {
             "Remittance Records will be Extracted in to the Destination Folder, please check after an hour."
           );
           axios
-            .get(Environment.emsUrl + "/Emailextraction/invoiceFileArchive")
+            .get(Environment.nemsUrl + "/Emailextraction/invoiceFileArchive")
             .then((a) => {
               Toaster("success", "Remitance invoice file is archived.");
             })
@@ -89,7 +89,7 @@ const RemitanceInvoice = () => {
 
   const handleDownload = () => {
     axios
-      .get(Environment.emsUrl + "/Emailextraction/downloadInvoiceExcel", {
+      .get(Environment.nemsUrl + "/Emailextraction/downloadInvoiceExcel", {
         responseType: "blob",
       })
       .then((res) => res.data)

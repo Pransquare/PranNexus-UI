@@ -5,6 +5,13 @@ export const Environment = {
   staging: false,
   local: false,
 
+<<<<<<< Updated upstream
+=======
+  // apiUrl: "http://localhost:8081/SSIT/MasterConfiguration",
+  // nemsUrl: "http://localhost:8080/Pransquare/nems",
+
+
+>>>>>>> Stashed changes
   apiUrl: "http://localhost:8081/Pransquare/MasterConfiguration",
 
   nemsUrl: "http://localhost:8080/Pransquare/nems",

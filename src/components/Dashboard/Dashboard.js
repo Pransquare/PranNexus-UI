@@ -51,10 +51,11 @@ function Dashboard() {
   // Other variables and user permissions
 
   // const candidateList = UserManagentCheck("hr_tools_smartHire_candidateList");
-  const candidateList = UserManagentCheck("hr_tools_NexusHire_candidateList");
+  const candidateList = UserManagentCheck("hr_tools_nexusHire_candidateList");
   // const hr = UserManagentCheck(
   //   "hr_tools_smartHire_candidate_approval_uploadOfferLetter"
   // );
+<<<<<<< Updated upstream
   const hr = UserManagentCheck(
     "hr_tools_NexusHire_candidate_approval_uploadOfferLetter"
   );
@@ -70,6 +71,17 @@ function Dashboard() {
   const management = UserManagentCheck(
     "hr_tools_NexusHire_candidate_approval_managementApproval"
   );
+=======
+  const hr = UserManagentCheck("hr_tools_nexusHire_candidate_approval_uploadOfferLetter");
+  // const budget = UserManagentCheck(
+  //   "hr_tools_smartHire_candidate_approval_budgetApproval"
+  // );
+  const budget = UserManagentCheck("hr_tools_nexusHire_candidate_approval_budgetApproval");
+  // const management = UserManagentCheck(
+  //   "hr_tools_smartHire_candidate_approval_managementApproval"
+  // );
+  const management = UserManagentCheck("hr_tools_nexusHire_candidate_approval_managementApproval");
+>>>>>>> Stashed changes
 
   // const leaveApprover = UserManagentCheck("hr_tools_ems_leave_leaveApproval");
   const leaveApprover = UserManagentCheck("hr_tools_nems_leave_leaveApproval");
@@ -81,7 +93,7 @@ function Dashboard() {
   };
 
   const handleCandidateNavigate = () => {
-    navigate("/home/NexusHire/candidateList");
+    navigate("/home/nexusHire/candidateList");
   };
 
   const handleLeaveApprovalsNavigate = () => {

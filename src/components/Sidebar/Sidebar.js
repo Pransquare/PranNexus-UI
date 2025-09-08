@@ -60,7 +60,10 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_tax_approved_Details",
         userManagementData
       ),
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
       hr_tools_nems_leave: UserManagentCheck(
         "hr_tools_nems_leave",
         userManagementData
@@ -77,7 +80,10 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_Contract_Management",
         userManagementData
       ),
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
       hr_tools_nems_payroll: UserManagentCheck(
         "hr_tools_nems_payroll",
         userManagementData
@@ -90,7 +96,10 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_nems_appraisal",
         userManagementData
       ),
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
       hr_tools_nems_appraisal_initiate: UserManagentCheck(
         "hr_tools_nems_appraisal_initiate",
         userManagementData
@@ -1253,6 +1262,82 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                 <ListItemText primary="Release Note" />
               </ListItemButton>
             )}
+
+            {/* {userManagentRes["manager"] && (
+  <>
+    <ListItemButton divider={true} onClick={() => toggleSection(8)}>
+      <FaUsers className="text-white" />
+      <ListItemText
+        sx={{ marginLeft: "0.5rem" }}
+        primary="Manager"
+      />
+      {openSection === 8 ? (
+        <KeyboardArrowDownSharp />
+      ) : (
+        <KeyboardArrowRightSharp />
+      )}
+    </ListItemButton>
+
+    <Collapse in={openSection === 8} timeout="auto" unmountOnExit>
+      <List component="div" disablePadding={true}>
+        <ListItemButton
+          dense
+          divider={true}
+          component={Link}
+          onClick={oncloseSideBar}
+          to="manager/dashboard"
+        >
+          <ListItemText primary="Manager Dashboard" />
+        </ListItemButton>
+
+        {userManagentRes["project_report"] && (
+          <ListItemButton
+            dense
+            divider={true}
+            component={Link}
+            onClick={oncloseSideBar}
+            to="reports/project_report"
+          >
+            <ListItemText primary="Project Report" />
+          </ListItemButton>
+        )}
+
+        {userManagentRes["timesheet_report_for_manager"] && (
+          <ListItemButton
+            dense
+            divider={true}
+            component={Link}
+            onClick={oncloseSideBar}
+            to="reports/timesheet_report_for_manager/effort"
+          >
+            <ListItemText primary="Timesheet Report" />
+          </ListItemButton>
+        )}
+      </List>
+    </Collapse>
+  </>
+)} */}
+
+{/* 
+{userManagentRes?.project_report || userManagentRes?.timesheet_report_for_manager ? (
+  <li className="nav-item">
+    <span className="nav-link">Manager</span>
+    <ul className="submenu">
+      {userManagentRes?.project_report && (
+        <li>
+          <Link to="/project-report">Project Report</Link>
+        </li>
+      )}
+      {userManagentRes?.timesheet_report_for_manager && (
+        <li>
+          <Link to="/timesheet-report-manager">Timesheet Report</Link>
+        </li>
+      )}
+    </ul>
+  </li>
+) : null} */}
+
+
           </>
         </List>
       </div>
