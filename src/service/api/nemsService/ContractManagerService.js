@@ -88,17 +88,16 @@ export const generateSowReport = async (
   }
 };
 
-  export const getSowIds = async (account, status) => {
-    try {
-        const response = await axios.get(`${Environment.nemsUrl}/sow/getSowIds`, {
-            params: { account, status },
-        });
-        return response.data;
-    } catch (error) {
-        console.error("Error fetching SOW IDs:", error);
-        throw error;
-    }
-
+export const getSowIds = async (account, status) => {
+  try {
+    const response = await axios.get(`${Environment.nemsUrl}/sow/getSowIds`, {
+      params: { account, status },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching SOW IDs:", error);
+    throw error;
+  }
 };
 export const searchSowDetails = async (searchParams) => {
   try {

@@ -3,7 +3,6 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 
 export const createNews = async (newsEntity) => {
   try {
-
     const response = await axios.post(
       `${Environment.nemsUrl}/news`,
       newsEntity
@@ -31,12 +30,9 @@ export const updateNews = async (newsId, updatedNewsEntity) => {
 
 export const deleteNews = async (newsId) => {
   try {
-
     const response = await axios.delete(
       `${Environment.nemsUrl}/news/${newsId}`
     );
-
-   
 
     return response.status === 204;
   } catch (error) {

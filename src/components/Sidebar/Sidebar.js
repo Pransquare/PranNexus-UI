@@ -498,7 +498,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                             sx={{
                               marginLeft: "0.5rem",
                             }}
-                            primary="nems"
+                            primary="NEMS"
                           />
                           {hoveredItem === "nems" ? (
                             <KeyboardArrowDownSharp />
@@ -1309,7 +1309,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
   </>
 )} */}
 
-{/* 
+            {/* 
 {userManagentRes?.project_report || userManagentRes?.timesheet_report_for_manager ? (
   <li className="nav-item">
     <span className="nav-link">Manager</span>
@@ -1327,8 +1327,6 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
     </ul>
   </li>
 ) : null} */}
-
-
           </>
         </List>
       </div>
