@@ -30,7 +30,7 @@ export const CreateEmailAndRolesForUser = async (data) => {
 export const GetAllRoleType = async (data) => {
   try {
     const response = await axios.get(
-      `${Environment.loginUrl}/pransquare/Roles/getAllRoleType`
+      `${Environment.loginUrl}/Pransquare/Roles/getAllRoleType`
     );
     return response.data;
   } catch (error) {

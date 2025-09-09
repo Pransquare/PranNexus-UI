@@ -216,6 +216,7 @@ function Requests() {
           email: formData.email,
           createdBy: employeeData?.fullName,
           empCode: formData.employeeCode,
+          password: "Welcome@123",
           roles: formData.roleTypes.map((role) => ({
             roleTypeCode: role,
           })),
