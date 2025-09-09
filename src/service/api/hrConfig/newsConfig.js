@@ -3,14 +3,12 @@ import { axiosInstance as axios } from "../../interceptor/useAxiosInterceptors";
 
 export const createNews = async (newsEntity) => {
   try {
-<<<<<<< Updated upstream
+
     const response = await axios.post(
       `${Environment.nemsUrl}/news`,
       newsEntity
     );
-=======
-    const response = await axios.post(`${Environment.nemsUrl}/news`, newsEntity);
->>>>>>> Stashed changes
+
     return response.data;
   } catch (error) {
     console.error("Error creating news:", error);
@@ -33,13 +31,13 @@ export const updateNews = async (newsId, updatedNewsEntity) => {
 
 export const deleteNews = async (newsId) => {
   try {
-<<<<<<< Updated upstream
+
     const response = await axios.delete(
       `${Environment.nemsUrl}/news/${newsId}`
     );
-=======
-    const response = await axios.delete(`${Environment.nemsUrl}/news/${newsId}`);
->>>>>>> Stashed changes
+
+   
+
     return response.status === 204;
   } catch (error) {
     console.error("Error deleting news:", error);

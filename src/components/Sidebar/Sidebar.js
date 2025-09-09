@@ -60,10 +60,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_tax_approved_Details",
         userManagementData
       ),
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
       hr_tools_nems_leave: UserManagentCheck(
         "hr_tools_nems_leave",
         userManagementData
@@ -80,10 +77,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_Contract_Management",
         userManagementData
       ),
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
       hr_tools_nems_payroll: UserManagentCheck(
         "hr_tools_nems_payroll",
         userManagementData
@@ -96,10 +90,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_nems_appraisal",
         userManagementData
       ),
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
       hr_tools_nems_appraisal_initiate: UserManagentCheck(
         "hr_tools_nems_appraisal_initiate",
         userManagementData

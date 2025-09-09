@@ -246,20 +246,12 @@ export const SaveTdsDetails = async (payload) => {
 };
 export const getTdsDetailsByEmployeeCode = async (employeeCode) => {
   try {
-<<<<<<< Updated upstream
-    const response = await axios.get(
-      `${Environment.nemsUrl}/tdsdetails/getTdsDetailsByEmployeeCode`,
-      {
-        params: { employeeCode },
-      }
-    );
-    return { success: true, data: response.data };
-=======
+
     const response = await axios.get(`${Environment.nemsUrl}/tdsdetails/getTdsDetailsByEmployeeCode`, {
       params: { employeeCode },
     });
     return { success: true, data: response.data }; 
->>>>>>> Stashed changes
+
   } catch (error) {
     return {
       success: false,
