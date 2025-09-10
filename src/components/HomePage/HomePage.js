@@ -43,10 +43,9 @@ const HomePage = () => {
             description: "Employee Management System",
             image: "NEMS.png",
           },
-          { name: "SmartHire", description: "Hiring Tool", image: "SH.png" },
+       
 
-          { name: "PMS", description: "Performance Management System", image: "PMS.png" },
-          { name: "EMS", description: "Employee Management System", image: "EMS.png" },
+  
           { name: "NexusHire", description: "Hiring Tool", image: "SH.png" },
 
         ];
