@@ -1504,7 +1504,7 @@ function Router() {
                 {
                   path: "submission/:id?",
                   element: (
-                    <ProtectedRoute roleName={["finance_expense_new"]}>
+                    <ProtectedRoute roleName={["finance_expense_new","expense_manager_approval"]}>
                       <ExpenseSubmission />
                     </ProtectedRoute>
                   ),
@@ -1512,7 +1512,7 @@ function Router() {
                 {
                   path: "records",
                   element: (
-                    <ProtectedRoute roleName={["finance_expense_list"]}>
+                    <ProtectedRoute roleName={["finance_expense_list","expense_manager_approval"]}>
                       <ExpenseRecords />
                     </ProtectedRoute>
                   ),

@@ -1169,7 +1169,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
             </>
           )}
 
-          {userManagentRes["finance"] &&
+          {(userManagentRes["finance"]||userManagentRes["expense_manager_approval"] ) &&
             ((!userManagentRes["hr_details"] && !userManagentRes["it"]) ||
               userManagentRes["admin"]) && (
               <>
@@ -1179,7 +1179,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                     sx={{
                       marginLeft: "0.5rem",
                     }}
-                    primary="Finance"
+                    primary="Finance" 
                   />
                   {openSection === 2 ? (
                     <KeyboardArrowDownSharp />
@@ -1190,7 +1190,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
 
                 <Collapse in={openSection === 2} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding={true}>
-                    {userManagentRes["finance_expense"] && (
+                    {(userManagentRes["finance_expense"]||userManagentRes["expense_manager_approval"]) && (
                       <ListItemButton
                         dense
                         divider={true}
@@ -1217,7 +1217,8 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                       unmountOnExit
                     >
                       <List component="div" disablePadding={true}>
-                        {userManagentRes["finance_expense_new"] && (
+                       
+                        {(userManagentRes["finance_expense_new"] ||userManagentRes["expense_manager_approval"] )&& (
                           <ListItemButton
                             dense
                             divider={true}
@@ -1228,7 +1229,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                             <ListItemText primary="Submission" />
                           </ListItemButton>
                         )}
-                        {userManagentRes["finance_expense_list"] && (
+                        {(userManagentRes["finance_expense_list"] ||userManagentRes["expense_manager_approval"]) && (
                           <ListItemButton
                             dense
                             divider={true}
@@ -1280,7 +1281,8 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                   )}
                   {userManagentRes["expense_report"] &&
                     (!userManagentRes["hr_details"] ||
-                      userManagentRes["admin"]) && (
+                      userManagentRes["admin"])
+                      && (
                       <ListItemButton
                         dense
                         divider={true}
