@@ -47,6 +47,8 @@ function Dashboard() {
     inactiveCount: 0,
   });
   const navigate = useNavigate();
+  const userRoles = user?.roles || [];
+// const isAdmin = userRoles.includes("Admin");
 
   // Other variables and user permissions
 
@@ -530,6 +532,7 @@ function Dashboard() {
               // Case: Not a generic user but candidate list is true
               <div className="quick-links-row grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Timesheet card hidden for genericUser */}
+                {/* && !isAdmin */}
                 {!genericUser && (
                   <div
                     className="card-small quick-link"
@@ -575,6 +578,7 @@ function Dashboard() {
           ) : (
             // Case: Candidate list is false
             // Hide the "Timesheet" card for genericUser here as well
+            //&& !isAdmin
             !genericUser && (
               <div
                 className="card-tall quick-link"

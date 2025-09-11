@@ -1203,7 +1203,8 @@ function Router() {
         {
           path: "tools/holidays",
           element: (
-            <ProtectedRoute roleName={["hr_tools"]}>
+            // roleName={["hr_tools"]}
+            <ProtectedRoute >
               <Holiday />
             </ProtectedRoute>
           ),
@@ -1214,7 +1215,7 @@ function Router() {
             {
               path: "leave",
               element: (
-                <ProtectedRoute roleName={["hr_tools_nems_leave"]}>
+                <ProtectedRoute roleName={["hr_tools_nems_leave", "hr_tools_nems_leave_leaveApproval","it" ,"finance","hr_tools"]}>
                   <Leave />
                 </ProtectedRoute>
               ),
@@ -1222,7 +1223,7 @@ function Router() {
             {
               path: "timeSheet",
               element: (
-                <ProtectedRoute roleName={["hr_tools_nems_timesheet"]}>
+                <ProtectedRoute roleName={["hr_tools_nems_timesheet", "hr_tools_nems_timesheet_Approvals","it","finance","hr_tools"]}>
                   <TimeSheet />
                 </ProtectedRoute>
               ),
