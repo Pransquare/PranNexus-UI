@@ -98,7 +98,7 @@ export const getSowIds = async (account, status) => {
     console.error("Error fetching SOW IDs:", error);
     throw error;
   }
-};
+}
 export const searchSowDetails = async (searchParams) => {
   try {
     const response = await axios.post(

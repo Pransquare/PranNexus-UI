@@ -56,21 +56,16 @@ function Dashboard() {
   //   "hr_tools_smartHire_candidate_approval_uploadOfferLetter"
   // );
 
-  const hr = UserManagentCheck(
-    "hr_tools_nexusHire_candidate_approval_uploadOfferLetter"
-  );
+  const hr = UserManagentCheck("hr_tools_nexusHire_candidate_approval_uploadOfferLetter");
   // const budget = UserManagentCheck(
   //   "hr_tools_smartHire_candidate_approval_budgetApproval"
   // );
-  const budget = UserManagentCheck(
-    "hr_tools_nexusHire_candidate_approval_budgetApproval"
-  );
+  const budget = UserManagentCheck("hr_tools_nexusHire_candidate_approval_budgetApproval");
   // const management = UserManagentCheck(
   //   "hr_tools_smartHire_candidate_approval_managementApproval"
   // );
-  const management = UserManagentCheck(
-    "hr_tools_nexusHire_candidate_approval_managementApproval"
-  );
+  const management = UserManagentCheck("hr_tools_nexusHire_candidate_approval_managementApproval");
+
 
   // const leaveApprover = UserManagentCheck("hr_tools_ems_leave_leaveApproval");
   const leaveApprover = UserManagentCheck("hr_tools_nems_leave_leaveApproval");

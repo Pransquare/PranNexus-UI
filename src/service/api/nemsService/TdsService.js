@@ -246,6 +246,7 @@ export const SaveTdsDetails = async (payload) => {
 };
 export const getTdsDetailsByEmployeeCode = async (employeeCode) => {
   try {
+
     const response = await axios.get(
       `${Environment.nemsUrl}/tdsdetails/getTdsDetailsByEmployeeCode`,
       {
@@ -253,6 +254,7 @@ export const getTdsDetailsByEmployeeCode = async (employeeCode) => {
       }
     );
     return { success: true, data: response.data };
+
   } catch (error) {
     return {
       success: false,

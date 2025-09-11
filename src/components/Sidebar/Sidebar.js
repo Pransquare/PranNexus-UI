@@ -28,11 +28,21 @@ import { UserManagentContext } from "../../customHooks/dataProviders/UserManagem
 import "./Sidebar.css";
 import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDataProvider";
 
+// const UserManagentCheck = (roleName, userManagementData) => {
+//   if (userManagementData) {
+//     return userManagementData?.roleNames?.some((data) => data === roleName);
+//   }
+// };
+
+
 const UserManagentCheck = (roleName, userManagementData) => {
   if (userManagementData) {
-    return userManagementData?.roleNames?.some((data) => data === roleName);
+    return userManagementData?.roleNames?.some(
+      (data) => data.replace(/\$/g, "") === roleName.replace(/\$/g, "")
+    );
   }
 };
+
 
 const Sidebar = ({ open = true, oncloseSideBar }) => {
   const [openSection, setOpenSection] = useState(null);
@@ -49,6 +59,12 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         userManagementData
       ),
 
+
+
+
+
+
+
       hr: UserManagentCheck("hr", userManagementData),
       hr_tools: UserManagentCheck("hr_tools", userManagementData),
       hr_tools_nems: UserManagentCheck("hr_tools_nems", userManagementData),
@@ -60,6 +76,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
         "hr_tools_tax_approved_Details",
         userManagementData
       ),
+
 
       hr_tools_nems_leave: UserManagentCheck(
         "hr_tools_nems_leave",
@@ -182,6 +199,25 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
       ),
       vendor_config: UserManagentCheck("vendor_config", userManagementData),
       vendor_approval: UserManagentCheck("vendor_approval", userManagementData),
+
+      hr_tools_nems_leave_leaveApproval: UserManagentCheck(
+  "hr_tools_nems_leave_leaveApproval",
+  userManagementData
+),
+hr_tools_nems_timesheet_Approvals: UserManagentCheck(
+  "hr_tools_nems_timesheet_Approvals",
+  userManagementData
+),
+timesheet_report_for_manager: UserManagentCheck(
+  "timesheet_report_for_manager",
+  userManagementData
+),
+project_report: UserManagentCheck("project_report", userManagementData),
+expense_manager_approval: UserManagentCheck(
+  "expense_manager_approval",
+  userManagementData
+),
+
     }),
     [userManagementData]
   );
@@ -434,7 +470,11 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
               </Collapse>
             </>
           )}
-          {userManagentRes["hr"] && (
+          {(
+  userManagentRes["hr"] ||
+  userManagentRes["hr_tools_nems_leave_leaveApproval"] ||
+  userManagentRes["hr_tools_nems_timesheet_Approvals"]
+) && (
             <>
               <ListItemButton
                 divider={true}
@@ -457,7 +497,11 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
               </ListItemButton>
               <Collapse in={openSection === 0} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding={true}>
-                  {userManagentRes["hr_tools"] && (
+                {(
+  userManagentRes["hr_tools"] ||
+  userManagentRes["hr_tools_nems_leave_leaveApproval"] ||
+  userManagentRes["hr_tools_nems_timesheet_Approvals"]
+) && (
                     <ListItemButton
                       dense
                       divider={true}
@@ -484,7 +528,9 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                     unmountOnExit
                   >
                     <List component="div" disablePadding={true}>
-                      {userManagentRes["hr_tools_nems"] && (
+                     {(userManagentRes["hr_tools_nems"] ||
+  userManagentRes["hr_tools_nems_leave_leaveApproval"] ||
+  userManagentRes["hr_tools_nems_timesheet_Approvals"]) && (
                         <ListItemButton
                           dense
                           divider={true}
@@ -513,7 +559,8 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                         unmountOnExit
                       >
                         <List component="div" disablePadding={true}>
-                          {userManagentRes["hr_tools_nems_leave"] && (
+                          {(userManagentRes["hr_tools_nems_leave"] ||
+  userManagentRes["hr_tools_nems_leave_leaveApproval"]) && (
                             <ListItemButton
                               dense
                               divider={true}
@@ -524,7 +571,8 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                               <ListItemText primary="Leave" />
                             </ListItemButton>
                           )}
-                          {userManagentRes["hr_tools_nems_timesheet"] && (
+                          {(userManagentRes["hr_tools_nems_timesheet"] ||
+  userManagentRes["hr_tools_nems_timesheet_Approvals"]) && (
                             <ListItemButton
                               dense
                               divider={true}
@@ -559,7 +607,9 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                             </ListItemButton>
                           )}
 
-                          {userManagentRes["hr_tools_nems_appraisal"] && (
+
+
+                          {/* {userManagentRes["hr_tools_nems_appraisal"] && (
                             <>
                               <ListItemButton
                                 dense
@@ -584,7 +634,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                                 unmountOnExit
                               >
                                 <List component="div" disablePadding={true}>
-                                  {userManagentRes["Hr_goal_initiate"] && (
+                                  {userManagentRes["hr_goal_initiate"] && (
                                     <ListItemButton
                                       dense
                                       divider={true}
@@ -677,7 +727,149 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
                                 </List>
                               </Collapse>
                             </>
-                          )}
+                          )} */}
+{/* Goals Section */}
+{(
+  userManagentRes["hr_tools_nems_appraisal"] ||
+  userManagentRes["hr_tools_nems_appraisal$"] ||
+  userManagentRes["hr_appraisal$"]
+) && (
+  <>
+    <ListItemButton
+      dense
+      divider={true}
+      onClick={() =>
+        setInternalSubsection(openInternalSubsection === 6 ? null : 6)
+      }
+    >
+      <ListItemText primary="Goals" />
+      {openInternalSubsection === 6 ? (
+        <KeyboardArrowDownSharp />
+      ) : (
+        <KeyboardArrowRightSharp />
+      )}
+    </ListItemButton>
+
+    <Collapse in={openInternalSubsection === 6} timeout="auto" unmountOnExit>
+      <List component="div" disablePadding={true}>
+        {userManagentRes["hr_goal_initiate"] && (
+          <ListItemButton
+            dense
+            divider={true}
+            component={Link}
+            onClick={oncloseSideBar}
+            to="nems/goals/initiateGoals"
+          >
+            <ListItemText primary="Initiate Goals" />
+          </ListItemButton>
+        )}
+        {userManagentRes["emp_goal_view"] && (
+          <ListItemButton
+            dense
+            divider={true}
+            component={Link}
+            onClick={oncloseSideBar}
+            to="nems/goals/employeeGoals"
+          >
+            <ListItemText primary="Goals Settings" />
+          </ListItemButton>
+        )}
+        {userManagentRes["goal_approval"] && (
+          <ListItemButton
+            dense
+            divider={true}
+            component={Link}
+            onClick={oncloseSideBar}
+            to="nems/goals/goalsApprove"
+          >
+            <ListItemText primary="Goals Approvals" />
+          </ListItemButton>
+        )}
+      </List>
+    </Collapse>
+  </>
+)}
+
+{/* Appraisal Section */}
+{(
+  userManagentRes["hr_tools_nems_appraisal"] ||
+  userManagentRes["hr_tools_nems_appraisal$"] ||
+  userManagentRes["hr_appraisal$"]
+) && (
+  <>
+    <ListItemButton
+      dense
+      divider={true}
+      onClick={() =>
+        setInternalSubsection(openInternalSubsection === 5 ? null : 5)
+      }
+    >
+      <ListItemText primary="Appraisal" />
+      {openInternalSubsection === 5 ? (
+        <KeyboardArrowDownSharp />
+      ) : (
+        <KeyboardArrowRightSharp />
+      )}
+    </ListItemButton>
+
+    <Collapse in={openInternalSubsection === 5} timeout="auto" unmountOnExit>
+      <List component="div" disablePadding={true}>
+        {(userManagentRes["hr_tools_nems_appraisal_initiate"] ||
+          userManagentRes["hr_tools_nems_appraisal_initiate$"] ||
+          userManagentRes["hr_tools_apprisal_initiate$"]) && (
+          <ListItemButton
+            dense
+            divider={true}
+            component={Link}
+            onClick={oncloseSideBar}
+            to="nems/appraisal/initiateAppraisal"
+          >
+            <ListItemText primary="Initiate Appraisal" />
+          </ListItemButton>
+        )}
+
+        {userManagentRes["hr_tools_apprisal_inprogress$"] && (
+          <ListItemButton
+            dense
+            divider={true}
+            component={Link}
+            onClick={oncloseSideBar}
+            to="nems/appraisal/inprogressAppraisal"
+          >
+            <ListItemText primary="Appraisal In-Progress" />
+          </ListItemButton>
+        )}
+
+        {userManagentRes["hr_tools_apprisal_approved$"] && (
+          <ListItemButton
+            dense
+            divider={true}
+            component={Link}
+            onClick={oncloseSideBar}
+            to="nems/appraisal/approvedAppraisal"
+          >
+            <ListItemText primary="Approved Appraisal" />
+          </ListItemButton>
+        )}
+
+        {(userManagentRes["hr_tools_nems_appraisal_form"] ||
+          userManagentRes["hr_tools_nems_appraisal_form$"]) &&
+          !employeeData?.genericProfile && (
+            <ListItemButton
+              dense
+              divider={true}
+              component={Link}
+              onClick={oncloseSideBar}
+              to="nems/appraisal/employeeAppraisal"
+            >
+              <ListItemText primary="Employee Appraisal" />
+            </ListItemButton>
+          )}
+      </List>
+    </Collapse>
+  </>
+)}
+
                         </List>
                       </Collapse>
                       {userManagentRes["hr_tools_nexusHire"] && (
@@ -1042,7 +1234,9 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
               </>
             )}
 
-          {userManagentRes["reports"] && (
+          {(userManagentRes["reports"] ||
+  userManagentRes["project_report"] ||
+  userManagentRes["timesheet_report_for_manager"])  && (
             <>
               <ListItemButton divider={true} onClick={() => toggleSection(4)}>
                 <FaClipboardList className="text-white" />
@@ -1254,79 +1448,7 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
               </ListItemButton>
             )}
 
-            {/* {userManagentRes["manager"] && (
-  <>
-    <ListItemButton divider={true} onClick={() => toggleSection(8)}>
-      <FaUsers className="text-white" />
-      <ListItemText
-        sx={{ marginLeft: "0.5rem" }}
-        primary="Manager"
-      />
-      {openSection === 8 ? (
-        <KeyboardArrowDownSharp />
-      ) : (
-        <KeyboardArrowRightSharp />
-      )}
-    </ListItemButton>
 
-    <Collapse in={openSection === 8} timeout="auto" unmountOnExit>
-      <List component="div" disablePadding={true}>
-        <ListItemButton
-          dense
-          divider={true}
-          component={Link}
-          onClick={oncloseSideBar}
-          to="manager/dashboard"
-        >
-          <ListItemText primary="Manager Dashboard" />
-        </ListItemButton>
-
-        {userManagentRes["project_report"] && (
-          <ListItemButton
-            dense
-            divider={true}
-            component={Link}
-            onClick={oncloseSideBar}
-            to="reports/project_report"
-          >
-            <ListItemText primary="Project Report" />
-          </ListItemButton>
-        )}
-
-        {userManagentRes["timesheet_report_for_manager"] && (
-          <ListItemButton
-            dense
-            divider={true}
-            component={Link}
-            onClick={oncloseSideBar}
-            to="reports/timesheet_report_for_manager/effort"
-          >
-            <ListItemText primary="Timesheet Report" />
-          </ListItemButton>
-        )}
-      </List>
-    </Collapse>
-  </>
-)} */}
-
-            {/* 
-{userManagentRes?.project_report || userManagentRes?.timesheet_report_for_manager ? (
-  <li className="nav-item">
-    <span className="nav-link">Manager</span>
-    <ul className="submenu">
-      {userManagentRes?.project_report && (
-        <li>
-          <Link to="/project-report">Project Report</Link>
-        </li>
-      )}
-      {userManagentRes?.timesheet_report_for_manager && (
-        <li>
-          <Link to="/timesheet-report-manager">Timesheet Report</Link>
-        </li>
-      )}
-    </ul>
-  </li>
-) : null} */}
           </>
         </List>
       </div>
