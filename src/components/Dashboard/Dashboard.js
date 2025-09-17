@@ -47,30 +47,21 @@ function Dashboard() {
     inactiveCount: 0,
   });
   const navigate = useNavigate();
-  const userRoles = user?.roles || [];
-// const isAdmin = userRoles.includes("Admin");
 
   // Other variables and user permissions
-
-  // const candidateList = UserManagentCheck("hr_tools_smartHire_candidateList");
   const candidateList = UserManagentCheck("hr_tools_nexusHire_candidateList");
-  // const hr = UserManagentCheck(
-  //   "hr_tools_smartHire_candidate_approval_uploadOfferLetter"
-  // );
+  const hr = UserManagentCheck(
+    "hr_tools_nexusHire_candidate_approval_uploadOfferLetter"
+  );
+  const budget = UserManagentCheck(
+    "hr_tools_nexusHire_candidate_approval_budgetApproval"
+  );
+  const management = UserManagentCheck(
+    "hr_tools_nexusHire_candidate_approval_managementApproval"
+  );
 
-  const hr = UserManagentCheck("hr_tools_nexusHire_candidate_approval_uploadOfferLetter");
-  // const budget = UserManagentCheck(
-  //   "hr_tools_smartHire_candidate_approval_budgetApproval"
-  // );
-  const budget = UserManagentCheck("hr_tools_nexusHire_candidate_approval_budgetApproval");
-  // const management = UserManagentCheck(
-  //   "hr_tools_smartHire_candidate_approval_managementApproval"
-  // );
-  const management = UserManagentCheck("hr_tools_nexusHire_candidate_approval_managementApproval");
-
-
-  // const leaveApprover = UserManagentCheck("hr_tools_ems_leave_leaveApproval");
   const leaveApprover = UserManagentCheck("hr_tools_nems_leave_leaveApproval");
+
   const genericUser = employeeData?.genericProfile;
 
   // Navigating to different pages
@@ -91,11 +82,11 @@ function Dashboard() {
   };
 
   const handleActiveEmployeesNavigate = () => {
-    navigate("/home/details/employee_status/active");
+    navigate('/home/details/employee_status/active');
   };
 
   const handleInactiveEmployeesNavigate = () => {
-    navigate("/home/details/employee_status/inactive");
+    navigate('/home/details/employee_status/inactive');
   };
 
   const getNextHoliday = (holidays) => {
@@ -313,9 +304,10 @@ function Dashboard() {
         {/* Left Column */}
         <div>
           <div
-            className="card-large text-white relative"
-            style={{ backgroundColor: "rgb(77,208,225)" }}
-          >
+  className="card-large text-white relative"
+  style={{ backgroundColor: "rgb(77,208,225)" }}
+>
+
             <div className="employee-heading">
               <Typography variant="h4" className="primary">
                 {employeeData?.workType === "permanent"
@@ -397,10 +389,8 @@ function Dashboard() {
           {hr && (
             <div className="employee-count grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Active Employees Card */}
-              <div
-                className="card-tall bg-white p-4 rounded-lg shadow-md  quick-link-2"
-                onClick={handleActiveEmployeesNavigate}
-              >
+              <div className="card-tall bg-white p-4 rounded-lg shadow-md  quick-link-2"
+              onClick={handleActiveEmployeesNavigate}>
                 <div className="quick-link-content flex flex-col items-center text-center">
                   <Typography variant="h4" className="secondary">
                     Active Employees
@@ -413,10 +403,8 @@ function Dashboard() {
               </div>
 
               {/* Inactive Employees Card */}
-              <div
-                className="card-tall bg-white p-4 rounded-lg shadow-md quick-link-2"
-                onClick={handleInactiveEmployeesNavigate}
-              >
+              <div className="card-tall bg-white p-4 rounded-lg shadow-md quick-link-2"
+              onClick={handleInactiveEmployeesNavigate}>
                 <div className="quick-link-content flex flex-col items-center text-center">
                   <Typography variant="h4" className="secondary">
                     Inactive Employees
@@ -532,7 +520,6 @@ function Dashboard() {
               // Case: Not a generic user but candidate list is true
               <div className="quick-links-row grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Timesheet card hidden for genericUser */}
-                {/* && !isAdmin */}
                 {!genericUser && (
                   <div
                     className="card-small quick-link"
@@ -578,7 +565,6 @@ function Dashboard() {
           ) : (
             // Case: Candidate list is false
             // Hide the "Timesheet" card for genericUser here as well
-            //&& !isAdmin
             !genericUser && (
               <div
                 className="card-tall quick-link"
