@@ -130,9 +130,9 @@ function ConfigTable({
                   >
                     <Typography
                       variant="body1"
-                      color="primary"
+                      // color="primary"
                       aria-label={header}
-                      sx={{ fontWeight: "bold" }}
+                      sx={{ fontWeight: "bold", color: "rgb(15, 168, 233)" }}
                     >
                       {header}
                     </Typography>
@@ -192,7 +192,7 @@ function ConfigTable({
                         {data?.actions?.view && (
                           <IconButton
                             aria-label="view"
-                            color="rgb(15,168,233)"
+                            color="success"
                             onClick={() =>
                               actions(
                                 "view",
