@@ -65,12 +65,32 @@ const NotificationList = ({ onClose }) => {
       .catch();
   };
 
+  // const notificationClicked = (notification) => {
+  //   MarkNotificationAsRead(notification.notificationId, null)
+  //     .then((res) => {
+  //       if (res) {
+  //         fetchNotifications();
+  //         navigation(notification.path);
+  //       }
+  //     })
+  //     .catch();
+  // };
   const notificationClicked = (notification) => {
     MarkNotificationAsRead(notification.notificationId, null)
       .then((res) => {
         if (res) {
           fetchNotifications();
-          navigation(notification.path);
+
+          // ✅ Fix the path before navigating
+          let fixedPath = notification.path;
+
+          if (fixedPath.includes("/home/ems/timesheet")) {
+            fixedPath = "/home/nems/timeSheet";
+          } else {
+            fixedPath = fixedPath.replace("/home/ems/", "/home/nems/");
+          }
+
+          navigation(fixedPath);
         }
       })
       .catch();

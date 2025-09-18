@@ -1,4 +1,9 @@
 import React, { useState, useCallback, useEffect, useContext } from "react";
+
+import { Environment } from "../../../environments/Environment"; 
+import axios from "axios";
+
+
 import {
   Box,
   Typography,
@@ -70,7 +75,7 @@ function CandidateForm() {
     state: "",
     country: "",
   });
- 
+
   const [permanentAddress, setPermanentAddress] = useState({
     line1: "",
     postalCode: 0,
@@ -279,7 +284,7 @@ function CandidateForm() {
     workflowStatusDescription === "203" ||
     workflowStatusDescription === "Default Status";
   console.log("Should Show Form:", shouldShowForm);
- 
+
   let hrEdit = true;
  
   if (
@@ -3357,50 +3362,242 @@ label: "Country",
         Toaster("error", "Error sending offer letter. Please try again.");
       });
   };
+
  
-  const handleInitiateOnboard = async () => {
-    // Validate onBoardData
-    let valid = true;
-    console.log("Validating onBoardData", formData.nationality);
-    console.log(onBoardData);
+  // const handleInitiateOnboard = async () => {
+  //   // Validate onBoardData
+  //   let valid = true;
+  //   console.log("Validating onBoardData", formData.nationality);
+  //   console.log(onBoardData);
  
-    //Removed mandatory profile picture validation for now
-    // if (!profilePicture) {
-    //   Toaster("error", "Please upload a valid 300x300 pixels profile picture.");
-    //   setErrors((prev) => ({
-    //     ...prev,
-    //     profilePicture: "Profile picture is required",
-    //   }));
-    //   return;
-    // }
+  //   //Removed mandatory profile picture validation for now
+  //   // if (!profilePicture) {
+  //   //   Toaster("error", "Please upload a valid 300x300 pixels profile picture.");
+  //   //   setErrors((prev) => ({
+  //   //     ...prev,
+  //   //     profilePicture: "Profile picture is required",
+  //   //   }));
+  //   //   return;
+  //   // }
  
-    for (const [key, value] of Object.entries(onBoardData)) {
-      console.log(key, value);
+  //   for (const [key, value] of Object.entries(onBoardData)) {
+  //     console.log(key, value);
  
-      // Validate UAN only for Indian nationality
-      if (key === "uan") {
-        if (formData.nationality !== "IND") {
-          continue;
-        }
-        if (!validateUAN(value)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            [key]: `${key} is required`,
-          }));
-          valid = false; // Mark as invalid
-        }
-        console.log(valid);
-        continue;
-      }
-      if (!stringNotNullValidation(value)) {
+  //     // Validate UAN only for Indian nationality
+  //     if (key === "uan") {
+  //       if (formData.nationality !== "IND") {
+  //         continue;
+  //       }
+  //       if (!validateUAN(value)) {
+  //         setErrors((prevErrors) => ({
+  //           ...prevErrors,
+  //           [key]: `${key} is required`,
+  //         }));
+  //         valid = false; // Mark as invalid
+  //       }
+  //       console.log(valid);
+  //       continue;
+  //     }
+  //     if (!stringNotNullValidation(value)) {
+
+
+  // const handleInitiateOnboard = async () => {
+  //   // Validate onBoardData
+  //   let valid = true;
+  //   console.log("Validating onBoardData", formData.nationality);
+  //   console.log(onBoardData);
+
+  //   //Removed mandatory profile picture validation for now
+  //   // if (!profilePicture) {
+  //   //   Toaster("error", "Please upload a valid 300x300 pixels profile picture.");
+  //   //   setErrors((prev) => ({
+  //   //     ...prev,
+  //   //     profilePicture: "Profile picture is required",
+  //   //   })); 
+  //   //   return;
+  //   // }
+
+  //   for (const [key, value] of Object.entries(onBoardData)) {
+  //     console.log(key, value);
+
+  //     // Validate UAN only for Indian nationality
+  //     if (key === "uan") {
+  //       if (formData.nationality !== "IND") {
+  //         continue;
+  //       }
+  //       if (!validateUAN(value)) {
+  //         setErrors((prevErrors) => ({
+  //           ...prevErrors,
+  //           [key]: `${key} is required`,
+  //         }));
+  //         valid = false; // Mark as invalid
+  //       }
+  //       console.log(valid);
+  //       continue;
+  //     }
+  //     if (!stringNotNullValidation(value)) {
+  //       setErrors((prevErrors) => ({
+  //         ...prevErrors,
+  //         [key]: `${key} is required`,
+  //       }));
+  //       valid = false; // Mark as invalid
+  //     }
+  //   }
+
+  //   if (!valid) {
+  //     console.log("Please enter valid onboarding data", !valid);
+  //     Toaster("error", "Please enter valid onboarding data");
+  //     return;
+  //   }
+
+  //   const updatedFormData = {
+  //     ...formData,
+  //     initiateOnboard: true,
+  //   };
+
+  //   console.log("Updated Form", updatedFormData);
+  //   const employeeMapData = mapFormDataToEmployeeModel(
+  //     updatedFormData,
+  //     onBoardData,
+  //     currentAddress,
+  //     permanentAddress
+  //   );
+  //   console.log("Employee Data:", employeeMapData);
+  //   console.log("Initiate Data Push");
+  //   CreateOrUpdateEmployee(employeeMapData)
+  //     .then(async (response) => {
+  //       console.log("Onboarding initiated successfully:", response);
+  //       console.log("After Onboarding initiated", updatedFormData);
+
+  //       Toaster("success", "Onboarding initiated successfully!");
+
+  //       if (profilePicture) {
+  //         const formData = new FormData();
+  //         formData.append("file", profilePicture);
+
+  //         try {
+  //           const uploadResponse = await UploadExpense(
+  //             formData,
+  //             response.employeeCode,
+  //             "profilePic"
+  //           );
+  //           console.log(
+  //             "Profile picture uploaded successfully:",
+  //             uploadResponse
+  //           );
+  //         } catch (uploadErr) {
+  //           console.error("Profile picture upload failed:", uploadErr);
+  //           Toaster(
+  //             "warning",
+  //             "Onboarding done, but profile picture upload failed."
+  //           );
+  //         }
+  //       }
+
+  //       // ✅ Continue with onboarding flow
+  //       try {
+  //         await OnboardCandidate(candidateId, response.employeeCode);
+  //         navigate("/home/nexusHire/candidateList");
+  //         console.log("Email Sent successfully and navigation done.");
+  //       } catch (err) {
+  //         console.error("Error during candidate onboarding:", err);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error initiating onboarding:", error);
+  //       const fullMessage =
+  //         error?.response?.data?.message || "Something went wrong";
+
+  //       // Extract the actual message after the colon
+  //       const readableMessage = fullMessage.includes(":")
+  //         ? fullMessage.split(":").pop().trim()
+  //         : fullMessage;
+
+  //       // Now show the toast
+  //       Toaster("error", readableMessage);
+  //     });
+  // };
+
+
+
+
+const handleInitiateOnboard = async () => {
+  // Validate onBoardData
+  let valid = true;
+  console.log("Validating onBoardData", formData.nationality);
+  console.log(onBoardData);
+ 
+  for (const [key, value] of Object.entries(onBoardData)) {
+    console.log(key, value);
+ 
+    // Validate UAN only for Indian nationality
+    if (key === "uan") {
+      if (formData.nationality !== "IND") continue;
+      if (!validateUAN(value)) {
+
         setErrors((prevErrors) => ({
           ...prevErrors,
           [key]: `${key} is required`,
         }));
-        valid = false; // Mark as invalid
+        valid = false;
+      }
+      continue;
+    }
+ 
+    if (!stringNotNullValidation(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [key]: `${key} is required`,
+      }));
+      valid = false;
+    }
+  }
+ 
+  if (!valid) {
+    console.log("Please enter valid onboarding data");
+    Toaster("error", "Please enter valid onboarding data");
+    return;
+  }
+ 
+  const updatedFormData = { ...formData, initiateOnboard: true };
+  console.log("Updated Form", updatedFormData);
+ 
+  const employeeMapData = mapFormDataToEmployeeModel(
+    updatedFormData,
+    onBoardData,
+    currentAddress,
+    permanentAddress
+  );
+  console.log("Employee Data:", employeeMapData);
+ 
+  try {
+    // Create or update employee
+    const response = await CreateOrUpdateEmployee(employeeMapData);
+    console.log("Onboarding initiated successfully:", response);
+    Toaster("success", "Onboarding initiated successfully!");
+ 
+    // Upload profile picture if exists
+    if (profilePicture) {
+      const formData = new FormData();
+      formData.append("file", profilePicture);
+ 
+      try {
+        const uploadResponse = await UploadExpense(
+          formData,
+          response.employeeCode,
+          "profilePic"
+        );
+        console.log("Profile picture uploaded successfully:", uploadResponse);
+      } catch (uploadErr) {
+        console.warn("Profile picture upload failed:", uploadErr);
+        Toaster(
+          "warning",
+          "Onboarding done, but profile picture upload failed."
+        );
       }
     }
  
+
     if (!valid) {
       console.log("Please enter valid onboarding data", !valid);
       Toaster("error", "Please enter valid onboarding data");
@@ -3460,6 +3657,7 @@ label: "Country",
           console.error("Error during candidate onboarding:", err);
         }
       })
+    
       .catch((error) => {
         console.error("Error initiating onboarding:", error);
         const fullMessage =
@@ -3473,8 +3671,39 @@ label: "Country",
         // Now show the toast
         Toaster("error", readableMessage);
       });
-  };
  
+ 
+    
+    // ✅ Get HR userId from localStorage (instead of employeeCode)
+    const hrUserId = localStorage.getItem("userId");
+    if (!hrUserId) {
+      Toaster("error", "HR userId not found. Please login again.");
+      return;
+    }
+ 
+    // ✅ Call onboarding API with HR userId as modifiedBy
+    await OnboardCandidate(candidateId, hrUserId);
+    navigate("/home/nexusHire/candidateList");
+    console.log("Email sent successfully and navigation done.");
+  } catch (error) {
+    console.error("Error during onboarding flow:", error);
+    const fullMessage = error?.response?.data?.message || "Something went wrong";
+    const readableMessage = fullMessage.includes(":")
+      ? fullMessage.split(":").pop().trim()
+      : fullMessage;
+    Toaster("error", readableMessage);
+  }
+};
+
+
+
+
+
+
+
+  
+
+
   const VisuallyHiddenInput = styled("input")({
     clip: "rect(0 0 0 0)",
     clipPath: "inset(50%)",
@@ -4282,8 +4511,6 @@ label: "Country",
       )}
     </Box>
   );
-}
- 
+};
 export default CandidateForm;
- 
  

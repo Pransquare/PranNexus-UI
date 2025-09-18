@@ -55,41 +55,102 @@ function ExpenseReport() {
       })
       .catch((error) => console.log(error));
   }, []);
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setFormData((prevData) => ({ ...prevData, [name]: value }));
+  //   if (name === "employee") {
+  //     const employeeBasicDetailId = searchResults?.find(
+  //       (data) => data.fullName === value
+  //     )?.employeeBasicDetailId;
+  //     if (employeeBasicDetailId) {
+  //       setSearchResults([]);
+  //       setFormData((prev) => ({
+  //         ...prev,
+  //         selectedEmployee: employeeBasicDetailId,
+  //       }));
+  //       return;
+  //     }
+  //     if (value.length > 2) {
+  //       setOptions(value);
+  //     }
+  //     setSearchResults([]);
+  //     setFormData((prev) => ({
+  //       ...prev,
+  //       selectedEmployee: null,
+  //     }));
+  //   }
+  // };
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+
     if (name === "employee") {
-      const employeeBasicDetailId = searchResults?.find(
-        (data) => data.fullName === value
-      )?.employeeBasicDetailId;
-      if (employeeBasicDetailId) {
-        setSearchResults([]);
+      const employee = searchResults?.find(
+        (data) => data.fullName === value || data.employeeCode === value
+      );
+
+      if (employee) {
         setFormData((prev) => ({
           ...prev,
-          selectedEmployee: employeeBasicDetailId,
+          employee: employee.fullName,
+          selectedEmployee: employee.employeeBasicDetailId,
         }));
-        return;
+        setSearchResults([]);
+      } else {
+        if (value.length > 2) {
+          setOptions(value);
+        }
       }
-      if (value.length > 2) {
-        setOptions(value);
-      }
-      setSearchResults([]);
-      setFormData((prev) => ({
-        ...prev,
-        selectedEmployee: null,
-      }));
     }
   };
   const submitClicked = () => {
-    if (!formData.monthAndYear) {
+    if (!formData?.monthAndYear) {
       Toaster("error", "Please select month and year");
       return;
     }
+
+    const employeeId =
+      formData?.selectedEmployee || employeeData?.employeeBasicDetailId;
+
+    if (!employeeId) {
+      Toaster("error", "Please select an employee");
+      return;
+    }
+
+    // Logs for debugging
+    console.log("---- Expense Report Submission ----");
+    console.log("Selected Employee ID:", employeeId);
+    console.log("Month and Year selected:", formData.monthAndYear);
+    console.log(
+      "Start of Month:",
+      dayjs(formData.monthAndYear).startOf("month").format("YYYY-MM-DD")
+    );
+    console.log(
+      "End of Month:",
+      dayjs(formData.monthAndYear).endOf("month").format("YYYY-MM-DD")
+    );
+    console.log("---------------------------------");
+
     DownloadExpenseReport(
-      formData.selectedEmployee,
+      employeeId,
       dayjs(formData.monthAndYear).format("YYYY-MM-DD")
     );
   };
+
+  // const submitClicked = () => {
+  //   if (!formData.monthAndYear) {
+  //     Toaster("error", "Please select month and year");
+  //     return;
+  //   }
+  //     if (!formData?.selectedEmployee) {
+  //   Toaster("error", "Please select an employee");
+  //   return;
+  // }
+  //   DownloadExpenseReport(
+  //     formData.selectedEmployee,
+  //     dayjs(formData.monthAndYear).format("YYYY-MM-DD")
+  //   );
+  // };
   return (
     <Box sx={panelStyle}>
       <Tabs
