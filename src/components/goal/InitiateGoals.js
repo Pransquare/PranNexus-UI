@@ -19,7 +19,7 @@ import ConfigureForm from "../../common/customComponents/ConfigureForm";
 import { EmployeeDataContext } from "../../customHooks/dataProviders/EmployeeDataProvider";
 import { panelStyle } from "../../common/customStyles/CustomStyles";
 import { UserManagentCheck } from "../../common/UserManagement";
-import { GetEmployeesNew } from "../../service/api/pmsService/GetEmployees";
+import { GetEmployees } from "../../service/api/pmsService/GetEmployees";
 import { initiateGoalSetup } from "../../service/api/nemsService/GoalService";
 import { Toaster } from "../../common/alertComponets/Toaster";
 
@@ -39,7 +39,7 @@ function InitiateGoals() {
 
   const handleSearch = async (groupName, subGroupName) => {
     try {
-      const response = await GetEmployeesNew(groupName, subGroupName);
+      const response = await GetEmployees(groupName, subGroupName);
       setEmployeeDataList(response);
       setPage(0);
       setGroup({ group: groupName, subGroup: subGroupName });

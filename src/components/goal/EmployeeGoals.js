@@ -127,7 +127,7 @@ const EmployeeGoals = () => {
               : null,
             percentage: detail.percentage != null ? detail.percentage : 5,
             goalDescription: detail.goalDescription || "",
-            managerConsent: detail.managerComments,
+            managerConcent: detail.managerComments,
             managerComments: detail.managerComments || "",
             editable: true,
           });
@@ -193,7 +193,7 @@ const EmployeeGoals = () => {
           goal: "",
           percentage: 5,
           goalDescription: "",
-          managerConsent: null,
+          managerConcent: null,
           managerComments: "",
           editable: true,
           fromDate: defaultFromDate,
@@ -227,7 +227,7 @@ const EmployeeGoals = () => {
     const all = [...goals, ...addedGoals];
     const target = all[selectedRowIndex];
     target.managerComments = remarks;
-    target.managerConsent = selectedAction;
+    target.managerConcent = selectedAction;
 
     const nextStatus =
       selectedAction === "Approved"
@@ -248,7 +248,7 @@ const EmployeeGoals = () => {
         comments: goal.managerComments || "",
         status: nextStatus,
         managerComments: goal.managerComments || "",
-        managerConsent: goal.managerConsent,
+        managerConcent: goal.managerConcent,
         createdBy: employeeData?.emailId,
       };
     });
@@ -293,7 +293,7 @@ const EmployeeGoals = () => {
       return [
         "goal",
         "Weightage",
-        "managerConsent",
+        "managerConcent",
         "managerComments",
         "goalDescription",
       ].includes(field);
@@ -325,7 +325,7 @@ const EmployeeGoals = () => {
         comments: goal.managerComments || "",
         status: getPayloadStatus(),
         managerComments: goal.managerComments || "",
-        managerConsent: goal.managerConsent,
+        managerConcent: goal.managerConcent,
         createdBy: employeeData?.emailId,
         fromDate: goal.fromDate
           ? dayjs(goal.fromDate).format("YYYY-MM-DD")

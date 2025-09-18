@@ -511,23 +511,6 @@
 
 // export default Router;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //src/gateway/Router.js
 
 // import React from "react";
@@ -1029,9 +1012,6 @@
 
 // export default Router;
 
-
-
-
 import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import Dashboard from "../components/Dashboard/Dashboard";
@@ -1053,7 +1033,7 @@ import LeaveType from "../components/master_config/LeaveType/LeaveType";
 import ClientMaster from "../components/master_config/clientMaster/ClientMaster";
 import DepartmentMaster from "../components/master_config/departmentMaster/DepartmentMaster";
 import ProjectMaster from "../components/master_config/projectMaster/ProjectMaster";
- 
+
 import Candidate from "../components/NexusHire/candidate/Candidate";
 import CandidateList from "../components/NexusHire/candidateList/CandidateList";
 import ProtectedRoute from "./ProtectedRoute";
@@ -1082,7 +1062,7 @@ import EmployeeGoals from "../components/goal/EmployeeGoals";
 import EmployeeTable from "../components/nems/Employees/EmployeeTable";
 import HrOrManagerApproval from "../components/goal/HrOrManagerApproval";
 import AttributeConfigForAppraisal from "../components/goal/AttributeConfigForAppraisal";
- 
+
 function Router() {
   return useRoutes([
     {
@@ -1204,7 +1184,7 @@ function Router() {
           path: "tools/holidays",
           element: (
             // roleName={["hr_tools"]}
-            <ProtectedRoute >
+            <ProtectedRoute>
               <Holiday />
             </ProtectedRoute>
           ),
@@ -1215,7 +1195,15 @@ function Router() {
             {
               path: "leave",
               element: (
-                <ProtectedRoute roleName={["hr_tools_nems_leave", "hr_tools_nems_leave_leaveApproval","it" ,"finance","hr_tools"]}>
+                <ProtectedRoute
+                  roleName={[
+                    "hr_tools_nems_leave",
+                    "hr_tools_nems_leave_leaveApproval",
+                    "it",
+                    "finance",
+                    "hr_tools",
+                  ]}
+                >
                   <Leave />
                 </ProtectedRoute>
               ),
@@ -1223,7 +1211,15 @@ function Router() {
             {
               path: "timeSheet",
               element: (
-                <ProtectedRoute roleName={["hr_tools_nems_timesheet", "hr_tools_nems_timesheet_Approvals","it","finance","hr_tools"]}>
+                <ProtectedRoute
+                  roleName={[
+                    "hr_tools_nems_timesheet",
+                    "hr_tools_nems_timesheet_Approvals",
+                    "it",
+                    "finance",
+                    "hr_tools",
+                  ]}
+                >
                   <TimeSheet />
                 </ProtectedRoute>
               ),
@@ -1257,53 +1253,55 @@ function Router() {
             // },
 
             {
-  path: "appraisal",
-  children: [
-    {
-      path: "initiateAppraisal",
-      element: (
-        <ProtectedRoute
-          roleName={[
-            "hr_tools_nems_appraisal_initiate",
-            "hr_tools_nems_appraisal_initiate$",
-            "hr_tools_apprisal_initiate$",
-          ]}
-        >
-          <PmsGroups />
-        </ProtectedRoute>
-      ),
-    },
-    {
-      path: "employeeAppraisal",
-      element: (
-        <ProtectedRoute
-          roleName={[
-            "hr_tools_nems_appraisal_form",
-            "hr_tools_nems_appraisal_form$",
-          ]}
-        >
-          <AppraisalForm />
-        </ProtectedRoute>
-      ),
-    },
-    {
-      path: "inprogressAppraisal",
-      element: (
-        <ProtectedRoute roleName={["hr_tools_apprisal_inprogress$"]}>
-          {/* Your in-progress component */}
-        </ProtectedRoute>
-      ),
-    },
-    {
-      path: "approvedAppraisal",
-      element: (
-        <ProtectedRoute roleName={["hr_tools_apprisal_approved$"]}>
-          {/* Your approved component */}
-        </ProtectedRoute>
-      ),
-    },
-  ],
-},
+              path: "appraisal",
+              children: [
+                {
+                  path: "initiateAppraisal",
+                  element: (
+                    <ProtectedRoute
+                      roleName={[
+                        "hr_tools_nems_appraisal_initiate",
+                        "hr_tools_nems_appraisal_initiate$",
+                        "hr_tools_apprisal_initiate$",
+                      ]}
+                    >
+                      <PmsGroups />
+                    </ProtectedRoute>
+                  ),
+                },
+                {
+                  path: "employeeAppraisal",
+                  element: (
+                    <ProtectedRoute
+                      roleName={[
+                        "hr_tools_nems_appraisal_form",
+                        "hr_tools_nems_appraisal_form$",
+                      ]}
+                    >
+                      <AppraisalForm />
+                    </ProtectedRoute>
+                  ),
+                },
+                {
+                  path: "inprogressAppraisal",
+                  element: (
+                    <ProtectedRoute
+                      roleName={["hr_tools_apprisal_inprogress$"]}
+                    >
+                      {/* Your in-progress component */}
+                    </ProtectedRoute>
+                  ),
+                },
+                {
+                  path: "approvedAppraisal",
+                  element: (
+                    <ProtectedRoute roleName={["hr_tools_apprisal_approved$"]}>
+                      {/* Your approved component */}
+                    </ProtectedRoute>
+                  ),
+                },
+              ],
+            },
 
             {
               path: "goals",
@@ -1349,7 +1347,9 @@ function Router() {
             {
               path: "groups_subGroups_config",
               element: (
-                <ProtectedRoute roleName={["hr_config_employee_groups&subgroups"]}>
+                <ProtectedRoute
+                  roleName={["hr_config_employee_groups&subgroups"]}
+                >
                   <GroupsSubGroups />
                 </ProtectedRoute>
               ),
@@ -1504,7 +1504,12 @@ function Router() {
                 {
                   path: "submission/:id?",
                   element: (
-                    <ProtectedRoute roleName={["finance_expense_new","expense_manager_approval"]}>
+                    <ProtectedRoute
+                      roleName={[
+                        "finance_expense_new",
+                        "expense_manager_approval",
+                      ]}
+                    >
                       <ExpenseSubmission />
                     </ProtectedRoute>
                   ),
@@ -1512,7 +1517,12 @@ function Router() {
                 {
                   path: "records",
                   element: (
-                    <ProtectedRoute roleName={["finance_expense_list","expense_manager_approval"]}>
+                    <ProtectedRoute
+                      roleName={[
+                        "finance_expense_list",
+                        "expense_manager_approval",
+                      ]}
+                    >
                       <ExpenseRecords />
                     </ProtectedRoute>
                   ),
@@ -1579,5 +1589,5 @@ function Router() {
     },
   ]);
 }
- 
+
 export default Router;
