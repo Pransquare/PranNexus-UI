@@ -99,7 +99,7 @@ const HomePage = () => {
 
         {loading ? (
           <div className="loading-screen">
-            <FadeLoader color="#ff6303" />
+            <FadeLoader color= "rgb(77,208,225)" />
           </div>
         ) : (
           <div

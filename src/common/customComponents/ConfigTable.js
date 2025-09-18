@@ -192,7 +192,7 @@ function ConfigTable({
                         {data?.actions?.view && (
                           <IconButton
                             aria-label="view"
-                            color="success"
+                            color="rgb(15,168,233)"
                             onClick={() =>
                               actions(
                                 "view",

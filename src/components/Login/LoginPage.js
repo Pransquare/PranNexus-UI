@@ -390,13 +390,61 @@ console.log("Roles from backend:", data.roles);
             >
               Welcome to
             </Typography>
-            <Typography
+            {/* <Typography
               variant="h4"
               style={{ fontWeight: "bold" }}
               color="primary.main"
             >
               Pran<span style={{ color: "#FE9900" }}>Nexus</span>
-            </Typography>
+            </Typography> */}
+
+
+            {/* <Typography variant="h3" component="div">
+  <span style={{ color: "rgb(15, 168, 233)", fontWeight: "bold" }}>Pran</span>
+  <span style={{ color: "rgb(77,208,225)", fontWeight: "bold" }}>Nexus</span>
+</Typography> */}
+
+{/* <Typography
+  variant="h5"
+  component="div"
+  sx={{ fontFamily: "Raleway, sans-serif", fontWeight: "bold", letterSpacing: "1px" }}
+>
+  <span style={{ color: "#0FA8E9", fontSize: "1.5rem", fontStyle: "italic" }}>Pran</span>
+  <span style={{ color: "#4DD0E1", fontSize: "1.5rem" }}>Nexus</span>
+</Typography> */}
+
+{/* <Typography
+  variant="h5"
+  component="div"
+  sx={{ fontFamily: "Merriweather, serif", fontWeight: "bold" }}
+>
+  <span style={{ color: "#0FA8E9", fontSize: "2.0rem" }}>Pran</span>
+  <span style={{ color: "#4DD0E1", fontSize: "2.0rem" }}>Nexus</span>
+</Typography> */}
+
+
+<Typography
+  variant="h4"
+  component="div"
+  sx={{ fontFamily: "Playfair Display, serif", fontWeight: "bold", fontStyle: "italic" }}
+>
+  <span style={{ color: "#0FA8E9", fontSize: "2.0rem" }}>Pran</span>
+  <span style={{ color: "#4DD0E1", fontSize: "2.0rem" }}>Nexus</span>
+</Typography>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </Box>
         </Box>
       </Box>
@@ -464,7 +512,7 @@ console.log("Roles from backend:", data.roles);
               "@media (max-width: 600px)": { maxWidth: "100%" },
             }}
           >
-            <Button
+            {/* <Button
               variant="contained"
               color="primary"
               fullWidth
@@ -476,7 +524,29 @@ console.log("Roles from backend:", data.roles);
               ) : (
                 panel
               )}
-            </Button>
+            </Button> */}
+
+
+
+              <Button
+  variant="contained"
+  fullWidth
+  onClick={handleButtonClick}
+  disabled={isLoading}
+  sx={{
+    backgroundColor: "rgb(15, 168, 233)",   // Custom button background
+    color: "#fff",                // White text
+    ":hover": { backgroundColor: "rgb(15, 168, 233)" }, // Darker hover color
+  }}
+>
+  {isLoading ? (
+    <CircularProgress size={20} sx={{ color: "#fff" }} />
+  ) : (
+    panel
+  )}
+</Button>
+
+
             <Link
               variant="text"
               sx={{ textAlign: "center", cursor: "pointer" }}

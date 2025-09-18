@@ -1,11 +1,17 @@
 /* src/components/Navbar.css */
 
+
+
+
 :root {
-  --primary-color: #5410bf; /* Define your primary color */
-  --secondary-color: #f36548; /* Define your secondary color */
-  --text-color: #ffffff; /* Define text color */
-  --background-color: #ffffff; /* Define background color */
+  --primary-color: rgb(15, 168, 233);           /* Keep your original primary color */
+   /* --secondary-color: #f36548; */
+  /* --secondary-color: rgb(77,208,225);        Updated secondary color */
+  --secondary-color: rgb(15, 168, 233);
+  --text-color: #ffffff;              /* Text color */
+  --background-color: #ffffff;        /* Background color */
 }
+
 
 .navbar {
   width: 100%;
@@ -42,6 +48,7 @@
 .logo {
   width: 150px;
   height: auto;
+  
 }
 
 .navbar-content {
@@ -60,6 +67,7 @@
   height: 20px; /* Adjust size as needed */
   border-radius: 50%;
   margin-right: 10px;
+  
 }
 
 .icon {
@@ -113,3 +121,4 @@
 .notification .MuiButton-outlined {
   width: 100%;
 }
+

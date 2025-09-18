@@ -46,7 +46,7 @@ const root = createRoot(container);
 const theme = createTheme({
   palette: {
     primary: { main: "#412276" },
-    secondary: { main: "#FE9900" },
+    secondary: { main: "#006C8C" },
     error: { main: "#FF0000" },
     text: { primary: "#000000" },
     background: { default: "#f2f4f7" },

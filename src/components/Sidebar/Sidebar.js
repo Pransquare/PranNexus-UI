@@ -231,7 +231,9 @@ const Sidebar = ({ open = true, oncloseSideBar }) => {
       onClose={oncloseSideBar}
       PaperProps={{
         style: {
-          backgroundColor: "#412276",
+          //  backgroundColor: "#412276",
+          // backgroundColor: "rgb(77,208,225)",
+          backgroundColor: "rgb(15, 168, 233)",
           borderRight: "1px solid #e0e0e0",
           boxShadow: "2px 0px 10px rgba(0, 0, 0, 0.1)",
         },

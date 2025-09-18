@@ -32,18 +32,22 @@ const ChatBotLayer = ({ layerClicked }) => {
         </Box>
       )}
       <Fab
-        color="warning"
-        aria-label="chat"
-        className="bg-blue-600 text-white hover:bg-blue-700"
-        onClick={layerClicked}
-        onMouseEnter={() => setShowMessage(true)}
-        onMouseLeave={() => setShowMessage(false)}
-      >
-        <Avatar
-          src={botIcon}
-          sx={{ width: 40, height: 40, backgroundColor: "white" }}
-        />
-      </Fab>
+  aria-label="chat"
+  onClick={layerClicked}
+  onMouseEnter={() => setShowMessage(true)}
+  onMouseLeave={() => setShowMessage(false)}
+  sx={{
+    backgroundColor: "rgb(15,168,233)",   // ✅ your custom color
+    color: "#fff",                        // ✅ icon color
+    "&:hover": { backgroundColor: "rgb(50,180,220)" }, // hover shade
+  }}
+>
+  <Avatar
+    src={botIcon}
+    sx={{ width: 40, height: 40, backgroundColor: "white" }}
+  />
+</Fab>
+
     </Box>
   );
 };

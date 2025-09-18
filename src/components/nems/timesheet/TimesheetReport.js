@@ -256,8 +256,8 @@ function TimesheetReport() {
             variant="outlined"
             onClick={() => fetchGridData()}
             sx={{
-              backgroundColor: "#fb8c00",
-              "&:hover": { backgroundColor: "#f57c00" },
+              backgroundColor: "rgb(15,168,233)",
+              "&:hover": { backgroundColor: "rgb(15,168,233)" },
             }}
           >
             Search

@@ -41,18 +41,18 @@ iframe#webpack-dev-server-client-overlay {
 
 /* Scrollbar handle */
 ::-webkit-scrollbar-thumb {
-  background: #412276; /* Primary color */
+  background: rgb(15,168,233); /* Primary color */
   border-radius: 10px;
   transition: background 0.3s ease-in-out;
 }
 
 /* Scrollbar handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #fe9900; /* Secondary color */
+  background: rgb(15,168,233); /* Secondary color */
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #412276 #f2f4f7;
+  scrollbar-color: rgb(15,168,233) #f2f4f7;
 }

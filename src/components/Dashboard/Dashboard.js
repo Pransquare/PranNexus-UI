@@ -370,15 +370,52 @@ function Dashboard() {
                 </div>
 
                 {!genericUser && (
-                  <div className="button-container mt-4">
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={handleOpenModal}
-                    >
-                      Manager Details
-                    </Button>
-                  </div>
+                  
+                  // <div className="button-container mt-4">
+                  //   <Button
+                  //     variant="contained"
+                  //     color="primary"
+                  //     onClick={handleOpenModal}
+                  //   >
+                  //     Manager Details
+                  //   </Button>
+                  // </div>
+
+
+
+//                   <div className="button-container mt-4">
+//   <Button
+//     variant="contained"
+//     onClick={handleOpenModal}
+//     sx={{
+//       backgroundColor: "rgb(77,208,225)", // Button color
+//       color: "#fff",                        // Text color
+//       ":hover": { backgroundColor: "rgb(50,180,210)" } // Optional hover color
+//     }}
+//   >
+//     Manager Details
+//   </Button>
+// </div>
+
+
+ <div className="button-container mt-4">
+  <Button
+    variant="contained"
+    onClick={handleOpenModal}
+    sx={{
+      backgroundColor: "rgb(15, 168, 233)", // Button color
+      color: "#fff",              // Text color
+      ":hover": { backgroundColor: "rgb(77,208,225)" } // Hover color (slightly darker)
+    }}
+  >
+    Manager Details
+  </Button>
+</div> 
+
+
+
+
+
                 )}
               </div>
 
@@ -402,7 +439,7 @@ function Dashboard() {
                 onClick={handleActiveEmployeesNavigate}
               >
                 <div className="quick-link-content flex flex-col items-center text-center">
-                  <Typography variant="h4" className="secondary">
+                  <Typography variant="h4" className="secondary"   sx={{ color: "rgb(15,168,233)" }}>
                     Active Employees
                   </Typography>
                   {/* Show Active Employee Count */}
@@ -418,7 +455,7 @@ function Dashboard() {
                 onClick={handleInactiveEmployeesNavigate}
               >
                 <div className="quick-link-content flex flex-col items-center text-center">
-                  <Typography variant="h4" className="secondary">
+                  <Typography variant="h4" className="secondary"    sx={{ color: "rgb(15,168,233)" }}>
                     Inactive Employees
                   </Typography>
                   {/* Show Inactive Employee Count */}
@@ -438,12 +475,17 @@ function Dashboard() {
                 className="card-medium bg-white shadow-lg rounded-xl mt-4 quick-link-2"
                 onClick={handleLeaveApprovalsNavigate}
               >
-                <Typography variant="h4" className="secondary">
-                  Leave Details
-                </Typography>
+                <Typography
+  variant="h4"
+  className="secondary"
+  sx={{ color: "rgb(15,168,233)" }}
+>
+  Leave Details
+</Typography>
+
                 <div className="leave-details-container">
                   <div className="column-item">
-                    <Typography variant="h5" className="secondary">
+                    <Typography variant="h5" className="secondary"    sx={{ color: "rgb(15,168,233)" }}>
                       Total
                     </Typography>
                     <Typography variant="h6" className="number">
@@ -452,7 +494,7 @@ function Dashboard() {
                   </div>
                   <div className="vertical-divider"></div>
                   <div className="column-item">
-                    <Typography variant="h5" className="secondary">
+                    <Typography variant="h5" className="secondary"     sx={{ color: "rgb(15,168,233)" }}>
                       Used
                     </Typography>
                     <Typography variant="h6" className="number">
@@ -461,7 +503,7 @@ function Dashboard() {
                   </div>
                   <div className="vertical-divider"></div>
                   <div className="column-item">
-                    <Typography variant="h5" className="secondary">
+                    <Typography variant="h5" className="secondary"    sx={{ color: "rgb(15,168,233)" }}>
                       Pending
                     </Typography>
                     <Typography variant="h6" className="number">
@@ -478,7 +520,7 @@ function Dashboard() {
               className="card-small bg-white shadow-lg rounded-xl mt-4 quick-link-2"
               onClick={handleHolidayNavigate}
             >
-              <Typography variant="h4" className="secondary">
+              <Typography variant="h4" className="secondary"     sx={{ color: "rgb(15,168,233)" }}>
                 Upcoming Holidays
               </Typography>
               {holidayList?.length > 0 ? (
@@ -540,7 +582,7 @@ function Dashboard() {
                   >
                     <div className="quick-link-content">
                       <div className="quick-link-text">
-                        <Typography variant="h4" className="secondary">
+                        <Typography variant="h4" className="secondary"   sx={{ color: "rgb(15,168,233)" }}>
                           Timesheet
                         </Typography>
                       </div>
@@ -558,7 +600,7 @@ function Dashboard() {
                 >
                   <div className="quick-link-content">
                     <div className="quick-link-text">
-                      <Typography variant="h4" className="secondary">
+                      <Typography variant="h4" className="secondary"   sx={{ color: "rgb(15,168,233)" }}>
                         {hr
                           ? "Candidate List"
                           : budget || management
@@ -586,9 +628,14 @@ function Dashboard() {
               >
                 <div className="quick-link-content">
                   <div className="quick-link-text">
-                    <Typography variant="h4" className="secondary">
-                      Timesheet
-                    </Typography>
+                    <Typography
+  variant="h4"
+  className="secondary"
+  sx={{ color: "rgb(15,168,233)" }}
+>
+  Timesheet
+</Typography>
+
                   </div>
                   <img
                     src={timesheet}
@@ -607,7 +654,7 @@ function Dashboard() {
                 onClick={handleLeaveApprovalsNavigate}
               >
                 <>
-                  <Typography variant="h4" className="secondary text-lg">
+                  <Typography variant="h4" className="secondary text-lg"   sx={{ color: "rgb(15,168,233)" }}>
                     Leave Approvals
                   </Typography>
 
@@ -650,9 +697,14 @@ function Dashboard() {
 
           {employeeData?.workType === "permanent" && (
             <div className="card-wide bg-white shadow-lg rounded-lg mt-4 p-6">
-              <Typography variant="h4" className="secondary text-lg">
-                Birthday List
-              </Typography>
+              <Typography
+  variant="h4"
+  className="secondary text-lg"
+  sx={{ color: "rgb(15,168,233)" }}
+>
+  Birthday List
+</Typography>
+
 
               <div className="birthday-list max-h-56 overflow-y-auto mt-2 min-h-0">
                 {/* Enable scroll but hide scrollbar */}
@@ -687,9 +739,14 @@ function Dashboard() {
 
           {employeeData?.workType === "permanent" && (
             <div className="card-wide news-section bg-white shadow-lg rounded-xl mt-4">
-              <Typography variant="h4" className="secondary">
-                Company News
-              </Typography>
+              <Typography
+  variant="h4"
+  className="secondary"
+  sx={{ color: "rgb(15,168,233)" }}
+>
+  Company News
+</Typography>
+
 
               <div className="news-list h-56 overflow-y-auto mt-2">
                 {" "}

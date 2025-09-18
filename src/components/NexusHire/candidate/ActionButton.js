@@ -14,17 +14,58 @@ const ActionButton = ({ handleSave, handleContinue }) => {
         zIndex: 99, // Keep it above other elements
       }}
     >
-      <Button
+      {/* <Button
         variant="contained"
         color="primary"
         onClick={handleSave}
         sx={{ marginRight: 2 }}
       >
         Save
-      </Button>
-      <Button variant="contained" color="secondary" onClick={handleContinue}>
+      </Button> */}
+
+
+<Button
+  variant="contained"
+  onClick={handleSave}
+  sx={{
+    marginRight: 2,
+    backgroundColor: "rgb(15,168,233)",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "rgb(12,150,210)",
+    },
+  }}
+>
+  Save
+</Button>
+
+
+
+
+      {/* <Button variant="contained" color="secondary" onClick={handleContinue}>
         Continue
-      </Button>
+      </Button> */}
+
+
+
+<Button
+  variant="contained"
+  onClick={handleContinue}
+  sx={{
+    backgroundColor: "rgb(77,208,225)",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "rgb(60,170,185)",
+    },
+  }}
+>
+  Continue
+</Button>
+
+
+
+
+
     </Box>
   );
 };

@@ -124,7 +124,7 @@
 /* Button specific styling */
 .loginPage-loginButton {
   width: 25ch;
-  background-color: blue; /* Blue button */
+  background-color: rgb(15,168,233); /* Blue button */
   color: white;
   font-size: 18px;
   margin-top: 10px;
@@ -136,7 +136,7 @@
 }
 
 .loginPage-loginButton:hover {
-  background-color: darkblue; /* Darker blue on hover */
+  background-color: rgb(15,168,233); /* Darker blue on hover */
 }
 
 /* Autofill styling specific to this component */
@@ -186,7 +186,7 @@
 /* Button specific styling */
 .loginPage-loginButton {
   width: 25ch;
-  background-color: rgb(9, 9, 113);
+  background-color: rgb(15,168,233);
   color: white;
   font-size: 18px;
   margin-top: 10px;
@@ -198,7 +198,7 @@
 }
 
 .loginPage-loginButton:hover {
-  background-color: rgb(6, 6, 109); /* Darker blue on hover */
+  background-color: rgb(15,168,233); /* Darker blue on hover */
 }
 .microsoft-logo {
   width: 20px; /* Adjust size as needed */

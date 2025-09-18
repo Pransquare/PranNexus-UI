@@ -53,7 +53,7 @@ h1 {
     height: 50px;
     border-radius: 50%;
     border: 5px solid rgba(0, 0, 0, 0.1);
-    border-top-color: #5410BF; /* Adjust to your primary color */
+    border-top-color: rgb(15,168,233); /* Adjust to your primary color */
     animation: spin 1s linear infinite;
 }
 
@@ -79,7 +79,7 @@ h1 {
     text-align: left;
     font-weight: bold;
     background-color: #f0f0f0;
-    color: #5410BF;
+    color: rgb(15,168,233);
 }
 
 .user-table td {
@@ -87,7 +87,7 @@ h1 {
 }
 
 .welcome-dashboard{
-    color:#5410BF ;
+    color:rgb(15,168,233) ;
 }
 
 @keyframes spin {

@@ -61,7 +61,7 @@ import ProgressBar from "./ProgressBar";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import ActionButton from "./ActionButton";
 import { UploadExpense } from "../../../service/api/ExpenseService";
-
+ 
 function CandidateForm() {
   const [currentAddress, setCurrentAddress] = useState({
     line1: "",
@@ -70,7 +70,7 @@ function CandidateForm() {
     state: "",
     country: "",
   });
-
+ 
   const [permanentAddress, setPermanentAddress] = useState({
     line1: "",
     postalCode: 0,
@@ -78,9 +78,9 @@ function CandidateForm() {
     city: "",
     country: "",
   });
-
+ 
   const { employeeData } = useContext(EmployeeDataContext);
-
+ 
   const defaultFormData = {
     requirementId: "",
     requirementDesc: "",
@@ -160,7 +160,7 @@ function CandidateForm() {
     ctcType: "",
     vendorName: "",
   };
-
+ 
   const defaultEducationError = {
     institute: "",
     state: "",
@@ -247,14 +247,14 @@ function CandidateForm() {
           country: permanentAddress.country || "", // Add country if needed
         },
       ],
-
+ 
       employeeWorkLocation: {
         workLocationCode: formData.workLocation,
       },
       user: "", // Set the user field if applicable
     };
   };
-
+ 
   const candidateOnBoardData = {
     uan: "",
     bloodGroup: "",
@@ -265,40 +265,42 @@ function CandidateForm() {
     jiraID: "",
   };
   console.log("EmployeeDataContext", employeeData?.employeeCode);
-
+ 
   const { candidateId: urlCandidateId } = useParams();
   const [candidateId, setCandidateId] = useState();
-
+ 
   const [workflowStatusDescription, setWorkflowStatusDescription] =
     useState("Default Status");
-
+ 
   console.log("Candidate Status", workflowStatusDescription);
-
+ 
   const shouldShowForm =
     workflowStatusDescription === "10" ||
     workflowStatusDescription === "203" ||
     workflowStatusDescription === "Default Status";
   console.log("Should Show Form:", shouldShowForm);
-
+ 
   let hrEdit = true;
-
+ 
   if (
     workflowStatusDescription == "203" ||
+    workflowStatusDescription == "201" ||
+     workflowStatusDescription == "301" ||
     workflowStatusDescription == "Default Status" ||
     workflowStatusDescription == "10"
   ) {
     hrEdit = false;
   }
-
+ 
   let hrInitiateCandidate = true;
-
+ 
   if (
     workflowStatusDescription == "300" ||
     workflowStatusDescription == "302"
   ) {
     hrInitiateCandidate = true;
   }
-
+ 
   const navigate = useNavigate();
   const [onBoardData, setOnBoardData] = useState(candidateOnBoardData);
   const [formData, setFormData] = useState(defaultFormData);
@@ -306,7 +308,7 @@ function CandidateForm() {
   const [previewUrl, setPreviewUrl] = useState(null);
   console.log(formData);
   console.log(onBoardData);
-
+ 
   const [errors, setErrors] = useState({
     educations: [defaultEducationError],
     employments: [defaultEmploymentError],
@@ -345,7 +347,7 @@ function CandidateForm() {
     employment: false,
     ctcDetails: false,
   });
-
+ 
   console.log(currentTab);
   const dropdownOptions = [
     { key: "approved", value: "Approved" },
@@ -402,10 +404,10 @@ function CandidateForm() {
     { key: "high", value: "High" },
     { key: "low", value: "Low" },
   ];
-
+ 
   const [fileUrl, setFileUrl] = useState();
   const [file, setFile] = useState();
-
+ 
   const hr = !UserManagentCheck(
     "hr_tools_nexusHire_candidate_approval_uploadOfferLetter"
   );
@@ -415,13 +417,13 @@ function CandidateForm() {
   const management = !UserManagentCheck(
     "hr_tools_nexusHire_candidate_approval_managementApproval"
   );
-
+ 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const admin = !UserManagentCheck("admin");
-
+ 
   console.log(formData.addresses);
-
+ 
   const handleChangeTab = (event, newTab) => {
     console.log("handleChangeTab", newTab);
     // Allow navigation to a tab if it's validated or going back to previous tabs
@@ -429,7 +431,7 @@ function CandidateForm() {
       setCurrentTab(newTab); // Set the new active tab
     }
   };
-
+ 
   const fetchDesignationData = useCallback(async () => {
     try {
       const designationTypes = await GetAllDesignations();
@@ -438,7 +440,7 @@ function CandidateForm() {
       console.error("Failed to fetch designation data", error);
     }
   }, []);
-
+ 
   const fetchGroupsData = useCallback(async () => {
     try {
       const response = await GetGroups();
@@ -448,11 +450,11 @@ function CandidateForm() {
       console.error("Failed to fetch group data", error);
     }
   }, []);
-
+ 
   useEffect(() => {
     fetchGroupsData();
   }, [fetchGroupsData]);
-
+ 
   const fetchAllCountries = useCallback(async () => {
     try {
       const response = await GetAllCountries();
@@ -462,11 +464,11 @@ function CandidateForm() {
       console.error("Failed to fetch country data", error);
     }
   }, []);
-
+ 
   useEffect(() => {
     fetchAllCountries();
   }, [fetchAllCountries]);
-
+ 
   const fetchWorkLocation = useCallback(async () => {
     try {
       const response = await GetAllWorkLocation();
@@ -477,15 +479,15 @@ function CandidateForm() {
       console.error("Failed to fetch country data", error);
     }
   }, []);
-
+ 
   useEffect(() => {
     fetchWorkLocation();
   }, [fetchWorkLocation]);
-
+ 
   const fetchDocumentByCode = useCallback(async (code) => {
     try {
       const response = await GetDocumentsByCountryCode(code);
-
+ 
       console.log("Documents fetched", response);
       setDocuments(response || []);
       console.log("Documents", documents.length);
@@ -496,22 +498,22 @@ function CandidateForm() {
       console.error("Failed to fetch holidays data", error);
     }
   }, []);
-
+ 
   useEffect(() => {
     fetchDocumentByCode(formData.nationality);
   }, [fetchDocumentByCode, formData.nationality]);
-
+ 
   useEffect(() => {
     fetchDesignationData();
     console.log(designationData);
   }, [fetchDesignationData]);
-
+ 
   const fetchDetailsByPincode = useCallback(
     async (pincode, addressType) => {
       try {
         const response = await GetDetailsByPincode(pincode);
         console.log("Details fetched", response);
-
+ 
         // Update based on the addressType
         if (addressType === "permanentAddress") {
           setPermanentAddress((prev) => ({
@@ -547,7 +549,7 @@ function CandidateForm() {
     },
     [formData.sameAsPermanent]
   );
-
+ 
   const configureRequirementInfo = useCallback(
     (formData, errors) => [
       {
@@ -599,7 +601,7 @@ function CandidateForm() {
     ],
     [errors, workLocationData, priorityData]
   );
-
+ 
   const configurePersonalInfo = useCallback(
     (formData, errors) => [
       {
@@ -716,12 +718,12 @@ function CandidateForm() {
     ],
     [errors, countries]
   );
-
+ 
   const configureDocumentDetails = useCallback(
     (formData, errors) => {
       const fields = [];
       console.log(formData.nationality);
-
+ 
       // Check if nationality is India
       if (formData.nationality === "IND") {
         fields.push(
@@ -745,7 +747,7 @@ function CandidateForm() {
           }
         );
       }
-
+ 
       // Check if nationality is USA
       if (formData.nationality === "USA") {
         fields.push(
@@ -767,12 +769,12 @@ function CandidateForm() {
           }
         );
       }
-
+ 
       return fields;
     },
     [errors]
   );
-
+ 
   const configureShowPassport = useCallback(
     (formData, errors) => {
       const fields = [
@@ -785,7 +787,7 @@ function CandidateForm() {
           required: false,
         },
       ];
-
+ 
       if (formData.showPassport) {
         fields.push(
           {
@@ -806,12 +808,12 @@ function CandidateForm() {
           }
         );
       }
-
+ 
       return fields; // Return the fields array
     },
     [errors] // Include errors in the dependency array
   );
-
+ 
   const configureShowVisa = useCallback(
     (formData, errors) => {
       const fields = [
@@ -824,7 +826,7 @@ function CandidateForm() {
           required: false,
         },
       ];
-
+ 
       // Add Visa fields if the checkbox is checked
       if (formData.showVisa) {
         fields.push(
@@ -854,12 +856,12 @@ function CandidateForm() {
           }
         );
       }
-
+ 
       return fields; // Return the fields array
     },
     [errors] // Include errors in the dependency array
   );
-
+ 
   const configurePermanentAddress = useCallback(
     (permanentAddress, errors) => {
       const fields = [
@@ -911,12 +913,12 @@ function CandidateForm() {
           required: true,
         },
       ];
-
+ 
       return fields;
     },
     [errors, candidateId]
   );
-
+ 
   const configureSameAsPermanent = useCallback(
     (formData, errors) => [
       {
@@ -929,7 +931,7 @@ function CandidateForm() {
     ],
     [errors]
   );
-
+ 
   const configureCurrentAddress = useCallback(
     (formData, errors) => [
       {
@@ -986,7 +988,7 @@ function CandidateForm() {
     ],
     [permanentAddress, currentAddress, errors]
   );
-
+ 
   const configureEducationData = useCallback(
     (errors, i) => {
       const edu = formData.educations;
@@ -1016,7 +1018,8 @@ function CandidateForm() {
           required: true,
         },
         {
-          label: "Country",
+ 
+label: "Country",
           name: "eduCountry",
           type: "text",
           value: edu[i].eduCountry,
@@ -1061,7 +1064,7 @@ function CandidateForm() {
     },
     [errors, formData]
   );
-
+ 
   const configureEmploymentData = useCallback(
     (errors, i) => {
       const emp = formData.employments;
@@ -1127,7 +1130,7 @@ function CandidateForm() {
     },
     [errors, formData]
   );
-
+ 
   const configureCtcData = useCallback(
     (formData, errors) => {
       return [
@@ -1171,11 +1174,11 @@ function CandidateForm() {
     },
     [formData, errors]
   );
-
+ 
   const configureBudgetApprovalData = useCallback(
     (formData, errors) => {
       let dropdownValue = formData.budgetStatus;
-
+ 
       // Determine the dropdown value based on the workflow status description
       if (
         workflowStatusDescription === "101" ||
@@ -1198,18 +1201,18 @@ function CandidateForm() {
       } else if (workflowStatusDescription === "203") {
         dropdownValue = "revise";
       }
-
+ 
       const updatedFormData = {
         ...formData,
         budgetStatus: dropdownValue,
       };
-
+ 
       // Determine whether to show the comment field
       const shouldShowComment =
         ["rejected", "exceptional_approved", "revise"].includes(
           dropdownValue
         ) || updatedFormData.budgetComment;
-
+ 
       return [
         {
           label: "Budget Approval",
@@ -1234,7 +1237,7 @@ function CandidateForm() {
     },
     [dropdownOptions] // Ensure `dropdownOptions` is stable
   );
-
+ 
   const configureOnboardingInitiationData = useCallback(
     (onBoardData, errors, designationData, formData) => {
       console.log("Initaate onboard", formData.nationality);
@@ -1269,7 +1272,8 @@ function CandidateForm() {
           error: errors.maritalStatus,
           required: true,
         },
-        {
+ 
+{
           label: "Group",
           name: "group",
           type: "dropDownList",
@@ -1302,7 +1306,7 @@ function CandidateForm() {
           required: true,
         },
       ];
-
+ 
       // Only add the UAN field if nationality is not IND
       if (formData.nationality == "IND" || formData.nationality == null) {
         fields.splice(1, 0, {
@@ -1315,7 +1319,7 @@ function CandidateForm() {
           required: true,
         });
       }
-
+ 
       return fields;
     },
     [
@@ -1327,14 +1331,14 @@ function CandidateForm() {
       subGroups,
     ]
   );
-
+ 
   const configureManagementApprovalData = useCallback(
     (formData, errors) => {
       // const workflowStatusDescription =
       //   state?.workflowStatusDescription || "Default Status";
-
+ 
       let dropdownValue = formData.managementStatus;
-
+ 
       if (workflowStatusDescription === "300") {
         dropdownValue = "approved";
       } else if (workflowStatusDescription === "301") {
@@ -1344,17 +1348,17 @@ function CandidateForm() {
       } else if (workflowStatusDescription === "303") {
         dropdownValue = "revise";
       }
-
+ 
       const updatedFormData = {
         ...formData,
         budgetStatus: dropdownValue,
       };
-
+ 
       const shouldShowComment =
         ["rejected", "exceptional_approved", "revise"].includes(
           dropdownValue
         ) || formData.managementComment;
-
+ 
       return [
         {
           label: "Management Approval",
@@ -1379,34 +1383,34 @@ function CandidateForm() {
     },
     [formData, errors]
   );
-
+ 
   const handleEducationChange = (index, event) => {
     const { name, value } = event.target;
-
+ 
     // Create a copy of the educations array from formData
     const newEducations = [...formData.educations];
     newEducations[index] = { ...newEducations[index], [name]: value };
-
+ 
     // Create a deep copy of the errors array from the current state
     const newErrors = [...errors.educations];
     newErrors[index] = {
       ...newErrors[index],
       [name]: value ? "" : `Please provide a valid ${name}`,
     };
-
+ 
     // Update the formData state
     setFormData((prevData) => ({
       ...prevData,
       educations: newEducations,
     }));
-
+ 
     // Update the errors state
     setErrors((prevErrors) => ({
       ...prevErrors,
       educations: newErrors,
     }));
   };
-
+ 
   const handleAddEducation = () => {
     setFormData((prevData) => ({
       ...prevData,
@@ -1428,7 +1432,7 @@ function CandidateForm() {
       educations: [...prevErrors.educations, { ...defaultEducationError }],
     }));
   };
-
+ 
   const handleRemoveEducation = (index) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -1439,7 +1443,7 @@ function CandidateForm() {
       educations: prevErrors.educations.filter((_, i) => i !== index),
     }));
   };
-
+ 
   const handleEmploymentChange = (index, event) => {
     const { name, value } = event.target;
     const newEmployments = [...formData.employments];
@@ -1455,7 +1459,7 @@ function CandidateForm() {
       ),
     }));
   };
-
+ 
   const handleAddEmployment = () => {
     setFormData((prevData) => ({
       ...prevData,
@@ -1477,7 +1481,7 @@ function CandidateForm() {
       employments: [...prevErrors.employments, defaultEmploymentError],
     }));
   };
-
+ 
   const handleRemoveEmployment = (index) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -1488,7 +1492,7 @@ function CandidateForm() {
       employments: prevErrors.employments.filter((_, i) => i !== index),
     }));
   };
-
+ 
   const fetchCandidateData = useCallback(
     async (isSaved) => {
       try {
@@ -1496,17 +1500,17 @@ function CandidateForm() {
           const candidateData = await getCandidateById(candidateId);
           console.log(candidateData);
           console.log(candidateData);
-
+ 
           setWorkflowStatusDescription(candidateData.workflowStatus);
-
+ 
           console.log("Status is ", candidateData.workflowStatus);
-
+ 
           // Handle file URL and file data
           let filePath = null; // Declare a variable for filePath
           if (candidateData.offers.length > 0) {
             const lastOffer =
               candidateData.offers[candidateData.offers.length - 1];
-
+ 
             if (workflowStatusDescription === "303") {
               setFileUrl(null);
               setFile({ name: "" });
@@ -1526,7 +1530,7 @@ function CandidateForm() {
           }
           const showPassport = !!candidateData.passportNumber;
           const showVisa = !!candidateData.visa;
-
+ 
           setFormData((prevData) => ({
             ...prevData,
             ...candidateData,
@@ -1535,25 +1539,25 @@ function CandidateForm() {
             initiateOnboard: false,
             offerLetter: candidateData.offerLetter || "",
           }));
-
+ 
           // Set addresses
           const currentAddress = candidateData.addresses?.find(
             (address) => address.type === "Current"
           ) || { line1: "", postalCode: 0, city: "", state: "", country: "" };
-
+ 
           const permanentAddress = candidateData.addresses?.find(
             (address) => address.type === "Permanent"
           ) || { line1: "", postalCode: 0, city: "", state: "", country: "" };
-
+ 
           setCurrentAddress(currentAddress);
           setPermanentAddress(permanentAddress);
-
+ 
           console.log("Inside fetchCandidate", filePath);
-
+ 
           if (!isSaved) {
             Toaster("success", "Candidate data fetched successfully!");
           }
-
+ 
           return filePath; // Return the filePath for use in handleSendOfferLetter
         }
       } catch (error) {
@@ -1563,7 +1567,7 @@ function CandidateForm() {
     },
     [candidateId]
   );
-
+ 
   useEffect(() => {
     if (candidateId) {
       fetchCandidateData(false)
@@ -1576,7 +1580,7 @@ function CandidateForm() {
       resetForm(); // Reset form if candidateId is not present
     }
   }, [candidateId, workflowStatusDescription]); // Depend on candidateId and workflowStatusDescription
-
+ 
   const updateTabStatus = () => {
     if (
       workflowStatusDescription === "Default Status" ||
@@ -1599,7 +1603,7 @@ function CandidateForm() {
       });
     }
   };
-
+ 
   const resetForm = () => {
     setFormData(defaultFormData);
     setWorkflowStatusDescription("Default Status");
@@ -1630,12 +1634,12 @@ function CandidateForm() {
       employments: [defaultEmploymentError],
     });
   };
-
+ 
   const handleBlur = (event, addressType) => {
     const { name } = event.target;
     console.log(event.target);
     console.log(addressType);
-
+ 
     if (currentTab === 0) {
       validateBasicInfo(name);
       validateAddress(name, addressType);
@@ -1650,11 +1654,11 @@ function CandidateForm() {
       validateCtcDetails(name);
     }
   };
-
+ 
   const validateBasicInfo = (fieldName) => {
     let tempErrors = { ...errors }; // Create a copy of the current errors object
     let isValid = true; // Assume the form is valid initially
-
+ 
     switch (fieldName) {
       case "requirementId":
         if (!stringNotNullValidation(formData.requirementId)) {
@@ -1665,7 +1669,7 @@ function CandidateForm() {
           tempErrors.requirementId = ""; // Clear error if valid
         }
         break;
-
+ 
        case "requirementDesc":
         if (!stringNotNullValidation(formData.requirementDesc)) {
           tempErrors.requirementDesc = "Requirement ID is required";
@@ -1675,7 +1679,7 @@ function CandidateForm() {
           tempErrors.requirementDesc = ""; // Clear error if valid
         }
         break;
-
+ 
       case "workLocation":
         if (!stringNotNullValidation(formData.workLocation)) {
           tempErrors.workLocation = "Please select a Work Location";
@@ -1685,7 +1689,7 @@ function CandidateForm() {
           tempErrors.workLocation = "";
         }
         break;
-
+ 
       case "priority":
         if (!stringNotNullValidation(formData.priority)) {
           tempErrors.priority = "Please select Priority";
@@ -1695,7 +1699,7 @@ function CandidateForm() {
           tempErrors.priority = "";
         }
         break;
-
+ 
       case "doj":
         if (!stringNotNullValidation(formData.doj)) {
           tempErrors.doj = "Date of Joining is required";
@@ -1709,7 +1713,7 @@ function CandidateForm() {
           tempErrors.doj = "";
         }
         break;
-
+ 
       case "firstName":
         if (!validateAlphabets(formData.firstName)) {
           tempErrors.firstName = "First name is required";
@@ -1719,7 +1723,7 @@ function CandidateForm() {
           tempErrors.firstName = "";
         }
         break;
-
+ 
       case "lastName":
         if (!stringNotNullValidation(formData.lastName)) {
           tempErrors.lastName = "Last name is required";
@@ -1733,7 +1737,7 @@ function CandidateForm() {
           tempErrors.lastName = "";
         }
         break;
-
+ 
       case "primarySkill":
         if (!stringNotNullValidation(formData.primarySkill)) {
           tempErrors.primarySkill = "Primary Skill is required";
@@ -1748,7 +1752,7 @@ function CandidateForm() {
           tempErrors.primarySkill = "";
         }
         break;
-
+ 
       case "dob":
         if (!stringNotNullValidation(formData.dob)) {
           tempErrors.dob = "DOB is required";
@@ -1762,7 +1766,7 @@ function CandidateForm() {
           tempErrors.dob = "";
         }
         break;
-
+ 
       case "gender":
         if (!stringNotNullValidation(formData.gender)) {
           tempErrors.gender = "Please select a gender";
@@ -1772,7 +1776,7 @@ function CandidateForm() {
           tempErrors.gender = "";
         }
         break;
-
+ 
       case "employmentType":
         if (!stringNotNullValidation(formData.employmentType)) {
           tempErrors.employmentType = "Please select an Employment Type";
@@ -1782,7 +1786,7 @@ function CandidateForm() {
           tempErrors.employmentType = "";
         }
         break;
-
+ 
       case "vendorName":
         if (!stringNotNullValidation(formData.vendorName)) {
           tempErrors.vendorName = "Vendor Name is required";
@@ -1792,7 +1796,7 @@ function CandidateForm() {
           tempErrors.vendorName = "";
         }
         break;
-
+ 
       case "emailAddres":
         if (!stringNotNullValidation(formData.emailAddres)) {
           tempErrors.emailAddres = "Email Address is required";
@@ -1806,7 +1810,7 @@ function CandidateForm() {
           tempErrors.emailAddres = "";
         }
         break;
-
+ 
       case "primaryMobileNo":
         if (!stringNotNullValidation(formData.primaryMobileNo)) {
           tempErrors.primaryMobileNo = "Primary Mobile Number is required";
@@ -1820,7 +1824,7 @@ function CandidateForm() {
           tempErrors.primaryMobileNo = "";
         }
         break;
-
+ 
       case "alternateMobileNo":
         if (
           formData.alternateMobileNo &&
@@ -1833,7 +1837,7 @@ function CandidateForm() {
           tempErrors.alternateMobileNo = "";
         }
         break;
-
+ 
       case "emergencyMobileNo":
         if (!validatePhoneNumber(formData.emergencyMobileNo)) {
           tempErrors.emergencyMobileNo = "Enter a valid phone number";
@@ -1843,7 +1847,7 @@ function CandidateForm() {
           tempErrors.emergencyMobileNo = "";
         }
         break;
-
+ 
       case "panId":
         if (formData.nationality === "IND") {
           if (!stringNotNullValidation(formData.panId)) {
@@ -1859,7 +1863,7 @@ function CandidateForm() {
           }
         }
         break;
-
+ 
       case "aadhaarNo":
         if (formData.nationality === "IND") {
           if (
@@ -1881,7 +1885,7 @@ function CandidateForm() {
           }
         }
         break;
-
+ 
       case "passportNumber":
         if (formData.showPassport) {
           if (!stringNotNullValidation(formData.passportNumber)) {
@@ -1893,7 +1897,7 @@ function CandidateForm() {
           }
         }
         break;
-
+ 
       case "expiry":
         if (formData.showPassport) {
           if (!stringNotNullValidation(formData.expiry)) {
@@ -1909,7 +1913,7 @@ function CandidateForm() {
           }
         }
         break;
-
+ 
       case "visa":
         if (formData.showVisa) {
           if (!stringNotNullValidation(formData.visa)) {
@@ -1921,7 +1925,7 @@ function CandidateForm() {
           }
         }
         break;
-
+ 
       case "visaCountry":
         if (formData.showVisa) {
           if (!stringNotNullValidation(formData.visaCountry)) {
@@ -1933,7 +1937,7 @@ function CandidateForm() {
           }
         }
         break;
-
+ 
       case "visaExpiry":
         if (formData.showVisa) {
           if (!stringNotNullValidation(formData.visaExpiry)) {
@@ -1949,7 +1953,7 @@ function CandidateForm() {
           }
         }
         break;
-
+ 
       default:
         break;
     }
@@ -1957,15 +1961,15 @@ function CandidateForm() {
     setErrors((prev) => ({ ...prev, ...tempErrors })); // Update the state with the errors
     return isValid; // Return the validity of the form
   };
-
+ 
   const validateAddress = (fieldName, addressType) => {
     let tempErrors = { ...errors }; // Create a copy of the current errors object
     let isValid = true; // Assume the form is valid initially
-
+ 
     // Determine which address to use (currentAddress or permanentAddress)
     const address =
       addressType === "currentAddress" ? currentAddress : permanentAddress;
-
+ 
     switch (fieldName) {
       // Address Fields Validation
       case "line1":
@@ -1983,7 +1987,7 @@ function CandidateForm() {
           };
         }
         break;
-
+ 
       case "country":
         if (!validateAlphabets(address.country)) {
           tempErrors[addressType] = {
@@ -1999,7 +2003,7 @@ function CandidateForm() {
           };
         }
         break;
-
+ 
       case "city":
         if (!validateAlphabets(address.city)) {
           tempErrors[addressType] = {
@@ -2015,7 +2019,7 @@ function CandidateForm() {
           };
         }
         break;
-
+ 
       case "state":
         if (!validateAlphabets(address.state)) {
           tempErrors[addressType] = {
@@ -2031,7 +2035,7 @@ function CandidateForm() {
           };
         }
         break;
-
+ 
       case "postalCode":
         if (!validatePostalCode(address.postalCode)) {
           tempErrors[addressType] = {
@@ -2047,11 +2051,12 @@ function CandidateForm() {
           };
         }
         break;
-
+ 
       default:
         break;
     }
-
+ 
+ 
     console.log("Updated tempErrors:", tempErrors);
     setErrors((prev) => ({
       ...prev,
@@ -2060,14 +2065,14 @@ function CandidateForm() {
         ...tempErrors[addressType], // Update the current address type with the latest errors
       },
     }));
-
+ 
     return isValid; // Return the validity of the form
   };
-
+ 
   const validateEducation = (fieldName) => {
     let tempErrors = { ...errors }; // Create a copy of the current errors object
     let isValid = true; // Assume the form is valid initially
-
+ 
     for (const [index, education] of formData.educations.entries()) {
       switch (fieldName) {
         case "institute":
@@ -2079,7 +2084,7 @@ function CandidateForm() {
             tempErrors.educations[index].institute = ""; // Clear error if valid
           }
           break;
-
+ 
         case "university":
           if (!validateAlphabets(education?.university)) {
             tempErrors.educations[index].university =
@@ -2090,7 +2095,7 @@ function CandidateForm() {
             tempErrors.educations[index].university = ""; // Clear error if valid
           }
           break;
-
+ 
         case "degree":
           if (!stringNotNullValidation(education?.degree)) {
             tempErrors.educations[index].degree = "Degree is required";
@@ -2100,7 +2105,7 @@ function CandidateForm() {
             tempErrors.educations[index].degree = ""; // Clear error if valid
           }
           break;
-
+ 
         case "eduState":
           if (!validateAlphabets(education?.eduState)) {
             tempErrors.educations[index].eduState =
@@ -2111,7 +2116,7 @@ function CandidateForm() {
             tempErrors.educations[index].eduState = ""; // Clear error if valid
           }
           break;
-
+ 
         case "eduCountry":
           if (!validateAlphabets(education?.eduCountry)) {
             tempErrors.educations[index].eduCountry =
@@ -2122,7 +2127,7 @@ function CandidateForm() {
             tempErrors.educations[index].eduCountry = ""; // Clear error if valid
           }
           break;
-
+ 
         case "completedOn":
           if (!validateDayjsDate(education?.completedOn)) {
             tempErrors.educations[index].completedOn =
@@ -2133,7 +2138,7 @@ function CandidateForm() {
             tempErrors.educations[index].completedOn = ""; // Clear error if valid
           }
           break;
-
+ 
         case "mode":
           if (!stringNotNullValidation(education?.mode)) {
             tempErrors.educations[index].mode = "Mode of study is required";
@@ -2143,7 +2148,7 @@ function CandidateForm() {
             tempErrors.educations[index].mode = ""; // Clear error if valid
           }
           break;
-
+ 
         case "gradeMarks":
           if (!stringNotNullValidation(education?.gradeMarks)) {
             tempErrors.educations[index].gradeMarks = "Grade is required";
@@ -2153,21 +2158,21 @@ function CandidateForm() {
             tempErrors.educations[index].gradeMarks = ""; // Clear error if valid
           }
           break;
-
+ 
         default:
           break;
       }
     }
-
+ 
     setErrors(tempErrors); // Update state with the latest errors
     return isValid; // Return the validity of the form
   };
-
+ 
   const validateEmployment = (fieldName) => {
     let tempErrors = { ...errors }; // Create a copy of the current errors object
     let isValid = true; // Assume the form is valid initially
     console.log("Validation", fieldName);
-
+ 
     for (const [index, employment] of formData.employments.entries()) {
       switch (fieldName) {
         case "employer":
@@ -2247,11 +2252,11 @@ function CandidateForm() {
     setErrors(tempErrors); // Update state with the latest errors
     return isValid; // Return the validity of the form
   };
-
+ 
   const validateCtcDetails = (fieldName) => {
     let tempErrors = { ...errors }; // Create a copy of the current errors object
     let isValid = true;
-
+ 
     switch (fieldName) {
       case "ctcType":
         if (formData.nationality !== "IND") {
@@ -2294,23 +2299,23 @@ function CandidateForm() {
       default:
         break;
     }
-
+ 
     setErrors((prev) => ({ ...prev, ...tempErrors })); // Update state with the latest errors
     return isValid; // Return the validity of the form
   };
-
+ 
   const handleChange = (event) => {
     const { name, value, checked, type } = event.target;
-
+ 
     console.log(name, value, checked, type); // Debugging log
-
+ 
     // Handle checkboxes for showPassport and showVisa
     if (type === "checkbox") {
       setFormData((prevData) => ({
         ...prevData,
         [name]: checked, // Update showPassport or showVisa
       }));
-
+ 
       // Handle sameAsPermanent checkbox
       if (name === "sameAsPermanent") {
         setFormData((prevData) => {
@@ -2331,7 +2336,7 @@ function CandidateForm() {
         ...prevData,
         [name]: value,
       }));
-
+ 
       fetchDocumentByCode(value);
     }
     // Handle other input changes
@@ -2341,49 +2346,49 @@ function CandidateForm() {
         [name]: value,
       }));
     }
-
+ 
     // Update errors based on input validation
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: value ? "" : prevErrors[name],
     }));
   };
-
+ 
   // Synchronize currentAddress with permanentAddress if sameAsPermanent is true
   useEffect(() => {
     if (formData.sameAsPermanent) {
       setCurrentAddress((prev) => ({ ...permanentAddress, id: prev.id }));
     }
   }, [formData.sameAsPermanent, permanentAddress]);
-
+ 
   // Handle Permanent Address Change
   const handlePermanentAddressChange = (event) => {
     const { name, value } = event.target;
-
+ 
     if (name === "postalCode" && value.length >= 5) {
       fetchDetailsByPincode(value, "permanentAddress");
     }
-
+ 
     setPermanentAddress((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
-
+ 
   // Handle Current Address Change
   const handleCurrentAddressChange = (event) => {
     const { name, value } = event.target;
-
+ 
     if (name === "currentPostalCode" && value.length >= 5) {
       fetchDetailsByPincode(value, "currentAddress");
     }
-
+ 
     setCurrentAddress((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
-
+ 
   // Update formData when permanentAddress changes
   useEffect(() => {
     setFormData((prevData) => ({
@@ -2400,7 +2405,7 @@ function CandidateForm() {
       ],
     }));
   }, [permanentAddress]);
-
+ 
   // Update formData when currentAddress changes
   useEffect(() => {
     setFormData((prevData) => ({
@@ -2417,7 +2422,7 @@ function CandidateForm() {
       ],
     }));
   }, [currentAddress]);
-
+ 
   const handleApprovalChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -2429,30 +2434,30 @@ function CandidateForm() {
       [name]: value ? "" : prevErrors[name],
     }));
   };
-
+ 
   const handleOnboardChange = (event) => {
     const { name, value } = event.target;
     console.log(name, value);
-
+ 
     // Update the onBoardData state
     setOnBoardData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-
+ 
     if (name === "group") {
       // Update the selectedGroup based on group name
       const selectedGroup = groups.find((group) => group.groupName === value);
-
+ 
       // Update state with the selected group
       setSelectedGroup({
         id: selectedGroup ? selectedGroup.groupId : null,
         name: value,
       });
-
+ 
       // Reset the subgroup selection
       setSelectedSubGroup(null);
-
+ 
       // Set subGroups based on the selected group
       setSubGroups(selectedGroup ? selectedGroup.subGroupDetails : []);
     } else if (name === "subGroup") {
@@ -2460,7 +2465,7 @@ function CandidateForm() {
       const selectedSubGroup = subGroups.find(
         (subGroup) => subGroup.subGroupName === value
       );
-
+ 
       // Update state with the selected subgroup
       setSelectedSubGroup({
         id: selectedSubGroup ? selectedSubGroup.subGroupId : null,
@@ -2472,13 +2477,13 @@ function CandidateForm() {
       [name]: value ? "" : prevErrors[name],
     }));
   };
-
+ 
   const validate = (event, type) => {
     console.log(formData);
-
+ 
     let tempErrors = { ...errors };
     let isValid = true;
-
+ 
     const validateField = (fieldName) => {
       switch (fieldName) {
         case "requirementId":
@@ -2499,7 +2504,7 @@ function CandidateForm() {
           tempErrors.requirementDesc = ""; // Clear error if valid
         }
         break;
-
+ 
         case "workLocation":
           if (!stringNotNullValidation(formData.workLocation)) {
             tempErrors.workLocation = "Please select a Work Location";
@@ -2572,7 +2577,7 @@ function CandidateForm() {
             tempErrors.emailAddres = "";
           }
           break;
-
+ 
         case "primaryMobileNo":
           if (!validatePhoneNumber(formData.primaryMobileNo)) {
             tempErrors.primaryMobileNo = "Enter valid phone number";
@@ -2593,7 +2598,7 @@ function CandidateForm() {
             }
           }
           break;
-
+ 
         case "aadhaarNo":
           if (formData.nationality === "IND") {
             if (formData.aadhaarNo && !validateAadhaar(formData.aadhaarNo)) {
@@ -2702,7 +2707,7 @@ function CandidateForm() {
           break;
       }
     };
-
+ 
     const validateEducation = (fieldName) => {
       console.log("Validation", fieldName);
       for (const [index, education] of formData.educations.entries()) {
@@ -2866,17 +2871,17 @@ function CandidateForm() {
         }
       }
     };
-
+ 
     const validatePermanentAddress = (fieldName) => {
       const permanentAddress = formData.addresses.find(
         (data) => data.type === "Permanent"
       );
-
+ 
       if (!permanentAddress) {
         Toaster("error", "Permanent address not found");
         return false; // or set isValid to false
       }
-
+ 
       switch (fieldName) {
         case "line1":
           if (!stringNotNullValidation(permanentAddress.line1)) {
@@ -2887,7 +2892,7 @@ function CandidateForm() {
             tempErrors.line1 = ""; // Clear error if valid
           }
           break;
-
+ 
         case "postalCode":
           if (!validatePostalCode(permanentAddress.postalCode)) {
             tempErrors.postalCode = "Postal code is required";
@@ -2897,7 +2902,7 @@ function CandidateForm() {
             tempErrors.postalCode = ""; // Clear error if valid
           }
           break;
-
+ 
         case "city":
           if (!validateAlphabets(permanentAddress.city)) {
             tempErrors.city = "City is required";
@@ -2907,7 +2912,7 @@ function CandidateForm() {
             tempErrors.city = ""; // Clear error if valid
           }
           break;
-
+ 
         case "state":
           if (!validateAlphabets(permanentAddress.state)) {
             tempErrors.state = "State is required";
@@ -2917,7 +2922,7 @@ function CandidateForm() {
             tempErrors.state = ""; // Clear error if valid
           }
           break;
-
+ 
         case "country":
           if (!validateAlphabets(permanentAddress.country)) {
             tempErrors.country = "Country is required";
@@ -2927,22 +2932,22 @@ function CandidateForm() {
             tempErrors.country = ""; // Clear error if valid
           }
           break;
-
+ 
         default:
           break;
       }
     };
-
+ 
     const validateCurrentAddress = (fieldName) => {
       const currentAddress = formData.addresses.find(
         (data) => data.type === "Current"
       );
-
+ 
       if (!currentAddress) {
         Toaster("error", "Current address not found");
         return false; // or set isValid to false
       }
-
+ 
       switch (fieldName) {
         case "currentLine1":
           if (!stringNotNullValidation(currentAddress.currentLine1)) {
@@ -2953,7 +2958,7 @@ function CandidateForm() {
             tempErrors.currentLine1 = ""; // Clear error if valid
           }
           break;
-
+ 
         case "currentPostalCode":
           if (!validatePostalCode(currentAddress.currentPostalCode)) {
             tempErrors.currentPostalCode = "Current postal code is required";
@@ -2963,7 +2968,7 @@ function CandidateForm() {
             tempErrors.currentPostalCode = ""; // Clear error if valid
           }
           break;
-
+ 
         case "currentCity":
           if (!validateAlphabets(currentAddress.currentCity)) {
             tempErrors.currentCity = "Current city is required";
@@ -2973,7 +2978,7 @@ function CandidateForm() {
             tempErrors.currentCity = ""; // Clear error if valid
           }
           break;
-
+ 
         case "currentState":
           if (!validateAlphabets(currentAddress.currentState)) {
             tempErrors.currentState = "Current state is required";
@@ -2983,7 +2988,7 @@ function CandidateForm() {
             tempErrors.currentState = ""; // Clear error if valid
           }
           break;
-
+ 
         case "currentCountry":
           if (!validateAlphabets(currentAddress.currentCountry)) {
             tempErrors.currentCountry = "Current country is required";
@@ -2993,12 +2998,12 @@ function CandidateForm() {
             tempErrors.currentCountry = ""; // Clear error if valid
           }
           break;
-
+ 
         default:
           break;
       }
     };
-
+ 
     if (type === "blur") {
       const fieldName = event.target.name;
       validateField(fieldName);
@@ -3036,7 +3041,7 @@ function CandidateForm() {
         validatePermanentAddress("state");
         validatePermanentAddress("country");
       });
-
+ 
       formData.addresses.forEach((currentAddress, index) => {
         validateCurrentAddress("currentLine1");
         validateCurrentAddress("currentPostalCode");
@@ -3045,19 +3050,19 @@ function CandidateForm() {
         validateCurrentAddress("currentCountry");
       });
     }
-
+ 
     console.log(tempErrors);
     setErrors(tempErrors);
     return isValid;
   };
-
+ 
   // useEffect(() => {
   //   if (isSaved) {
   //     // Fetch candidate data if isSaved is true
   //     fetchCandidateData(true); // Call the method to fetch candidate data after save
   //   }
   // }, [isSaved]);
-
+ 
   const handleSave = () => {
     const fieldsToValidate = [
       "requirementId",
@@ -3065,22 +3070,22 @@ function CandidateForm() {
       "firstName",
       "lastName",
     ];
-
+ 
     let isValid = true;
     let validationErrors = {};
-
+ 
     // Iterate over the fields to validate
     for (const field of fieldsToValidate) {
       // Trigger blur validation and store result
       const validationResult = validate({ target: { name: field } }, "blur");
-
+ 
       if (!validationResult) {
         // If any field fails validation, stop further processing
         validationErrors[field] = `${field} is required`;
         isValid = false;
       }
     }
-
+ 
     // If validation fails, show error with all fields that need attention
     if (!isValid) {
       const missingFields = Object.keys(validationErrors).join(", ");
@@ -3115,7 +3120,7 @@ function CandidateForm() {
   };
   const handleContinue = (event) => {
     let isValid = true; // Assume the form is valid by default
-
+ 
     // Validate based on the current tab
     switch (currentTab) {
       case 0: // Validate Basic Info
@@ -3139,7 +3144,7 @@ function CandidateForm() {
           "visaCountry",
           "visaExpiry",
         ];
-
+ 
         flatFields.forEach((field) => {
           if (!validateBasicInfo(field)) {
             // Assuming validateBasicInfo works for all fields
@@ -3147,7 +3152,7 @@ function CandidateForm() {
             console.log(`${field} is invalid`); // You can replace this with a field error handler or a toast notification
           }
         });
-
+ 
         const addressFields = [
           "line1",
           "country",
@@ -3155,7 +3160,7 @@ function CandidateForm() {
           "state",
           "postalCode",
         ];
-
+ 
         // Loop through address types and validate address fields
         ["currentAddress", "permanentAddress"].forEach((addressType) => {
           addressFields.forEach((field) => {
@@ -3166,9 +3171,9 @@ function CandidateForm() {
             }
           });
         });
-
+ 
         break;
-
+ 
       case 1: // Validate Education
         formData.educations.forEach((education, index) => {
           isValid = validateEducation("institute", index) && isValid;
@@ -3181,7 +3186,7 @@ function CandidateForm() {
           isValid = validateEducation("gradeMarks", index) && isValid;
         });
         break;
-
+ 
       case 2: // Validate Employment
         formData.employments.forEach((employment, index) => {
           isValid = validateEmployment("employer", index) && isValid;
@@ -3193,12 +3198,14 @@ function CandidateForm() {
         });
         break;
     }
-
-    // If the current tab is valid, proceed to the next tab
+ 
+   
+ 
+// If the current tab is valid, proceed to the next tab
     if (isValid) {
       // Enable the next tab after successful validation
       const newTabStatus = { ...tabStatus };
-
+ 
       if (currentTab === 0) {
         newTabStatus.education = true;
       } else if (currentTab === 1) {
@@ -3206,9 +3213,9 @@ function CandidateForm() {
       } else if (currentTab === 2) {
         newTabStatus.ctcDetails = true;
       }
-
+ 
       setTabStatus(newTabStatus);
-
+ 
       // Move to the next tab if possible
       if (currentTab < 3) {
         setCurrentTab((prevTab) => prevTab + 1);
@@ -3217,20 +3224,20 @@ function CandidateForm() {
       alert("Please fix the errors before continuing.");
     }
   };
-
+ 
   const handleSubmit = (event) => {
     let isValid = true; // Assume the form is valid by default
-
+ 
     // Validate only CTC details before submission
     isValid = validateCtcDetails("ctcType") && isValid;
     isValid = validateCtcDetails("expectedCtc") && isValid;
     isValid = validateCtcDetails("budget") && isValid;
     isValid = validateCtcDetails("grantedCtc") && isValid;
-
+ 
     // If the CTC details are valid, proceed with submission
     if (isValid) {
       console.log("CTC details are valid. Proceeding with form submission.");
-
+ 
       let req = { ...formData };
       req.addresses = [
         {
@@ -3243,12 +3250,12 @@ function CandidateForm() {
         },
       ];
       req.dob = formData.dob ? dayjs(formData.dob).format("YYYY-MM-DD") : "";
-
+ 
       // Handle specific workflow status if necessary
       // const statusDescription = state?.status || "Default Status";
       // const workflowStatusDescription =
       //   state?.workflowStatusDescription || "Default Status";
-
+ 
       if (
         // statusDescription === "Submitted" &&
         workflowStatusDescription === "203"
@@ -3257,7 +3264,7 @@ function CandidateForm() {
         handleUpdate(req);
         return;
       }
-
+ 
       // Proceed with creating candidate if CTC validation passes
       createCandidate(req)
         .then(() => {
@@ -3269,13 +3276,13 @@ function CandidateForm() {
           console.error("Error creating candidate:", error);
           Toaster("error", "Error creating candidate. Please try again.");
         });
-
+ 
       resetForm();
     } else {
       alert("Please fix the CTC errors before submitting.");
     }
   };
-
+ 
   const handleUpdate = (formData) => {
     formData.modifiedBy = employeeData ? employeeData?.employeeCode : "";
     if (formData.sameAsPermanent) {
@@ -3316,7 +3323,7 @@ function CandidateForm() {
         Toaster("error", "Error updating candidate. Please try again.");
       });
   };
-
+ 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     const formData = new FormData();
@@ -3333,7 +3340,7 @@ function CandidateForm() {
         console.error("Error uploading file:", error);
       });
   };
-
+ 
   const handleSendOfferLetter = async () => {
     console.log("Sending offer letter for candidate ID:", candidateId);
     const filePath = await fetchCandidateData(false);
@@ -3350,13 +3357,13 @@ function CandidateForm() {
         Toaster("error", "Error sending offer letter. Please try again.");
       });
   };
-
+ 
   const handleInitiateOnboard = async () => {
     // Validate onBoardData
     let valid = true;
     console.log("Validating onBoardData", formData.nationality);
     console.log(onBoardData);
-
+ 
     //Removed mandatory profile picture validation for now
     // if (!profilePicture) {
     //   Toaster("error", "Please upload a valid 300x300 pixels profile picture.");
@@ -3366,10 +3373,10 @@ function CandidateForm() {
     //   }));
     //   return;
     // }
-
+ 
     for (const [key, value] of Object.entries(onBoardData)) {
       console.log(key, value);
-
+ 
       // Validate UAN only for Indian nationality
       if (key === "uan") {
         if (formData.nationality !== "IND") {
@@ -3393,18 +3400,18 @@ function CandidateForm() {
         valid = false; // Mark as invalid
       }
     }
-
+ 
     if (!valid) {
       console.log("Please enter valid onboarding data", !valid);
       Toaster("error", "Please enter valid onboarding data");
       return;
     }
-
+ 
     const updatedFormData = {
       ...formData,
       initiateOnboard: true,
     };
-
+ 
     console.log("Updated Form", updatedFormData);
     const employeeMapData = mapFormDataToEmployeeModel(
       updatedFormData,
@@ -3418,13 +3425,13 @@ function CandidateForm() {
       .then(async (response) => {
         console.log("Onboarding initiated successfully:", response);
         console.log("After Onboarding initiated", updatedFormData);
-
+ 
         Toaster("success", "Onboarding initiated successfully!");
-
+ 
         if (profilePicture) {
           const formData = new FormData();
           formData.append("file", profilePicture);
-
+ 
           try {
             const uploadResponse = await UploadExpense(
               formData,
@@ -3443,7 +3450,7 @@ function CandidateForm() {
             );
           }
         }
-
+ 
         // ✅ Continue with onboarding flow
         try {
           await OnboardCandidate(candidateId, response.employeeCode);
@@ -3457,17 +3464,17 @@ function CandidateForm() {
         console.error("Error initiating onboarding:", error);
         const fullMessage =
           error?.response?.data?.message || "Something went wrong";
-
+ 
         // Extract the actual message after the colon
         const readableMessage = fullMessage.includes(":")
           ? fullMessage.split(":").pop().trim()
           : fullMessage;
-
+ 
         // Now show the toast
         Toaster("error", readableMessage);
       });
   };
-
+ 
   const VisuallyHiddenInput = styled("input")({
     clip: "rect(0 0 0 0)",
     clipPath: "inset(50%)",
@@ -3481,7 +3488,7 @@ function CandidateForm() {
     type: "file",
     accept: "application/pdf",
   });
-
+ 
   const handleOfferRevised = () => {
     // Update state or call an API as needed
     setOfferRevised(true); // Enable the Upload button
@@ -3493,22 +3500,22 @@ function CandidateForm() {
     // Show a confirmation message or perform other actions
     Toaster("success", "Offer has been marked as revised.");
   };
-
+ 
   // Determine if the "Upload file" button should be enabled
   const isUploadButtonEnabled =
     workflowStatusDescription === "200" ||
     workflowStatusDescription === "202" ||
     workflowStatusDescription === "303" ||
     offerRevised;
-
+ 
   console.log("Upload Button Enabled", isUploadButtonEnabled);
-
+ 
   const isSendOfferButtonEnabled =
     workflowStatusDescription === "300" || workflowStatusDescription === "302";
-
+ 
   // Determine if the "303" button should be shown
   const showOfferRevisedButton = workflowStatusDescription === "303" && !hr;
-
+ 
   const isSubmitDisabled = () => {
     console.log("Admin:", admin);
     console.log("HR:", hr);
@@ -3517,51 +3524,51 @@ function CandidateForm() {
     if (!admin) {
       return false; // Admins should always have the button enabled
     }
-
+ 
     // If offerRevised is true, button should be enabled only if fileUrl is available
     if (offerRevised) {
       return !fileUrl; // Return true (disable) if fileUrl is not available
     }
-
+ 
     // HR role conditions
     const hrStatusDisabled =
       !hr &&
       (!fileUrl || // Check if file URL is empty or null
         !["200", "303", "202"].includes(workflowStatusDescription));
-
+ 
     const budgetStatusDisabled =
       !budget &&
       (workflowStatusDescription !== "100" || !formData.budgetStatus);
-
+ 
     const managementStatusDisabled =
       !management &&
       (workflowStatusDescription !== "101" || !formData.managementStatus);
-
+ 
     const buttonDisabled =
       hrStatusDisabled || budgetStatusDisabled || managementStatusDisabled;
-
+ 
     console.log("303:", offerRevised);
     console.log("HR Status Disabled:", hrStatusDisabled);
     console.log("Budget Status Disabled:", budgetStatusDisabled);
     console.log("Management Status Disabled:", managementStatusDisabled);
     console.log("Button Disabled:", buttonDisabled);
-
+ 
     return buttonDisabled;
   };
-
+ 
   const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
+ 
     const objectUrl = URL.createObjectURL(file);
     const img = new Image();
-
+ 
     img.onload = () => {
       setProfilePicture(file);
       setPreviewUrl(objectUrl);
       setErrors((prev) => ({ ...prev, profilePicture: "" }));
     };
-
+ 
     img.onerror = () => {
       Toaster("error", "Invalid image file.");
       setProfilePicture(null);
@@ -3571,14 +3578,14 @@ function CandidateForm() {
         profilePicture: "Invalid image file",
       }));
     };
-
+ 
     img.src = objectUrl;
   };
-
+ 
   useEffect(() => {
     setCandidateId(urlCandidateId);
   }, [urlCandidateId]);
-
+ 
   return (
     <Box p={{ xs: 1, sm: 3 }}>
       <Box
@@ -3593,12 +3600,12 @@ function CandidateForm() {
         <Typography variant="h6" sm="h5" gutterBottom>
           Candidate Form
         </Typography>
-
+ 
         <Box sx={{ mt: 2, mb: 2 }}>
           <ProgressBar workflowStatusDescription={workflowStatusDescription} />
         </Box>
-
-        <Tabs
+ 
+        {/* <Tabs
           value={currentTab}
           onChange={handleChangeTab}
           variant="scrollable"
@@ -3615,9 +3622,73 @@ function CandidateForm() {
           {(workflowStatusDescription === "300" ||
             workflowStatusDescription === "302") &&
             !hr && <Tab label="Initiate Onboard" />}
-        </Tabs>
-      </Box>
+        </Tabs> */}
 
+
+
+
+<Tabs
+  value={currentTab}
+  onChange={handleChangeTab}
+  variant="scrollable"
+  scrollButtons="auto"
+  aria-label="form tabs"
+  sx={{
+    "& .MuiTabs-scrollButtons": {
+      color: "rgb(15,168,233)", // Scroll arrows
+    },
+    "& .MuiTabs-indicator": {
+      backgroundColor: "rgb(15,168,233)", // Active tab underline
+    },
+    "& .MuiTab-root": {
+      color: "rgb(15,168,233)", // Default tab label color
+      fontWeight: "",
+      "&.Mui-selected": {
+        color: "rgb(15,168,233)", // Selected tab
+      },
+      "&.Mui-disabled": {
+        color: "rgb(15,168,233) !important", // Disabled tab
+      },
+      "&.Mui-focusVisible": {
+        color: "rgb(15,168,233)", // Focused tab
+      },
+    },
+    "& .MuiTabs-scroller": {
+      "&::-webkit-scrollbar": {
+        height: "6px",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        backgroundColor: "rgb(15,168,233)",
+        borderRadius: "3px",
+      },
+      "&::-webkit-scrollbar-track": {
+        backgroundColor: "#f1f1f1",
+      },
+    },
+  }}
+>
+  <Tab label="Basic Info" />
+  <Tab label="Education" disabled={!tabStatus.education} />
+  <Tab label="Employment" disabled={!tabStatus.employment} />
+  <Tab label="CTC Details" disabled={!tabStatus.ctcDetails} />
+  {workflowStatusDescription !== "Default Status" &&
+    workflowStatusDescription !== "10" &&
+    workflowStatusDescription !== "400" && <Tab label="Approvals" />}
+  {(workflowStatusDescription === "300" ||
+    workflowStatusDescription === "302") &&
+    !hr && <Tab label="Initiate Onboard" />}
+</Tabs>
+
+
+
+
+
+
+
+
+
+      </Box>
+ 
       {currentTab === 0 && (
         <Box p={{ xs: 1, sm: 3 }}>
           <Typography variant="h6" gutterBottom>
@@ -3630,7 +3701,7 @@ function CandidateForm() {
             actionsHide={false}
             onBlur={handleBlur}
           />
-
+ 
           <Typography variant="h6" gutterBottom>
             Personal Information
           </Typography>
@@ -3641,7 +3712,7 @@ function CandidateForm() {
             readOnly={hr || hrEdit}
             actionsHide={false}
           />
-
+ 
           <Typography variant="h6" gutterBottom>
             Document Details
           </Typography>
@@ -3652,7 +3723,7 @@ function CandidateForm() {
             actionsHide={false}
             onBlur={handleBlur}
           />
-
+ 
           <ConfigureForm
             data={configureShowPassport(formData, errors)}
             handleChange={handleChange}
@@ -3660,7 +3731,7 @@ function CandidateForm() {
             actionsHide={false}
             onBlur={handleBlur}
           />
-
+ 
           <ConfigureForm
             data={configureShowVisa(formData, errors)}
             handleChange={handleChange}
@@ -3668,7 +3739,7 @@ function CandidateForm() {
             actionsHide={false}
             onBlur={handleBlur}
           />
-
+ 
           <Typography variant="h6" gutterBottom>
             Permanent Address
           </Typography>
@@ -3679,7 +3750,7 @@ function CandidateForm() {
             readOnly={hr || hrEdit}
             onBlur={(e) => handleBlur(e, "permanentAddress")}
           />
-
+ 
           {shouldShowForm && (
             <ConfigureForm
               data={configureSameAsPermanent(formData, errors)}
@@ -3689,7 +3760,7 @@ function CandidateForm() {
               onBlur={handleBlur}
             />
           )}
-
+ 
           <Box mt={3}>
             <Typography variant="h6" gutterBottom>
               Current Address
@@ -3702,7 +3773,7 @@ function CandidateForm() {
               onBlur={(e) => handleBlur(e, "currentAddress")}
             />
           </Box>
-
+ 
           {shouldShowForm && (
             <ActionButton
               handleSave={handleSave}
@@ -3712,7 +3783,7 @@ function CandidateForm() {
           )}
         </Box>
       )}
-
+ 
       {currentTab === 1 && (
         <Box p={{ xs: 1, sm: 3 }}>
           <Typography variant="h6" gutterBottom>
@@ -3741,15 +3812,43 @@ function CandidateForm() {
               )}
             </Box>
           ))}
-          <Button
+          {/* <Button
             variant="contained"
             onClick={handleAddEducation}
             startIcon={<AddCircle />}
             disabled={hr || hrEdit}
           >
             Add Education
-          </Button>
+          </Button> */}
 
+
+
+
+<Button
+  variant="contained"
+  onClick={handleAddEducation}
+  startIcon={<AddCircle />}
+  disabled={hr || hrEdit}
+  sx={{
+    backgroundColor: "rgb(15,168,233)",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "rgb(12,150,210)", // slightly darker on hover
+    },
+    "&.Mui-disabled": {
+      backgroundColor: "rgba(15,168,233,0.5)",
+      color: "#fff",
+    },
+  }}
+>
+  Add Education
+</Button>
+
+
+
+
+
+ 
           {shouldShowForm && (
             <ActionButton
               handleSave={handleSave}
@@ -3759,7 +3858,7 @@ function CandidateForm() {
           )}
         </Box>
       )}
-
+ 
       {currentTab === 2 && (
         <Box p={{ xs: 1, sm: 3 }}>
           <Typography variant="h6" gutterBottom>
@@ -3789,15 +3888,43 @@ function CandidateForm() {
               </IconButton>
             </Box>
           ))}
-          <Button
+          {/* <Button
             variant="contained"
             onClick={handleAddEmployment}
             startIcon={<AddCircle />}
             disabled={hr || hrEdit}
           >
             Add Employment
-          </Button>
+          </Button> */}
 
+
+
+<Button
+  variant="contained"
+  onClick={handleAddEmployment}
+  startIcon={<AddCircle />}
+  disabled={hr || hrEdit}
+  sx={{
+    backgroundColor: "rgb(15,168,233)",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "rgb(12,150,210)", // slightly darker on hover
+    },
+    "&.Mui-disabled": {
+      backgroundColor: "rgba(15,168,233,0.5)",
+      color: "#fff",
+    },
+  }}
+>
+  Add Employment
+</Button>
+
+
+
+
+
+
+ 
           {shouldShowForm && (
             <ActionButton
               handleSave={handleSave}
@@ -3807,7 +3934,7 @@ function CandidateForm() {
           )}
         </Box>
       )}
-
+ 
       {currentTab === 3 && (
         <Box p={{ xs: 1, sm: 3 }}>
           <Typography variant="h6" gutterBottom>
@@ -3821,17 +3948,48 @@ function CandidateForm() {
             actions={false}
             onBlur={handleBlur}
           />
-          <Button
+          {/* <Button
             variant="contained"
             color="primary"
             onClick={handleSubmit}
             disabled={hr || hrEdit}
           >
             Submit
-          </Button>
+          </Button> */}
+
+
+
+
+
+<Button
+  variant="contained"
+  onClick={handleSubmit}
+  disabled={hr || hrEdit}
+  sx={{
+    backgroundColor: "rgb(15,168,233)",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "rgb(12,150,210)", // slightly darker on hover
+    },
+    "&.Mui-disabled": {
+      backgroundColor: "rgba(15,168,233,0.5)",
+      color: "#fff",
+    },
+  }}
+>
+  Submit
+</Button>
+
+
+
+
+
+
+
+
         </Box>
       )}
-
+ 
       {currentTab === 4 && (
         <Box p={{ xs: 1, sm: 3 }}>
           <Typography variant="h6" gutterBottom>
@@ -3845,18 +4003,18 @@ function CandidateForm() {
             actions={false}
             onBlur={handleBlur}
           />
-
+ 
           <Typography variant="h6" gutterBottom>
             Offer Letter Upload
           </Typography>
-
+ 
           <Box
             display="flex"
             flexDirection={{ xs: "column", sm: "row" }}
             alignItems="start"
             gap={2}
           >
-            <Button
+            {/* <Button
               component="label"
               variant="contained"
               disabled={hr || !isUploadButtonEnabled}
@@ -3868,30 +4026,85 @@ function CandidateForm() {
                 onChange={handleFileUpload}
                 accept="application/pdf"
               />
-            </Button>
+            </Button> */}
 
+
+            <Button
+  component="label"
+  variant="contained"
+  disabled={hr || !isUploadButtonEnabled}
+  startIcon={<CloudUploadIcon />}
+  sx={{
+    backgroundColor: "rgb(15,168,233)",  // your custom color
+    color: "#fff",                        // text color
+    "&:hover": {
+      backgroundColor: "rgb(12,150,210)", // slightly darker on hover
+    },
+  }}
+>
+  Upload file
+  <VisuallyHiddenInput
+    type="file"
+    onChange={handleFileUpload}
+    accept="application/pdf"
+  />
+</Button>
+
+ 
             {fileUrl && (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  DownloadFile(fileUrl)
-                    .then((response) => {
-                      if (typeof response === "string") {
-                        Toaster("error", `Failed to view file: ${response}`);
-                        return;
-                      }
-                      const url = URL.createObjectURL(response);
-                      window.open(url, "_blank");
-                    })
-                    .catch();
-                }}
-              >
-                <AttachFileIcon sx={{ mr: 1 }} />
-                {fileUrl.split("\\").pop().split("/").pop()}
-              </Button>
-            )}
+              // <Button
+              //   variant="contained"
+              //   color="primary"
+              //   onClick={() => {
+              //     DownloadFile(fileUrl)
+              //       .then((response) => {
+              //         if (typeof response === "string") {
+              //           Toaster("error", `Failed to view file: ${response}`);
+              //           return;
+              //         }
+              //         const url = URL.createObjectURL(response);
+              //         window.open(url, "_blank");
+              //       })
+              //       .catch();
+              //   }}
+              // >
+              //   <AttachFileIcon sx={{ mr: 1 }} />
+              //   {fileUrl.split("\\").pop().split("/").pop()}
+              // </Button>
 
+
+<Button
+  variant="contained"
+  onClick={() => {
+    DownloadFile(fileUrl)
+      .then((response) => {
+        if (typeof response === "string") {
+          Toaster("error", `Failed to view file: ${response}`);
+          return;
+        }
+        const url = URL.createObjectURL(response);
+        window.open(url, "_blank");
+      })
+      .catch();
+  }}
+  sx={{
+    backgroundColor: "rgb(15,168,233)",  // main button color
+    color: "#fff",                        // text + icon color
+    "&:hover": {
+      backgroundColor: "rgb(12,150,210)", // slightly darker on hover
+    },
+  }}
+>
+  <AttachFileIcon sx={{ mr: 1 }} />
+  {fileUrl.split("\\").pop().split("/").pop()}
+</Button>
+
+
+
+
+
+            )}
+ 
             {showOfferRevisedButton && (
               <Button
                 variant="contained"
@@ -3902,7 +4115,7 @@ function CandidateForm() {
               </Button>
             )}
           </Box>
-
+ 
           <Typography variant="h6" gutterBottom>
             Management Approval
           </Typography>
@@ -3920,6 +4133,13 @@ function CandidateForm() {
               color="primary"
               onClick={() => handleUpdate(formData)}
               disabled={isSubmitDisabled()}
+               sx={{
+    backgroundColor: "rgb(12,150,210)",   // main color
+    color: "#fff",                        // text color
+    "&:hover": {
+      backgroundColor: "rgb(10,135,190)", // slightly darker on hover
+    },
+  }}
             >
               Submit
             </Button>
@@ -3928,19 +4148,26 @@ function CandidateForm() {
               color="primary"
               disabled={hr || !isSendOfferButtonEnabled}
               onClick={handleSendOfferLetter}
+              sx={{
+    backgroundColor: "rgb(12,150,210)",   // main color
+    color: "#fff",                        // text color
+    "&:hover": {
+      backgroundColor: "rgb(10,135,190)", // slightly darker on hover
+    },
+  }}
             >
               Send Offer Letter
             </Button>
           </Box>
         </Box>
       )}
-
+ 
       {currentTab === 5 && (
         <Box p={{ xs: 1, sm: 3 }}>
           <Typography variant="h6" gutterBottom>
             Onboarding Initiation
           </Typography>
-
+ 
           <ConfigureForm
             data={configureOnboardingInitiationData(
               onBoardData,
@@ -3952,14 +4179,15 @@ function CandidateForm() {
             actionsHide={false}
             actions={false}
           />
-
+ 
           <Box mt={3} display="flex" flexDirection="column" gap={2}>
-            <Button
+            {/* <Button
               component="label"
               variant="contained"
               color="primary"
               sx={{ width: "fit-content" }}
               startIcon={<CloudUploadIcon />}
+              
             >
               Upload Profile Picture (300x300)
               <input
@@ -3967,15 +4195,44 @@ function CandidateForm() {
                 accept="image/*"
                 hidden
                 onChange={handleProfilePictureChange}
+                
               />
-            </Button>
+            </Button> */}
 
+
+
+
+<Button
+  component="label"
+  variant="contained"
+  startIcon={<CloudUploadIcon />}
+  sx={{
+    width: "fit-content",
+    backgroundColor: "rgb(15,168,233)",  // main color
+    color: "#fff",                        // text + icon color
+    "&:hover": {
+      backgroundColor: "rgb(12,150,210)", // slightly darker on hover
+    },
+  }}
+>
+  Upload Profile Picture (300x300)
+  <input
+    type="file"
+    accept="image/*"
+    hidden
+    onChange={handleProfilePictureChange}
+  />
+</Button>
+
+
+
+ 
             {errors.profilePicture && (
               <Typography color="error" variant="caption">
                 {errors.profilePicture}
               </Typography>
             )}
-
+ 
             {previewUrl && (
               <Box>
                 <Typography variant="body2">Preview:</Typography>
@@ -3993,19 +4250,40 @@ function CandidateForm() {
               </Box>
             )}
           </Box>
-
-          <Button
+ 
+          {/* <Button
             sx={{ mt: 3 }}
             variant="contained"
             color="primary"
             onClick={handleInitiateOnboard}
           >
             Initiate Onboard
-          </Button>
+          </Button> */}
+
+
+<Button
+  sx={{
+    mt: 3,
+    backgroundColor: "rgb(15,168,233)", // main color
+    color: "#fff",                        // text color
+    "&:hover": {
+      backgroundColor: "rgb(12,150,210)", // slightly darker on hover
+    },
+  }}
+  variant="contained"
+  onClick={handleInitiateOnboard}
+>
+  Initiate Onboard
+</Button>
+
+
+
         </Box>
       )}
     </Box>
   );
 }
-
+ 
 export default CandidateForm;
+ 
+ 

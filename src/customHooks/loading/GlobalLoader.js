@@ -22,7 +22,7 @@ const GlobalLoader = () => {
         zIndex: 1000,
       }}
     >
-      <FadeLoader color="#ff6303" />
+      <FadeLoader color="rgb(77,208,225)" />
     </div>
   );
 };

@@ -26,7 +26,7 @@ export const createOrUpdateCandidate = async (formData, isSaved) => {
 
 export const getAllCandidates = async () => {
   try {
-    const response = await axios.get(`${Environment.nexusHireUrl}/gatAll`);
+    const response = await axios.get(`${Environment.nexusHireUrl}/getAll`);
     return response.data;
   } catch (error) {
     console.error("Error fetching all candidates:", error);

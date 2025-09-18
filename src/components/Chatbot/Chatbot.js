@@ -358,25 +358,26 @@ function Chatbot({ minimizeClick }) {
         <Badge
           badgeContent={
             <IconButton
-              size="small"
-              sx={{
-                width: 20,
-                height: 20,
-                backgroundColor: "white",
-                boxShadow: 1,
-                ":hover": {
-                  backgroundColor: "white",
-                },
-              }}
-              onClick={minimizeClick}
-              color="warning"
-            >
-              <Remove sx={{ fontSize: "1rem" }} />
-            </IconButton>
+  size="small"
+  sx={{
+    width: 20,
+    height: 20,
+    backgroundColor: "rgb(15,168,233)",   // set your color
+    color: "white",                       // icon color (for contrast)
+    boxShadow: 1,
+    ":hover": {
+      backgroundColor: "rgb(15,168,233)", // keep same color on hover
+    },
+  }}
+  onClick={minimizeClick}
+>
+  <Remove sx={{ fontSize: "1rem" }} />
+</IconButton>
+
           }
           overlap="circular"
         >
-          <Fab
+          {/* <Fab
             color="warning"
             aria-label="chat"
             className="fixed bg-blue-600 text-white hover:bg-blue-700"
@@ -389,7 +390,26 @@ function Chatbot({ minimizeClick }) {
               src={botIcon} // Replace with the URL of your bot image
               sx={{ width: 40, height: 40, backgroundColor: "white" }} // Adjust the size as needed
             />
-          </Fab>
+          </Fab> */}
+
+<Fab
+  aria-label="chat"
+  onClick={() => setIsChatOpen(!isChatOpen)}
+  sx={{
+    // backgroundColor: "rgb(77,208,225)", // ✅ main color
+    backgroundColor: "rgb(15, 168, 233)",
+    color: "#fff",
+    "&:hover": { backgroundColor: "rgb(50,180,220)" }, // slightly darker for hover
+    zIndex: 0,
+  }}
+>
+  <Avatar
+    src={botIcon}
+    sx={{ width: 40, height: 40, backgroundColor: "white" }}
+  />
+</Fab>
+
+
         </Badge>
       )}
 
@@ -404,7 +424,7 @@ function Chatbot({ minimizeClick }) {
                     variant="h6"
                     component="div"
                     sx={{
-                      color: "#f36548",
+                      color: "'rgb(77,208,225)'",
                     }}
                   >
                     HR Genie
@@ -421,13 +441,24 @@ function Chatbot({ minimizeClick }) {
                         msg.sender === "user" ? "justify-end" : "justify-start"
                       }`}
                     >
-                      <div
+                      {/* <div
                         className={`px-4 py-2 rounded-lg ${
                           msg.sender === "user"
                             ? "bg-blue-500 text-white"
                             : "bg-gray-200 text-gray-800"
                         } max-w-xs`}
-                      >
+                      > */}
+
+<div
+  className="px-4 py-2 rounded-lg max-w-xs"
+  style={{
+    backgroundColor: msg.sender === "user"
+      ? "rgb(77,208,225)"        // ✅ user message bubble
+      : "rgba(77,208,225,0.2)",  // ✅ bot message bubble lighter
+    color: msg.sender === "user" ? "#fff" : "#000", // text color
+  }}
+>
+
                         <Typography variant="body2">{msg.text}</Typography>
                         {/* PDF download link */}
                         {msg.pdfUrl && (
@@ -498,6 +529,15 @@ function Chatbot({ minimizeClick }) {
                       label={option.label}
                       onClick={() => handleOptionClick(option)}
                       color="primary"
+
+                      sx={{
+    backgroundColor: "rgb(77,208,225)", // your color
+    color: "#fff",                        // text color
+    "&:hover": {
+      backgroundColor: "rgba(77,208,225,0.8)", // slightly darker on hover
+    },
+  }}
+  
                     />
                   ))
                 )}

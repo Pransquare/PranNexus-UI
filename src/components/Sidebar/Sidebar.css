@@ -57,6 +57,6 @@ ul ul {
 }
 
 .app-name:hover {
-  color: #ffa500; /* Change to orange on hover */
+  color: rgb(77,208,225); /* Change to orange on hover */
   text-decoration: none;
 }

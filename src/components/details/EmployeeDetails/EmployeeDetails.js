@@ -349,7 +349,7 @@ function EmployeeDetails({
     return (
       <>
         {(addresses.length > 0 ? addresses : [{}, {}]).map((address, index) => (
-          <Box key={index} mb={2} p={2} border={1} borderColor="grey.300">
+          <Box key={index} mb={2} p={2} border={1} borderColor="rgb(15,168,233)">
             <ConfigureForm
               data={[
                 {
