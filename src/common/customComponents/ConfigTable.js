@@ -130,9 +130,9 @@ function ConfigTable({
                   >
                     <Typography
                       variant="body1"
-                      // color="primary"
+                      color="primary"
                       aria-label={header}
-                      sx={{ fontWeight: "bold", color: "rgb(15, 168, 233)" }}
+                      sx={{ fontWeight: "bold" }}
                     >
                       {header}
                     </Typography>

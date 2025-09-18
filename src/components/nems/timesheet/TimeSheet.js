@@ -730,7 +730,7 @@ function Timesheet() {
               type="button"
               size="small"
               variant="contained"
-              color="warning"
+              color="rgb(77,208,225)"
               onClick={() => {
                 sendForApproval();
               }}

@@ -253,15 +253,19 @@ function TimesheetReport() {
         </Grid>
         <Grid item>
           <Button
-            variant="outlined"
-            onClick={() => fetchGridData()}
-            sx={{
-              backgroundColor: "rgb(15,168,233)",
-              "&:hover": { backgroundColor: "rgb(15,168,233)" },
-            }}
-          >
-            Search
-          </Button>
+  variant="outlined"
+  onClick={() => fetchGridData()}
+  sx={{
+    backgroundColor: "rgb(15,168,233)",
+    color: "white", // <-- text color
+    "&:hover": { 
+      backgroundColor: "rgb(15,168,233)" 
+    },
+  }}
+>
+  Search
+</Button>
+
         </Grid>
       </Grid>
 

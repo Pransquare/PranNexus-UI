@@ -476,7 +476,7 @@ function TaxApprovedDetails() {
             ))}
           </Box>
           <Box sx={{ display: "flex", gap: 2 }}>
-            <Button variant="contained" color="success" onClick={handleSubmit}>
+            <Button variant="contained" color="rgb(77,208,225)" onClick={handleSubmit}>
               Submit
             </Button>
             <Button variant="outlined" onClick={handleReturn}>
